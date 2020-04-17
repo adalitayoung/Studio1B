@@ -15,11 +15,6 @@ class CreateNewDiscount: StaffMenu {
     @IBOutlet weak var DiscountDescription_TF: UITextField!
     @IBOutlet weak var MissingDetailsMessage: UILabel!
     
-//    lazy var DiscountName = DiscountName_TF.text!
-//    lazy var DiscountValue = Double(DiscountValue_TF.text!)
-//    lazy var DiscountDescription = DiscountDescription_TF.text!
-    
-    
     func createRecord(DiscountName: String, DiscountValue: Double, DiscountDescription: String) {
         
         let docRef = db.collection("Rewards").document(DiscountName_TF.text!)
@@ -38,6 +33,7 @@ class CreateNewDiscount: StaffMenu {
 
     }
     
+    
     @IBAction func submitNewDiscount_BTN(_ sender: Any) {
         
         let DiscountValue = NSString(string: DiscountValue_TF.text!).doubleValue
@@ -45,10 +41,9 @@ class CreateNewDiscount: StaffMenu {
         let alert = UIAlertController(title: "Already Exists",
                                             message: "This discount already exists, do you want to override it?",
                                             preferredStyle: .alert)
-               // Add action buttons to it and attach handler functions if you want to
+        // Add action buttons to it and attach handler functions if you want to
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Override", style: .destructive, handler: { action in
-            
             self.createRecord(DiscountName: self.DiscountName_TF.text!, DiscountValue: DiscountValue, DiscountDescription: self.DiscountDescription_TF.text!)
             self.DiscountName_TF.text?.removeAll()
             self.DiscountValue_TF.text?.removeAll()
@@ -78,17 +73,16 @@ class CreateNewDiscount: StaffMenu {
 
                     }
                 }
-            }
+        }
         else {
             MissingDetailsMessage.isHidden = false
         }
     }
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        
-
         // Do any additional setup after loading the view.
         MissingDetailsMessage.isHidden = true
     }
