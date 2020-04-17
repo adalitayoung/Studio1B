@@ -15,31 +15,32 @@ class CreateNewDiscount: StaffMenu {
     @IBOutlet weak var DiscountDescription_TF: UITextField!
     @IBOutlet weak var MissingDetailsMessage: UILabel!
     
-    lazy var DiscountName = DiscountName_TF.text!
-    lazy var DiscountValue = Double(DiscountValue_TF.text!)
-    lazy var DiscountDescription = DiscountDescription_TF.text!
+//    lazy var DiscountName = DiscountName_TF.text!
+//    lazy var DiscountValue = Double(DiscountValue_TF.text!)
+//    lazy var DiscountDescription = DiscountDescription_TF.text!
+    
     
     func createRecord(DiscountName: String, DiscountValue: Double, DiscountDescription: String) {
-        let docRef = db.collection("Rewards").document(DiscountName)
+        
+        let docRef = db.collection("Rewards").document(DiscountName_TF.text!)
 
         docRef.setData([
-            "Deduction": DiscountValue,
-            "Description": DiscountDescription
+            "Deduction": Double(DiscountValue_TF.text!),
+            "Description": DiscountDescription_TF.text!
         ])
         { err in
             if let err = err {
                 print("Error adding document: \(err)")
             } else {
-                print("Document added")
+                print("Document added. DiscountName= \(self.DiscountName_TF.text!). DiscountValue = \(Double(self.DiscountValue_TF.text!)) ")
             }
         }
+
     }
     
-//    func handleOverride(DiscountName: String, DiscountValue: Float, _ DiscountDescription: String) -> (_ alertAction:UIAlertAction) -> () {
-//        self.createRecord(DiscountName:DiscountName,DiscountValue:DiscountValue,DiscountDescription:DiscountDescription)
-//    }
-    
     @IBAction func submitNewDiscount_BTN(_ sender: Any) {
+        
+        let DiscountValue = NSString(string: DiscountValue_TF.text!).doubleValue
         
         let alert = UIAlertController(title: "Already Exists",
                                             message: "This discount already exists, do you want to override it?",
@@ -48,26 +49,15 @@ class CreateNewDiscount: StaffMenu {
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Override", style: .destructive, handler: { action in
             
-        self.createRecord(DiscountName: self.DiscountName, DiscountValue: self.DiscountValue!, DiscountDescription: self.DiscountDescription)
-
-//            let docRef = self.db.collection("Rewards").document(self.DiscountName)
-//
-//            docRef.setData([
-//                "Deduction": self.DiscountValue,
-//                "Description": self.DiscountDescription
-//            ])
-//            { err in
-//                if let err = err {
-//                    print("Error adding document: \(err)")
-//                } else {
-//                    print("Document added")
-//                }
-//            }
+            self.createRecord(DiscountName: self.DiscountName_TF.text!, DiscountValue: DiscountValue, DiscountDescription: self.DiscountDescription_TF.text!)
+            self.DiscountName_TF.text?.removeAll()
+            self.DiscountValue_TF.text?.removeAll()
+            self.DiscountDescription_TF.text?.removeAll()
         }))
 
-        if !(DiscountName.isEmpty) && (DiscountValue != nil){
+        if !(DiscountName_TF.text!.isEmpty) && (Double(DiscountValue_TF.text!) != nil){
             // Check if the discount already exists
-            let docRef = db.collection("Rewards").document(DiscountName)
+            let docRef = db.collection("Rewards").document(DiscountName_TF.text!)
 
             docRef.getDocument{(document, error) in
                 
@@ -81,21 +71,11 @@ class CreateNewDiscount: StaffMenu {
                 }
                 else {
                     
-                    self.createRecord(DiscountName: self.DiscountName, DiscountValue: self.DiscountValue!, DiscountDescription: self.DiscountDescription)
-                        
-//                    let docRef = self.db.collection("Rewards").document(DiscountName)
-//
-//                    docRef.setData([
-//                        "Deduction": DiscountValue,
-//                        "Description": DiscountDescription
-//                    ])
-//                { err in
-//                    if let err = err {
-//                        print("Error adding document: \(err)")
-//                    } else {
-//                        print("Document added")
-//                    }
-//                }
+                    self.createRecord(DiscountName: self.DiscountName_TF.text!, DiscountValue: DiscountValue, DiscountDescription: self.DiscountDescription_TF.text!)
+                    self.DiscountName_TF.text?.removeAll()
+                    self.DiscountValue_TF.text?.removeAll()
+                    self.DiscountDescription_TF.text?.removeAll()
+
                     }
                 }
             }
