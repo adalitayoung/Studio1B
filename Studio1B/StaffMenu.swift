@@ -16,6 +16,11 @@ class StaffMenu: UIViewController {
     @IBAction func createNewDiscount_BTN(_ sender: Any) {
         performSegue(withIdentifier: "createNewDiscountSegue", sender: self)
     }
+    
+    @IBAction func createNewStaffRecord_BTN(_ sender: Any) {
+        performSegue(withIdentifier: "createNewStaffRecordSegue", sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
