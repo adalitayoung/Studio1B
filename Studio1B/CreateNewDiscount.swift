@@ -17,17 +17,17 @@ class CreateNewDiscount: StaffMenu {
     
     func createRecord(DiscountName: String, DiscountValue: Double, DiscountDescription: String) {
         
-        let docRef = db.collection("Rewards").document(DiscountName_TF.text!)
+        let docRef = db.collection("Rewards").document(DiscountName)
 
         docRef.setData([
-            "Deduction": Double(DiscountValue_TF.text!),
-            "Description": DiscountDescription_TF.text!
+            "Deduction": DiscountValue,
+            "Description": DiscountDescription
         ])
         { err in
             if let err = err {
                 print("Error adding document: \(err)")
             } else {
-                print("Document added. DiscountName= \(self.DiscountName_TF.text!). DiscountValue = \(Double(self.DiscountValue_TF.text!)) ")
+                print("Document added. DiscountName= \(DiscountName). DiscountValue = \(DiscountValue)) ")
                 
                 let alert = UIAlertController(title: "Discount Created",
                                                     message: "Discount Successfully Created",
@@ -77,14 +77,9 @@ class CreateNewDiscount: StaffMenu {
                     
                 }
                 else {
-                    
                     self.createRecord(DiscountName: self.DiscountName_TF.text!, DiscountValue: DiscountValue, DiscountDescription: self.DiscountDescription_TF.text!)
-//                    self.DiscountName_TF.text?.removeAll()
-//                    self.DiscountValue_TF.text?.removeAll()
-//                    self.DiscountDescription_TF.text?.removeAll()
-
-                    }
                 }
+            }
         }
         else {
             MissingDetailsMessage.isHidden = false
