@@ -28,8 +28,23 @@ class CreateNewDiscount: StaffMenu {
                 print("Error adding document: \(err)")
             } else {
                 print("Document added. DiscountName= \(self.DiscountName_TF.text!). DiscountValue = \(Double(self.DiscountValue_TF.text!)) ")
+                
+                let alert = UIAlertController(title: "Discount Created",
+                                                    message: "Discount Successfully Created",
+                                                    preferredStyle: .alert)
+                // Add action buttons to it and attach handler functions if you want to
+                alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: {action in
+                    self.performSegue(withIdentifier: "discountCreatedSegue", sender: self)
+                }))
+                
+                self.present(alert, animated: true)
+                
             }
+            self.DiscountName_TF.text?.removeAll()
+            self.DiscountValue_TF.text?.removeAll()
+            self.DiscountDescription_TF.text?.removeAll()
         }
+
 
     }
     
@@ -45,9 +60,6 @@ class CreateNewDiscount: StaffMenu {
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Override", style: .destructive, handler: { action in
             self.createRecord(DiscountName: self.DiscountName_TF.text!, DiscountValue: DiscountValue, DiscountDescription: self.DiscountDescription_TF.text!)
-            self.DiscountName_TF.text?.removeAll()
-            self.DiscountValue_TF.text?.removeAll()
-            self.DiscountDescription_TF.text?.removeAll()
         }))
 
         if !(DiscountName_TF.text!.isEmpty) && (Double(DiscountValue_TF.text!) != nil){
@@ -67,9 +79,9 @@ class CreateNewDiscount: StaffMenu {
                 else {
                     
                     self.createRecord(DiscountName: self.DiscountName_TF.text!, DiscountValue: DiscountValue, DiscountDescription: self.DiscountDescription_TF.text!)
-                    self.DiscountName_TF.text?.removeAll()
-                    self.DiscountValue_TF.text?.removeAll()
-                    self.DiscountDescription_TF.text?.removeAll()
+//                    self.DiscountName_TF.text?.removeAll()
+//                    self.DiscountValue_TF.text?.removeAll()
+//                    self.DiscountDescription_TF.text?.removeAll()
 
                     }
                 }
