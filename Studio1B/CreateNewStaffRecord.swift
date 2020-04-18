@@ -22,6 +22,7 @@ class CreateNewStaffRecord: StaffMenu {
     @IBOutlet weak var BSBNumber_TF: UITextField!
     
     func createRecord(AccountName: String, AccountNumber: Int, BSBNumber: Int, ContactNumber: String, DateOfBirth: String, Email: String,
+
                     FirstName: String, LastName: String, Role: String) {
         
         let documentID = FirstName_TF.text!+" "+LastName_TF.text!
@@ -80,11 +81,13 @@ class CreateNewStaffRecord: StaffMenu {
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Override", style: .destructive, handler: { action in
             self.createRecord(AccountName: self.AccountName_TF.text!, AccountNumber: Int(AccountNumber), BSBNumber: Int(BSBNumber), ContactNumber: self.ContactNumber_TF.text!, DateOfBirth: self.DateOfBirth_TF.text!, Email: self.Email_TF.text!,
+
                     FirstName: self.FirstName_TF.text!, LastName: self.LastName_TF.text!, Role: self.Role_TF.text!)
         }))
 
         if !(AccountName_TF.text!.isEmpty) && !(DateOfBirth_TF.text!.isEmpty) && (Int(AccountNumber_TF.text!) != nil) && (Int(BSBNumber_TF.text!) != nil)
             && !(ContactNumber_TF.text!.isEmpty) && !(Email_TF.text!.isEmpty) && !(FirstName_TF.text!.isEmpty) && !(LastName_TF.text!.isEmpty) && !(Role_TF.text!.isEmpty){
+
             
             // Check if the discount already exists
             let documentID = FirstName_TF.text!+" "+LastName_TF.text!
@@ -102,6 +105,7 @@ class CreateNewStaffRecord: StaffMenu {
                 }
                 else {
                     self.createRecord(AccountName: self.AccountName_TF.text!, AccountNumber: Int(AccountNumber), BSBNumber: Int(BSBNumber), ContactNumber: self.ContactNumber_TF.text!, DateOfBirth: self.DateOfBirth_TF.text!, Email: self.Email_TF.text!,
+
                         FirstName: self.FirstName_TF.text!, LastName: self.LastName_TF.text!, Role: self.Role_TF.text!)
                 }
             }
@@ -133,3 +137,4 @@ class CreateNewStaffRecord: StaffMenu {
     */
 
 }
+
