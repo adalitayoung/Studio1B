@@ -10,6 +10,7 @@ import UIKit
 
 class CreateNewStaffRecord: StaffMenu {
     
+    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var FirstName_TF: UITextField!
     @IBOutlet weak var LastName_TF: UITextField!
     @IBOutlet weak var Email_TF: UITextField!
@@ -20,6 +21,9 @@ class CreateNewStaffRecord: StaffMenu {
     @IBOutlet weak var AccountNumber_TF: UITextField!
     @IBOutlet weak var MissingDetailsMessage: UILabel!
     @IBOutlet weak var BSBNumber_TF: UITextField!
+    
+    @IBOutlet var dobPicker: [UIDatePicker]!
+    
     
     func createRecord(AccountName: String, AccountNumber: Int, BSBNumber: Int, ContactNumber: String, DateOfBirth: String, Email: String,
 
@@ -59,10 +63,6 @@ class CreateNewStaffRecord: StaffMenu {
                 self.present(alert, animated: true)
                 
             }
-            // Do we need this?
-            // self.DiscountName_TF.text?.removeAll()
-            // self.DiscountValue_TF.text?.removeAll()
-            // self.DiscountDescription_TF.text?.removeAll()
         }
 
 
@@ -70,12 +70,12 @@ class CreateNewStaffRecord: StaffMenu {
     
     
     @IBAction func submitNewStaffRecord_BTN(_ sender: Any) {
-        
+
         let AccountNumber = NSString(string: AccountNumber_TF.text!).intValue
         let BSBNumber = NSString(string: BSBNumber_TF.text!).intValue
 
         let alert = UIAlertController(title: "Already Exists",
-                                            message: "This discount already exists, do you want to override it?",
+                                            message: "This staff member already exists, do you want to override it?",
                                             preferredStyle: .alert)
         // Add action buttons to it and attach handler functions if you want to
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -88,20 +88,20 @@ class CreateNewStaffRecord: StaffMenu {
         if !(AccountName_TF.text!.isEmpty) && !(DateOfBirth_TF.text!.isEmpty) && (Int(AccountNumber_TF.text!) != nil) && (Int(BSBNumber_TF.text!) != nil)
             && !(ContactNumber_TF.text!.isEmpty) && !(Email_TF.text!.isEmpty) && !(FirstName_TF.text!.isEmpty) && !(LastName_TF.text!.isEmpty) && !(Role_TF.text!.isEmpty){
 
-            
+
             // Check if the discount already exists
             let documentID = FirstName_TF.text!+" "+LastName_TF.text!
             let docRef = db.collection("Staff").document(documentID)
-            
+
             docRef.getDocument{(document, error) in
-                
+
                 if let document = document, document.exists {
                     // Show error message, choose new name or overwrite existing
                     print("Document Exists")
 
                     // Show the alert by presenting it
                     self.present(alert, animated: true)
-                    
+
                 }
                 else {
                     self.createRecord(AccountName: self.AccountName_TF.text!, AccountNumber: Int(AccountNumber), BSBNumber: Int(BSBNumber), ContactNumber: self.ContactNumber_TF.text!, DateOfBirth: self.DateOfBirth_TF.text!, Email: self.Email_TF.text!,
@@ -111,16 +111,15 @@ class CreateNewStaffRecord: StaffMenu {
             }
         }
         else {
-            MissingDetailsMessage.isHidden = false
+            MissingDetailsMessage.textColor = UIColor.red
         }
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
        
         // Do any additional setup after loading the view.
-        MissingDetailsMessage.isHidden = true
+        MissingDetailsMessage.textColor = UIColor.white
     }
 
 
