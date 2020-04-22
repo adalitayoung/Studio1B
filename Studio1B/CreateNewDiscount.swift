@@ -57,7 +57,7 @@ class CreateNewDiscount: StaffMenu {
             DiscountName_TF.layer.borderColor = errorColour.cgColor
             result = false
         }
-        if (DiscountValue == nil) || (DiscountValue < 0.0) || (DiscountValue > 1.0) {
+        if (DiscountValue_TF.text!.isEmpty) || (DiscountValue < 0.0) || (DiscountValue > 1.0) {
             DiscountValue_TF.layer.borderWidth = 1.0
             DiscountValue_TF.layer.borderColor = errorColour.cgColor
             result = false
@@ -107,7 +107,7 @@ class CreateNewDiscount: StaffMenu {
             }
         }
         else {
-            MissingDetailsMessage.isHidden = false
+            MissingDetailsMessage.textColor = UIColor.red
         }
     }
     
@@ -116,7 +116,7 @@ class CreateNewDiscount: StaffMenu {
         super.viewDidLoad()
        
         // Do any additional setup after loading the view.
-        MissingDetailsMessage.isHidden = true
+        MissingDetailsMessage.textColor = UIColor.white
     }
     
     
