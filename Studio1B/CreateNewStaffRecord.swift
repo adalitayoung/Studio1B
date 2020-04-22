@@ -68,7 +68,81 @@ class CreateNewStaffRecord: StaffMenu {
 
     }
     
-    
+    func errorChecking(AccountName: String, AccountNumber: String, BSBNumber: String, ContactNumber: String, DateOfBirth: String, Email: String,
+                    FirstName: String, LastName: String, Role: String) -> Bool {
+        var result = true;
+        let errorColour = UIColor.red
+
+        // Resetting the borders
+        AccountName_TF.layer.borderWidth = 0
+        DateOfBirth_TF.layer.borderWidth = 0
+        AccountNumber_TF.layer.borderWidth = 0
+        BSBNumber_TF.layer.borderWidth = 0
+        ContactNumber_TF.layer.borderWidth = 0
+        Email_TF.layer.borderWidth = 0
+        FirstName_TF.layer.borderWidth = 0
+        Role_TF.layer.borderWidth = 0
+        LastName_TF.layer.borderWidth = 0
+        
+        if (AccountName.isEmpty){
+            AccountName_TF.layer.borderWidth = 1.0
+            AccountName_TF.layer.borderColor = errorColour.cgColor
+            result = false
+        }
+
+        let regexDOB = NSRegularExpression(pattern: "^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$")
+
+        if (DateOfBirth.isEmpty) && !(regexDOB.matches(DateOfBirth)){
+            DateOfBirth_TF.layer.borderWidth = 1.0
+            DateOfBirth_TF.layer.borderColor = errorColour.cgColor
+            result = false
+        }
+
+        if (AccountNumber.isEmpty){
+            AccountNumber_TF.layer.borderWidth = 1.0
+            AccountNumber_TF.layer.borderColor = errorColour.cgColor
+            result = false
+        }
+        // Limit to 6
+        if (BSBNumber.isEmpty) && (BSBNumber.count == 6) {
+            BSBNumber_TF.layer.borderWidth = 1.0
+            BSBNumber_TF.layer.borderColor = errorColour.cgColor
+            result = false
+        }
+        // Limit to 10
+        if (ContactNumber.isEmpty) && (ContactNumber.count == 10){
+            ContactNumber_TF.layer.borderWidth = 1.0
+            ContactNumber_TF.layer.borderColor = errorColour.cgColor
+            result = false
+        }
+
+        let regexEmail = NSRegularExpression(pattern: "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$")
+
+        // Has to have @ and .com
+        if (Email.isEmpty) && !(regexEmail.match(Email)){
+            Email_TF.layer.borderWidth = 1.0
+            Email_TF.layer.borderColor = errorColour.cgColor
+            result = false
+        }
+        if (FirstName.isEmpty){
+            FirstName_TF.layer.borderWidth = 1.0
+            FirstName_TF.layer.borderColor = errorColour.cgColor
+            result = false
+        }
+        if (LastName.isEmpty){
+            LastName_TF.layer.borderWidth = 1.0
+            LastName_TF.layer.borderColor = errorColour.cgColor
+            result = false
+        }
+        if (Role.isEmpty){
+            Role_TF.layer.borderWidth = 1.0
+            Role_TF.layer.borderColor = errorColour.cgColor
+            result = false
+        }
+
+        return result
+    }
+
     @IBAction func submitNewStaffRecord_BTN(_ sender: Any) {
 
         let AccountNumber = NSString(string: AccountNumber_TF.text!).intValue
@@ -81,14 +155,13 @@ class CreateNewStaffRecord: StaffMenu {
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Override", style: .destructive, handler: { action in
             self.createRecord(AccountName: self.AccountName_TF.text!, AccountNumber: Int(AccountNumber), BSBNumber: Int(BSBNumber), ContactNumber: self.ContactNumber_TF.text!, DateOfBirth: self.DateOfBirth_TF.text!, Email: self.Email_TF.text!,
-
                     FirstName: self.FirstName_TF.text!, LastName: self.LastName_TF.text!, Role: self.Role_TF.text!)
         }))
 
-        if !(AccountName_TF.text!.isEmpty) && !(DateOfBirth_TF.text!.isEmpty) && (Int(AccountNumber_TF.text!) != nil) && (Int(BSBNumber_TF.text!) != nil)
-            && !(ContactNumber_TF.text!.isEmpty) && !(Email_TF.text!.isEmpty) && !(FirstName_TF.text!.isEmpty) && !(LastName_TF.text!.isEmpty) && !(Role_TF.text!.isEmpty){
+        let errorsChecked = self.errorChecking(AccountName: self.AccountName_TF.text!, AccountNumber: AccountNumber, BSBNumber: BSBNumber, ContactNumber: self.ContactNumber_TF.text!, DateOfBirth: self.DateOfBirth_TF.text!, Email: self.Email_TF.text!,
+                    FirstName: self.FirstName_TF.text!, LastName: self.LastName_TF.text!, Role: self.Role_TF.text!)
 
-
+        if (errorsChecked) {
             // Check if the discount already exists
             let documentID = FirstName_TF.text!+" "+LastName_TF.text!
             let docRef = db.collection("Staff").document(documentID)
