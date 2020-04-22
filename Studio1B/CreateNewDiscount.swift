@@ -40,15 +40,29 @@ class CreateNewDiscount: StaffMenu {
                 self.present(alert, animated: true)
                 
             }
-            self.DiscountName_TF.text?.removeAll()
-            self.DiscountValue_TF.text?.removeAll()
-            self.DiscountDescription_TF.text?.removeAll()
         }
-
-
     }
     
-    
+    func errorChecking(DiscountName: String, DiscountValue: Double, DiscountDescription: String){
+        let result = true;
+        
+        let errorColour = UIColor.red
+        if (DiscountName_TF.text!.isEmpty){
+            DiscountName_TF.borderColor = errorColour.cgColor
+            result = false
+        }
+        if (Double(DiscountValue_TF.text!) == nil) || (Double(DiscountValue_TF.text!) < 0) || (Double(DiscountValue_TF.text!)>1) {
+            DiscountValue_TF.borderColor = errorColour.cgColor
+            result = false
+        }
+        if (DiscountDescription_TF.text!.isEmpty) {
+            DiscountDescription_TF.borderColor = errorColour.cgColor
+            result = false
+        }
+
+        return result
+    }
+
     @IBAction func submitNewDiscount_BTN(_ sender: Any) {
         
         let DiscountValue = NSString(string: DiscountValue_TF.text!).doubleValue
@@ -62,7 +76,10 @@ class CreateNewDiscount: StaffMenu {
             self.createRecord(DiscountName: self.DiscountName_TF.text!, DiscountValue: DiscountValue, DiscountDescription: self.DiscountDescription_TF.text!)
         }))
 
-        if !(DiscountName_TF.text!.isEmpty) && (Double(DiscountValue_TF.text!) != nil){
+
+        let errorsChecked = self.errorChecking(DiscountName: self.DiscountName_TF.text!, DiscountValue: DiscountValue, DiscountDescription: self.DiscountDescription_TF.text!)
+        
+        if (errorsChecked) {
             // Check if the discount already exists
             let docRef = db.collection("Rewards").document(DiscountName_TF.text!)
 
