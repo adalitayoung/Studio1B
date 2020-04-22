@@ -43,23 +43,26 @@ class CreateNewDiscount: StaffMenu {
         }
     }
     
-    func errorChecking(DiscountName: String, DiscountValue: Double, DiscountDescription: String) -> Bool{
+    func errorChecking(DiscountName: String, DiscountValue: Double, DiscountDescription: String) -> Bool {
         var result = true;
-        
-        DiscountValue_TF.layer.borderWidth = 0
-        
         let errorColour = UIColor.red
-        if (DiscountName_TF.text!.isEmpty){
+        
+        // Resetting the borders
+        DiscountName_TF.layer.borderWidth = 0
+        DiscountValue_TF.layer.borderWidth = 0
+        DiscountDescription_TF.layer.borderWidth = 0
+        
+        if (DiscountName.isEmpty){
             DiscountName_TF.layer.borderWidth = 1.0
             DiscountName_TF.layer.borderColor = errorColour.cgColor
             result = false
         }
-        if (Double(DiscountValue_TF.text!) == nil) || (DiscountValue < 0.0) || (DiscountValue > 1.0) {
+        if (DiscountValue == nil) || (DiscountValue < 0.0) || (DiscountValue > 1.0) {
             DiscountValue_TF.layer.borderWidth = 1.0
             DiscountValue_TF.layer.borderColor = errorColour.cgColor
             result = false
         }
-        if (DiscountDescription_TF.text!.isEmpty) {
+        if (DiscountDescription.isEmpty) {
             DiscountDescription_TF.layer.borderWidth = 1.0
             DiscountDescription_TF.layer.borderColor = errorColour.cgColor
             result = false
