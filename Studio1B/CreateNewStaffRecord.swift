@@ -21,6 +21,7 @@ class CreateNewStaffRecord: StaffMenu {
     @IBOutlet weak var AccountNumber_TF: UITextField!
     @IBOutlet weak var MissingDetailsMessage: UILabel!
     @IBOutlet weak var BSBNumber_TF: UITextField!
+    @IBOutlet weak var create_BTN: UIButton!
     
     @IBOutlet var dobPicker: [UIDatePicker]!
     
@@ -34,7 +35,7 @@ class CreateNewStaffRecord: StaffMenu {
 
         // Convert DOB to date
         
-
+        
         docRef.setData([
             "AccountName": AccountName,
             "AccountNumber": AccountNumber,
@@ -90,9 +91,11 @@ class CreateNewStaffRecord: StaffMenu {
             result = false
         }
 
-        let regexDOB = NSRegularExpression(pattern: "^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$")
-
-        if (DateOfBirth.isEmpty) && !(regexDOB.matches(DateOfBirth)){
+        let regexDOB = try! NSRegularExpression(pattern: #"^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$"#)
+        let results = regexDOB.matches(in:DateOfBirth,range: NSRange(DateOfBirth.startIndex..., in: DateOfBirth))
+        print(results)
+        
+        if (DateOfBirth.isEmpty) || (results.count == 0){
             DateOfBirth_TF.layer.borderWidth = 1.0
             DateOfBirth_TF.layer.borderColor = errorColour.cgColor
             result = false
@@ -103,23 +106,27 @@ class CreateNewStaffRecord: StaffMenu {
             AccountNumber_TF.layer.borderColor = errorColour.cgColor
             result = false
         }
+        
+        print(BSBNumber.count)
         // Limit to 6
-        if (BSBNumber.isEmpty) && (BSBNumber.count == 6) {
+        if (BSBNumber.isEmpty) || (BSBNumber.count != 6) {
             BSBNumber_TF.layer.borderWidth = 1.0
             BSBNumber_TF.layer.borderColor = errorColour.cgColor
             result = false
         }
         // Limit to 10
-        if (ContactNumber.isEmpty) && (ContactNumber.count == 10){
+        if (ContactNumber.isEmpty) || (ContactNumber.count != 10){
             ContactNumber_TF.layer.borderWidth = 1.0
             ContactNumber_TF.layer.borderColor = errorColour.cgColor
             result = false
         }
 
-        let regexEmail = NSRegularExpression(pattern: "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$")
+        let regexEmail = try! NSRegularExpression(pattern: #"^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"#)
+        let emailResults = regexEmail.matches(in:Email,range: NSRange(Email.startIndex..., in: Email))
+        print(emailResults)
 
         // Has to have @ and .com
-        if (Email.isEmpty) && !(regexEmail.match(Email)){
+        if (Email.isEmpty) || (emailResults.count == 0){
             Email_TF.layer.borderWidth = 1.0
             Email_TF.layer.borderColor = errorColour.cgColor
             result = false
@@ -158,7 +165,10 @@ class CreateNewStaffRecord: StaffMenu {
                     FirstName: self.FirstName_TF.text!, LastName: self.LastName_TF.text!, Role: self.Role_TF.text!)
         }))
 
-        let errorsChecked = self.errorChecking(AccountName: self.AccountName_TF.text!, AccountNumber: AccountNumber, BSBNumber: BSBNumber, ContactNumber: self.ContactNumber_TF.text!, DateOfBirth: self.DateOfBirth_TF.text!, Email: self.Email_TF.text!,
+        let AccountNumberString = NSString(string: AccountNumber_TF.text!)
+        let BSBNumberString = NSString(string: BSBNumber_TF.text!)
+        
+        let errorsChecked = self.errorChecking(AccountName: self.AccountName_TF.text!, AccountNumber: AccountNumberString as String, BSBNumber: BSBNumberString as String, ContactNumber: self.ContactNumber_TF.text!, DateOfBirth: self.DateOfBirth_TF.text!, Email: self.Email_TF.text!,
                     FirstName: self.FirstName_TF.text!, LastName: self.LastName_TF.text!, Role: self.Role_TF.text!)
 
         if (errorsChecked) {
