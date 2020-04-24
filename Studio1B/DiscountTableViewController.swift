@@ -14,8 +14,8 @@ class DicountTable: StaffMenu {
     @IBOutlet var tableView: UITableView!
     
 
-    // store firebase documents as array
-  //  let discounts = db.data()!["Rewards"] as! [String]
+    // store firebase discount names as array
+  //  let discounts = db.data()!["Rewards"] as! [String] ??????
 
     override func viewDidLoad() {
         super.viewDidLoad()
