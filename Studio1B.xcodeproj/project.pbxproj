@@ -14,6 +14,10 @@
 		F03FFC36241F440200C9F5D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F03FFC34241F440200C9F5D3 /* Main.storyboard */; };
 		F03FFC38241F440400C9F5D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F03FFC37241F440400C9F5D3 /* Assets.xcassets */; };
 		F03FFC3B241F440400C9F5D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F03FFC39241F440400C9F5D3 /* LaunchScreen.storyboard */; };
+		F055F69124457F2E001996B4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F055F69024457F2E001996B4 /* GoogleService-Info.plist */; };
+		F05EC61C245023D5005E2714 /* CreatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05EC61B245023D5005E2714 /* CreatView.swift */; };
+		F05EC61E24502417005E2714 /* LoginRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05EC61D24502417005E2714 /* LoginRegisterView.swift */; };
+		F05EC6242452A834005E2714 /* StaffCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05EC6232452A834005E2714 /* StaffCreation.swift */; };
 		F0BF213A244457ED000A7A27 /* CustomersLogingIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BF2139244457ED000A7A27 /* CustomersLogingIn.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +32,10 @@
 		F03FFC37241F440400C9F5D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F03FFC3A241F440400C9F5D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F03FFC3C241F440400C9F5D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F055F69024457F2E001996B4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F05EC61B245023D5005E2714 /* CreatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatView.swift; sourceTree = "<group>"; };
+		F05EC61D24502417005E2714 /* LoginRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRegisterView.swift; sourceTree = "<group>"; };
+		F05EC6232452A834005E2714 /* StaffCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffCreation.swift; sourceTree = "<group>"; };
 		F0BF2139244457ED000A7A27 /* CustomersLogingIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomersLogingIn.swift; sourceTree = "<group>"; };
 		FA6D1894B5CFE421FDD1895D /* Pods_Studio1B.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Studio1B.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -86,10 +94,14 @@
 				F03FFC30241F440200C9F5D3 /* SceneDelegate.swift */,
 				F03FFC32241F440200C9F5D3 /* ViewController.swift */,
 				F0BF2139244457ED000A7A27 /* CustomersLogingIn.swift */,
+				F05EC61B245023D5005E2714 /* CreatView.swift */,
+				F05EC61D24502417005E2714 /* LoginRegisterView.swift */,
+				F05EC6232452A834005E2714 /* StaffCreation.swift */,
 				F03FFC34241F440200C9F5D3 /* Main.storyboard */,
 				F03FFC37241F440400C9F5D3 /* Assets.xcassets */,
 				F03FFC39241F440400C9F5D3 /* LaunchScreen.storyboard */,
 				F03FFC3C241F440400C9F5D3 /* Info.plist */,
+				F055F69024457F2E001996B4 /* GoogleService-Info.plist */,
 			);
 			path = Studio1B;
 			sourceTree = "<group>";
@@ -155,6 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F03FFC3B241F440400C9F5D3 /* LaunchScreen.storyboard in Resources */,
+				F055F69124457F2E001996B4 /* GoogleService-Info.plist in Resources */,
 				F03FFC38241F440400C9F5D3 /* Assets.xcassets in Resources */,
 				F03FFC36241F440200C9F5D3 /* Main.storyboard in Resources */,
 			);
@@ -210,9 +223,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F03FFC33241F440200C9F5D3 /* ViewController.swift in Sources */,
+				F05EC61E24502417005E2714 /* LoginRegisterView.swift in Sources */,
 				F03FFC2F241F440200C9F5D3 /* AppDelegate.swift in Sources */,
 				F0BF213A244457ED000A7A27 /* CustomersLogingIn.swift in Sources */,
 				F03FFC31241F440200C9F5D3 /* SceneDelegate.swift in Sources */,
+				F05EC61C245023D5005E2714 /* CreatView.swift in Sources */,
+				F05EC6242452A834005E2714 /* StaffCreation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
