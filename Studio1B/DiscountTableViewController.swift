@@ -13,17 +13,39 @@ class DicountTable: StaffMenu {
     
     @IBOutlet var tableView: UITableView!
     
+    var discounts = [Any]()
 
-    // store firebase discount names as array
-  //  let discounts = db.data()!["Rewards"] as! [String] ??????
+    func getData() {
+
+        db.collection("Rewards").getDocuments() {
+            (querySnapshot, err) in
+            if let err = err {
+                print ("Error")
+            }
+            else {
+                print("!!")
+                for document in querySnapshot!.documents{
+//                    print(document.data())
+//                    print(document.documentID)
+                    var a = document.data()
+                    a["Name"] = document.documentID
+                    self.discounts.append(a)
+                    //print(self.discounts)
+                }
+                self.tableView.reloadData()
+
+            }
+            
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
         tableView.delegate = self
         tableView.dataSource = self
+        // Do any additional setup after loading the view.
+        self.getData()
+//        print(discounts)
     }
 
 }
@@ -37,24 +59,23 @@ extension DicountTable: UITableViewDelegate {
 extension DicountTable: UITableViewDataSource {
      
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
         
         // return number of objects in array
-        //return discounts.count
+       // print(self.discounts.count)
+        return self.discounts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        cell.textLabel?.text = "hello"
         
+        print(self.discounts)
         //set cell text as discount ids
-        
-        //cell.textLabel?.text = discounts[indexPath.row]
-        
+        if let discount = self.discounts[indexPath.row] as? [String: Any] {
+            var discountToLoad = discount["Name"] as! String
+            cell.textLabel?.text = discountToLoad
+        }
         return cell
-        
-        
     }
     
     
