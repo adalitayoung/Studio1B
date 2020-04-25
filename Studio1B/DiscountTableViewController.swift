@@ -53,6 +53,20 @@ class DicountTable: StaffMenu {
 extension DicountTable: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("you tapped me!")
+        
+        var discountDescription = ""
+        
+        if let discount = self.discounts[indexPath.row] as? [String: Any] {
+            discountDescription = discount["Description"] as! String
+        }
+        let alert = UIAlertController(title: "Discount Discription",
+                                            message: discountDescription,
+                                            preferredStyle: .alert)
+        
+        // Add action buttons to it and attach handler functions if you want to
+        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+    
+        self.present(alert, animated: true)
     }
 }
 
@@ -66,18 +80,17 @@ extension DicountTable: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! DiscountCell
         
         
         print(self.discounts)
         //set cell text as discount ids
         if let discount = self.discounts[indexPath.row] as? [String: Any] {
             var discountToLoad = discount["Name"] as! String
-            cell.textLabel?.text = discountToLoad
+            var discountValueToLoad = discount["Deduction"] as! Double
+            cell.discountName?.text = discountToLoad
+            cell.discountValue?.text = String(discountValueToLoad)
         }
         return cell
     }
-    
-    
-    
 }

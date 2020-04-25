@@ -343,6 +343,9 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Back" image="arrow.left" catalog="system"/>
+                                                <connections>
+                                                    <segue destination="h0W-bP-f4L" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="c45-KA-agk"/>
+                                                </connections>
                                             </button>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Item" id="pWn-zZ-t69">
@@ -807,7 +810,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PKg-ra-zFD">
-                                <rect key="frame" x="0.0" y="44" width="0.0" height="44"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <color key="barTintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textAttributes key="titleTextAttributes">
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -817,15 +820,18 @@
                                     <navigationItem title="TheFoodApp" largeTitleDisplayMode="always" id="vIZ-Bu-36q">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="nzs-Ez-bJQ">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ml1-2H-8Hy">
-                                                <rect key="frame" x="20" y="11" width="0.0" height="22"/>
+                                                <rect key="frame" x="20" y="11" width="59.5" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Back" image="arrow.left" catalog="system"/>
+                                                <connections>
+                                                    <segue destination="h0W-bP-f4L" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="ivN-1U-S2t"/>
+                                                </connections>
                                             </button>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Item" id="FJq-XE-90N">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ppu-Yj-s7T">
-                                                <rect key="frame" x="32" y="7" width="0.0" height="30"/>
+                                                <rect key="frame" x="317" y="7" width="77" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="MyAccount">
@@ -850,13 +856,33 @@
                                         <rect key="frame" x="0.0" y="35.5" width="417" height="632.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="ORI-pV-uiD">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="ORI-pV-uiD" customClass="DiscountCell" customModule="Studio1B" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="417" height="43.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ORI-pV-uiD" id="t1e-ki-eWO">
                                                     <rect key="frame" x="0.0" y="0.0" width="417" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kdy-pY-FUh">
+                                                            <rect key="frame" x="355" y="11" width="42" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wyQ-v8-M36">
+                                                            <rect key="frame" x="20" y="11" width="260" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="discountName" destination="wyQ-v8-M36" id="AjG-5i-3Fk"/>
+                                                    <outlet property="discountValue" destination="Kdy-pY-FUh" id="68F-jZ-jPs"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
@@ -883,13 +909,12 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="PKg-ra-zFD" secondAttribute="trailing" id="AZG-Es-LKq"/>
+                            <constraint firstItem="PKg-ra-zFD" firstAttribute="top" secondItem="dct-fv-0d2" secondAttribute="top" constant="44" id="B4L-3g-OrP"/>
+                            <constraint firstItem="PKg-ra-zFD" firstAttribute="leading" secondItem="p7v-BJ-7Zd" secondAttribute="leading" id="CK9-B3-ywj"/>
                             <constraint firstItem="kkk-R1-d86" firstAttribute="leading" secondItem="p7v-BJ-7Zd" secondAttribute="leading" id="DTF-WT-gWi"/>
-                            <constraint firstItem="PKg-ra-zFD" firstAttribute="leading" secondItem="p7v-BJ-7Zd" secondAttribute="leading" id="P7G-xe-H83"/>
+                            <constraint firstItem="kkk-R1-d86" firstAttribute="top" secondItem="PKg-ra-zFD" secondAttribute="bottom" constant="38" id="GBu-rm-Ii7"/>
                             <constraint firstAttribute="trailing" secondItem="kkk-R1-d86" secondAttribute="trailing" id="Y4C-27-Kbl"/>
-                            <constraint firstItem="PKg-ra-zFD" firstAttribute="top" secondItem="p7v-BJ-7Zd" secondAttribute="top" id="m35-xX-zLx"/>
-                            <constraint firstItem="PKg-ra-zFD" firstAttribute="trailing" secondItem="p7v-BJ-7Zd" secondAttribute="trailing" id="mah-Yc-zoq"/>
-                            <constraint firstItem="kkk-R1-d86" firstAttribute="top" secondItem="PKg-ra-zFD" secondAttribute="bottom" constant="38" id="pCx-yM-X38"/>
-                            <constraint firstItem="kkk-R1-d86" firstAttribute="top" secondItem="PKg-ra-zFD" secondAttribute="bottom" constant="38" id="uAO-pi-aax"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="p7v-BJ-7Zd"/>
                     </view>
@@ -903,7 +928,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ldv-Tn-LQe"/>
+        <segue reference="C9M-Pn-fCs"/>
+        <segue reference="ivN-1U-S2t"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.left" catalog="system" width="128" height="98"/>
