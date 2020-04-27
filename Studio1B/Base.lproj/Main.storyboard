@@ -586,7 +586,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar opaque="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A2U-Ze-dzx">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="44" width="417" height="44"/>
                                 <color key="barTintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textAttributes key="titleTextAttributes">
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -607,7 +607,7 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Item" id="TmZ-je-hoF">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="v28-06-Z4Y">
-                                                <rect key="frame" x="302" y="7" width="92" height="30"/>
+                                                <rect key="frame" x="305" y="7" width="92" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="MyAccount">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -996,11 +996,11 @@
         <scene sceneID="BAd-mi-fDz">
             <objects>
                 <viewController id="Uk9-xS-mdv" customClass="DicountTable" customModule="Studio1B" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="dct-fv-0d2">
+                    <view key="view" contentMode="scaleToFill" id="dct-fv-0d2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PKg-ra-zFD">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PKg-ra-zFD">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <color key="barTintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textAttributes key="titleTextAttributes">
@@ -1082,15 +1082,11 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hlh-ta-1ND">
-                                                <rect key="frame" x="0.0" y="0.0" width="208.5" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="417" height="30"/>
                                                 <state key="normal" title="Create New Discount"/>
                                                 <connections>
                                                     <action selector="createNew_BTN:" destination="Uk9-xS-mdv" eventType="touchUpInside" id="l6I-ya-djv"/>
                                                 </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohf-fV-R2P">
-                                                <rect key="frame" x="208.5" y="0.0" width="208.5" height="30"/>
-                                                <state key="normal" title="Delete Discount"/>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -1114,6 +1110,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="Lyn-PN-7kT" id="tkF-8K-czo"/>
+                        <outlet property="view" destination="dct-fv-0d2" id="Mlf-Up-AyC"/>
                         <segue destination="vNP-0z-LQH" kind="presentation" identifier="createNewSegue" modalPresentationStyle="fullScreen" id="gHL-GM-QRA"/>
                     </connections>
                 </viewController>
@@ -1123,6 +1120,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="gHL-GM-QRA"/>
         <segue reference="F5v-mk-2Fv"/>
         <segue reference="qwm-9N-ra3"/>
         <segue reference="ret-z0-kII"/>

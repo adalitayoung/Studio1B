@@ -16,6 +16,10 @@ class DicountTable: StaffMenu {
         performSegue(withIdentifier: "createNewSegue", sender: self)
     }
     
+    @IBAction func delete_BTN(_ sender: Any) {
+        
+    }
+    
     var discounts = [Any]()
 
     func getData() {
@@ -28,12 +32,9 @@ class DicountTable: StaffMenu {
             else {
                 print("!!")
                 for document in querySnapshot!.documents{
-//                    print(document.data())
-//                    print(document.documentID)
                     var a = document.data()
                     a["Name"] = document.documentID
                     self.discounts.append(a)
-                    //print(self.discounts)
                 }
                 self.tableView.reloadData()
 
@@ -48,12 +49,24 @@ class DicountTable: StaffMenu {
         tableView.dataSource = self
         // Do any additional setup after loading the view.
         self.getData()
-//        print(discounts)
     }
 
 }
 
 extension DicountTable: UITableViewDelegate {
+    
+    func deleteRecord(RecordID: String) {
+        db.collection("Rewards").document(RecordID).delete() {
+            err in
+                if let err = err {
+                    print("Error deleting document")
+                }
+                else {
+                    print("Document successfully deleted")
+                }
+        }
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("you tapped me!")
         
@@ -62,38 +75,52 @@ extension DicountTable: UITableViewDelegate {
         if let discount = self.discounts[indexPath.row] as? [String: Any] {
             discountDescription = discount["Description"] as! String
         }
+        
         let alert = UIAlertController(title: "Discount Discription",
                                             message: discountDescription,
                                             preferredStyle: .alert)
         
         // Add action buttons to it and attach handler functions if you want to
         alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
-    
         self.present(alert, animated: true)
     }
+    
+
 }
 
 extension DicountTable: UITableViewDataSource {
      
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        // return number of objects in array
-       // print(self.discounts.count)
         return self.discounts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! DiscountCell
         
-        
         print(self.discounts)
         //set cell text as discount ids
         if let discount = self.discounts[indexPath.row] as? [String: Any] {
-            var discountToLoad = discount["Name"] as! String
-            var discountValueToLoad = discount["Deduction"] as! Double
+            let discountToLoad = discount["Name"] as! String
+            let discountValueToLoad = discount["Deduction"] as! Double
             cell.discountName?.text = discountToLoad
             cell.discountValue?.text = String(discountValueToLoad)
         }
         return cell
+    }
+    
+     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            
+            if let discount = self.discounts[indexPath.row] as? [String: Any] {
+                var discountName = ""
+                discountName = discount["Name"] as! String
+                self.deleteRecord(RecordID: discountName)
+            }
+            
+            discounts.remove(at: indexPath.row)
+
+            tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+            
+        }
     }
 }
