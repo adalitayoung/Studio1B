@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3751F1AF2456A31F0021B95C /* DiscountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3751F1AD2456A31F0021B95C /* DiscountCell.swift */; };
+		3751F1B02456A31F0021B95C /* DiscountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3751F1AE2456A31F0021B95C /* DiscountTableViewController.swift */; };
+		3751F1B22456A3470021B95C /* CreateNewStaffRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3751F1B12456A3470021B95C /* CreateNewStaffRecord.swift */; };
 		37B576DD24482D9F001AA546 /* StaffMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B576DC24482D9F001AA546 /* StaffMenu.swift */; };
 		37B576E124482E8D001AA546 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37B576E024482E8D001AA546 /* GoogleService-Info.plist */; };
 		37B576E324483456001AA546 /* CreateNewDiscount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B576E224483456001AA546 /* CreateNewDiscount.swift */; };
@@ -17,11 +20,17 @@
 		F03FFC36241F440200C9F5D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F03FFC34241F440200C9F5D3 /* Main.storyboard */; };
 		F03FFC38241F440400C9F5D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F03FFC37241F440400C9F5D3 /* Assets.xcassets */; };
 		F03FFC3B241F440400C9F5D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F03FFC39241F440400C9F5D3 /* LaunchScreen.storyboard */; };
+		F05EC61C245023D5005E2714 /* CreatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05EC61B245023D5005E2714 /* CreatView.swift */; };
+		F05EC61E24502417005E2714 /* LoginRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05EC61D24502417005E2714 /* LoginRegisterView.swift */; };
+		F05EC6242452A834005E2714 /* StaffCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05EC6232452A834005E2714 /* StaffCreation.swift */; };
 		F0BF213A244457ED000A7A27 /* CustomersLogingIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BF2139244457ED000A7A27 /* CustomersLogingIn.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2725268509DAB7E3D7476180 /* Pods-Studio1B.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Studio1B.debug.xcconfig"; path = "Target Support Files/Pods-Studio1B/Pods-Studio1B.debug.xcconfig"; sourceTree = "<group>"; };
+		3751F1AD2456A31F0021B95C /* DiscountCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscountCell.swift; sourceTree = "<group>"; };
+		3751F1AE2456A31F0021B95C /* DiscountTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscountTableViewController.swift; sourceTree = "<group>"; };
+		3751F1B12456A3470021B95C /* CreateNewStaffRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNewStaffRecord.swift; sourceTree = "<group>"; };
 		37B576DC24482D9F001AA546 /* StaffMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffMenu.swift; sourceTree = "<group>"; };
 		37B576E024482E8D001AA546 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		37B576E224483456001AA546 /* CreateNewDiscount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewDiscount.swift; sourceTree = "<group>"; };
@@ -34,6 +43,9 @@
 		F03FFC37241F440400C9F5D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F03FFC3A241F440400C9F5D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F03FFC3C241F440400C9F5D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F05EC61B245023D5005E2714 /* CreatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatView.swift; sourceTree = "<group>"; };
+		F05EC61D24502417005E2714 /* LoginRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRegisterView.swift; sourceTree = "<group>"; };
+		F05EC6232452A834005E2714 /* StaffCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffCreation.swift; sourceTree = "<group>"; };
 		F0BF2139244457ED000A7A27 /* CustomersLogingIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomersLogingIn.swift; sourceTree = "<group>"; };
 		FA6D1894B5CFE421FDD1895D /* Pods_Studio1B.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Studio1B.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -89,16 +101,22 @@
 			isa = PBXGroup;
 			children = (
 				F03FFC2E241F440200C9F5D3 /* AppDelegate.swift */,
-				F03FFC30241F440200C9F5D3 /* SceneDelegate.swift */,
-				F03FFC32241F440200C9F5D3 /* ViewController.swift */,
-				F0BF2139244457ED000A7A27 /* CustomersLogingIn.swift */,
-				F03FFC34241F440200C9F5D3 /* Main.storyboard */,
 				F03FFC37241F440400C9F5D3 /* Assets.xcassets */,
-				F03FFC39241F440400C9F5D3 /* LaunchScreen.storyboard */,
-				F03FFC3C241F440400C9F5D3 /* Info.plist */,
-				37B576DC24482D9F001AA546 /* StaffMenu.swift */,
-				37B576E024482E8D001AA546 /* GoogleService-Info.plist */,
 				37B576E224483456001AA546 /* CreateNewDiscount.swift */,
+				3751F1B12456A3470021B95C /* CreateNewStaffRecord.swift */,
+				F05EC61B245023D5005E2714 /* CreatView.swift */,
+				F0BF2139244457ED000A7A27 /* CustomersLogingIn.swift */,
+				3751F1AD2456A31F0021B95C /* DiscountCell.swift */,
+				3751F1AE2456A31F0021B95C /* DiscountTableViewController.swift */,
+				37B576E024482E8D001AA546 /* GoogleService-Info.plist */,
+				F03FFC3C241F440400C9F5D3 /* Info.plist */,
+				F03FFC39241F440400C9F5D3 /* LaunchScreen.storyboard */,
+				F05EC61D24502417005E2714 /* LoginRegisterView.swift */,
+				F03FFC34241F440200C9F5D3 /* Main.storyboard */,
+				F03FFC30241F440200C9F5D3 /* SceneDelegate.swift */,
+				F05EC6232452A834005E2714 /* StaffCreation.swift */,
+				37B576DC24482D9F001AA546 /* StaffMenu.swift */,
+				F03FFC32241F440200C9F5D3 /* ViewController.swift */,
 			);
 			path = Studio1B;
 			sourceTree = "<group>";
@@ -221,10 +239,16 @@
 			files = (
 				F03FFC33241F440200C9F5D3 /* ViewController.swift in Sources */,
 				37B576E324483456001AA546 /* CreateNewDiscount.swift in Sources */,
+				3751F1B22456A3470021B95C /* CreateNewStaffRecord.swift in Sources */,
+				3751F1AF2456A31F0021B95C /* DiscountCell.swift in Sources */,
 				37B576DD24482D9F001AA546 /* StaffMenu.swift in Sources */,
+				F05EC61E24502417005E2714 /* LoginRegisterView.swift in Sources */,
 				F03FFC2F241F440200C9F5D3 /* AppDelegate.swift in Sources */,
 				F0BF213A244457ED000A7A27 /* CustomersLogingIn.swift in Sources */,
 				F03FFC31241F440200C9F5D3 /* SceneDelegate.swift in Sources */,
+				F05EC61C245023D5005E2714 /* CreatView.swift in Sources */,
+				F05EC6242452A834005E2714 /* StaffCreation.swift in Sources */,
+				3751F1B02456A31F0021B95C /* DiscountTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
