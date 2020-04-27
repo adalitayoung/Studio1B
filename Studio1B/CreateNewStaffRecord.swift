@@ -28,7 +28,7 @@ class CreateNewStaffRecord: StaffMenu {
     
     func createRecord(AccountName: String, AccountNumber: Int, BSBNumber: Int, ContactNumber: String, DateOfBirth: String, Email: String,
 
-                    FirstName: String, LastName: String, Role: String) {
+                    FirstName: String, LastName: String, Role: String, Password: String) {
         
         let documentID = FirstName_TF.text!+" "+LastName_TF.text!
         let docRef = db.collection("Staff").document(documentID)
@@ -45,7 +45,8 @@ class CreateNewStaffRecord: StaffMenu {
             "Email": Email,
             "FirstName": FirstName,
             "LastName": LastName,
-            "Role": Role
+            "Role": Role,
+            "Password": Password
         ])
         { err in
             if let err = err {
@@ -70,7 +71,7 @@ class CreateNewStaffRecord: StaffMenu {
     }
     
     func errorChecking(AccountName: String, AccountNumber: String, BSBNumber: String, ContactNumber: String, DateOfBirth: String, Email: String,
-                    FirstName: String, LastName: String, Role: String) -> Bool {
+                    FirstName: String, LastName: String, Role: String, Password: String) -> Bool {
         var result = true;
         let errorColour = UIColor.red
 
@@ -84,6 +85,7 @@ class CreateNewStaffRecord: StaffMenu {
         FirstName_TF.layer.borderWidth = 0
         Role_TF.layer.borderWidth = 0
         LastName_TF.layer.borderWidth = 0
+        Password_TF.layer.borderWidth = 0
         
         if (AccountName.isEmpty){
             AccountName_TF.layer.borderWidth = 1.0
@@ -147,6 +149,12 @@ class CreateNewStaffRecord: StaffMenu {
             result = false
         }
 
+        if (Password.isEmpty){
+            Password_TF.layer.borderWidth = 1.0
+            Password_TF.layer.borderColor = errorColour.cgColor
+            result = false
+        }
+
         return result
     }
 
@@ -162,14 +170,14 @@ class CreateNewStaffRecord: StaffMenu {
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Override", style: .destructive, handler: { action in
             self.createRecord(AccountName: self.AccountName_TF.text!, AccountNumber: Int(AccountNumber), BSBNumber: Int(BSBNumber), ContactNumber: self.ContactNumber_TF.text!, DateOfBirth: self.DateOfBirth_TF.text!, Email: self.Email_TF.text!,
-                    FirstName: self.FirstName_TF.text!, LastName: self.LastName_TF.text!, Role: self.Role_TF.text!)
+                    FirstName: self.FirstName_TF.text!, LastName: self.LastName_TF.text!, Role: self.Role_TF.text!, Password: self.Password_TF.text!)
         }))
 
         let AccountNumberString = NSString(string: AccountNumber_TF.text!)
         let BSBNumberString = NSString(string: BSBNumber_TF.text!)
         
         let errorsChecked = self.errorChecking(AccountName: self.AccountName_TF.text!, AccountNumber: AccountNumberString as String, BSBNumber: BSBNumberString as String, ContactNumber: self.ContactNumber_TF.text!, DateOfBirth: self.DateOfBirth_TF.text!, Email: self.Email_TF.text!,
-                    FirstName: self.FirstName_TF.text!, LastName: self.LastName_TF.text!, Role: self.Role_TF.text!)
+                    FirstName: self.FirstName_TF.text!, LastName: self.LastName_TF.text!, Role: self.Role_TF.text!, Password: self.Password_TF.text!)
 
         if (errorsChecked) {
             // Check if the discount already exists
@@ -189,7 +197,7 @@ class CreateNewStaffRecord: StaffMenu {
                 else {
                     self.createRecord(AccountName: self.AccountName_TF.text!, AccountNumber: Int(AccountNumber), BSBNumber: Int(BSBNumber), ContactNumber: self.ContactNumber_TF.text!, DateOfBirth: self.DateOfBirth_TF.text!, Email: self.Email_TF.text!,
 
-                        FirstName: self.FirstName_TF.text!, LastName: self.LastName_TF.text!, Role: self.Role_TF.text!)
+                        FirstName: self.FirstName_TF.text!, LastName: self.LastName_TF.text!, Role: self.Role_TF.text!, Password: self.Password_TF.text!)
                 }
             }
         }
