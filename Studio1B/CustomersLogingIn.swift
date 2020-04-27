@@ -29,10 +29,6 @@ class CustomersLogingIn: UIViewController {
         
         }
         
-        
-    
-    
-    
     func GetUserInfo(){
         let db = Firestore.firestore()
         db.collection("Customer").getDocuments{ (snap, err) in
