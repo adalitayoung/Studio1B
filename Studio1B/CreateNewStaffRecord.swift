@@ -21,6 +21,7 @@ class CreateNewStaffRecord: StaffMenu {
     @IBOutlet weak var AccountNumber_TF: UITextField!
     @IBOutlet weak var MissingDetailsMessage: UILabel!
     @IBOutlet weak var BSBNumber_TF: UITextField!
+    @IBOutlet weak var Password_TF: UITextField!
     @IBOutlet weak var create_BTN: UIButton!
     
     @IBOutlet var dobPicker: [UIDatePicker]!
