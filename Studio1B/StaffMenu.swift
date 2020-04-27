@@ -14,7 +14,7 @@ class StaffMenu: UIViewController {
     let db = Firestore.firestore()
 
     @IBAction func createNewDiscount_BTN(_ sender: Any) {
-        performSegue(withIdentifier: "createNewDiscountSegue", sender: self)
+        performSegue(withIdentifier: "toDiscountsSegue", sender: self)
     }
     
     @IBAction func createNewStaffRecord_BTN(_ sender: Any) {

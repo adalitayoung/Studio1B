@@ -23,14 +23,6 @@
                                     <segue destination="cRL-ki-jNf" kind="presentation" modalPresentationStyle="fullScreen" id="xE2-F6-Jp1"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l4v-hI-deH">
-                                <rect key="frame" x="140" y="455" width="55" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="To table"/>
-                                <connections>
-                                    <segue destination="Uk9-xS-mdv" kind="presentation" modalPresentationStyle="fullScreen" id="VU4-5z-YLt"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="dTc-SU-7FJ"/>
@@ -374,12 +366,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hGd-I0-Wot">
-                                <rect key="frame" x="102" y="428" width="211" height="40"/>
+                                <rect key="frame" x="95" y="428" width="225" height="40"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <edgeInsets key="layoutMargins" top="8" left="7" bottom="8" right="8"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <state key="normal" title="Create New Discount">
+                                <state key="normal" title="Discount Management">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -397,8 +389,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="1Lw-yl-6Wu"/>
                     <connections>
-                        <segue destination="vNP-0z-LQH" kind="presentation" identifier="createNewDiscountSegue" modalPresentationStyle="fullScreen" id="X01-KK-qIl"/>
                         <segue destination="gio-RE-EXV" kind="presentation" identifier="createNewStaffRecordSegue" animates="NO" modalPresentationStyle="fullScreen" id="iC0-2F-jmn"/>
+                        <segue destination="Uk9-xS-mdv" kind="presentation" identifier="toDiscountsSegue" modalPresentationStyle="fullScreen" id="Izj-Sl-cTv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4kn-RN-Tn4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -429,7 +421,7 @@
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Back" image="arrow.left" catalog="system"/>
                                                 <connections>
-                                                    <segue destination="cRL-ki-jNf" kind="presentation" modalPresentationStyle="fullScreen" id="C9M-Pn-fCs"/>
+                                                    <segue destination="Uk9-xS-mdv" kind="presentation" modalPresentationStyle="fullScreen" id="AkR-HI-UA1"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
@@ -545,12 +537,11 @@
                         <outlet property="DiscountName_TF" destination="Vdk-cJ-cFm" id="AcF-Gz-l0H"/>
                         <outlet property="DiscountValue_TF" destination="YxT-rO-E1B" id="104-J6-7Tl"/>
                         <outlet property="MissingDetailsMessage" destination="8vM-Ip-0kw" id="SGA-Kj-4fd"/>
-                        <segue destination="cRL-ki-jNf" kind="presentation" identifier="discountCreatedSegue" modalPresentationStyle="currentContext" id="vK6-XT-Fm1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QQV-Fk-cDr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-792.75362318840587" y="909.375"/>
+            <point key="canvasLocation" x="-30" y="927"/>
         </scene>
         <!--Create New Staff Record-->
         <scene sceneID="ecd-Ak-yCq">
@@ -799,17 +790,17 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1RZ-mt-qef" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2972" y="1865"/>
+            <point key="canvasLocation" x="-1662" y="1769"/>
         </scene>
         <!--Dicount Table-->
         <scene sceneID="BAd-mi-fDz">
             <objects>
                 <viewController id="Uk9-xS-mdv" customClass="DicountTable" customModule="Studio1B" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="dct-fv-0d2">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="dct-fv-0d2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PKg-ra-zFD">
+                            <navigationBar contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PKg-ra-zFD">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <color key="barTintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textAttributes key="titleTextAttributes">
@@ -825,7 +816,7 @@
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Back" image="arrow.left" catalog="system"/>
                                                 <connections>
-                                                    <segue destination="h0W-bP-f4L" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="ivN-1U-S2t"/>
+                                                    <segue destination="cRL-ki-jNf" kind="presentation" modalPresentationStyle="fullScreen" id="qwm-9N-ra3"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
@@ -893,6 +884,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hlh-ta-1ND">
                                                 <rect key="frame" x="0.0" y="0.0" width="208.5" height="30"/>
                                                 <state key="normal" title="Create New Discount"/>
+                                                <connections>
+                                                    <action selector="createNew_BTN:" destination="Uk9-xS-mdv" eventType="touchUpInside" id="l6I-ya-djv"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohf-fV-R2P">
                                                 <rect key="frame" x="208.5" y="0.0" width="208.5" height="30"/>
@@ -920,16 +914,18 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="Lyn-PN-7kT" id="tkF-8K-czo"/>
+                        <segue destination="vNP-0z-LQH" kind="presentation" identifier="createNewSegue" modalPresentationStyle="fullScreen" id="gHL-GM-QRA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JM2-Wd-X4k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3359.4202898550725" y="1162.5"/>
+            <point key="canvasLocation" x="-826" y="875"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="C9M-Pn-fCs"/>
-        <segue reference="ivN-1U-S2t"/>
+        <segue reference="AkR-HI-UA1"/>
+        <segue reference="ldv-Tn-LQe"/>
+        <segue reference="c45-KA-agk"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.left" catalog="system" width="128" height="98"/>

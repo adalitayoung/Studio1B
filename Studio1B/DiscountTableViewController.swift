@@ -12,6 +12,9 @@ import Firebase
 class DicountTable: StaffMenu {
     
     @IBOutlet var tableView: UITableView!
+    @IBAction func createNew_BTN(_ sender: Any) {
+        performSegue(withIdentifier: "createNewSegue", sender: self)
+    }
     
     var discounts = [Any]()
 
