@@ -22,23 +22,26 @@ class StaffLogin: LoginRegisterView {
 
         Email_TF.layer.borderWidth = 0
         Password_TF.layer.borderWidth = 0
-            
+        
         db.collection("Staff").whereField("Email", isEqualTo: Email).limit(to: 1).getDocuments() { (querySnapshot, err) in
             print("Email = " + Email)
             print(querySnapshot)
                 if let err = err {
-                    print("Error finding staff member")
-                    IncorrectMessage.text! = "Staff member does not exist"
-                    result = false
-                    IncorrectMessage.isHidden = false
-                    self.Email_TF.layer.borderWidth = 1.0
-                    self.Email_TF.layer.borderColor = errorColour.cgColor
+                    print("Firebase error fetching staff")
                 }
                 else {
                     print(querySnapshot!.documents)
+                    if (querySnapshot!.documents.count == 0) {
+                        print("Error finding staff member")
+                        self.IncorrectMessage.text! = "Staff member does not exist"
+                        result = false
+                        self.IncorrectMessage.isHidden = false
+                        self.Email_TF.layer.borderWidth = 1.0
+                        self.Email_TF.layer.borderColor = errorColour.cgColor
+                    }
                     // Should only return one document but this is how it needs to be written
                     for document in querySnapshot!.documents {
-                        print(document.data())
+                        print(document.data().count)
                         if let doc = document.data() as? [String: Any] {
                             let passwordString = doc["Password"] as! String
                             print(Password)
@@ -46,18 +49,18 @@ class StaffLogin: LoginRegisterView {
                             
                             if (passwordString != Password){
                                 print("Password doesn't match")
-                                IncorrectMessage.text! = "Incorrect Password"
+                                self.IncorrectMessage.text! = "Incorrect Password"
                                 result = false
                                 print(result)
-                                IncorrectMessage.isHidden = false
+                                self.IncorrectMessage.isHidden = false
                                 self.Password_TF.layer.borderWidth = 1.0
                                 self.Password_TF.layer.borderColor = errorColour.cgColor
                             }
                             else {
                                 let role = doc["Role"] as! String
-                                NSUserDefaults.standardUserDefaults().setObject(Email, forKey:"userId");
-                                NSUserDefaults.standardUserDefaults().setObject(role, forKey:"userRole");
-                                NSUserDefaults.standardUserDefaults().synchronize()
+                                UserDefaults.standard.set(Email, forKey:"userId");
+                                UserDefaults.standard.set(role, forKey:"userRole");
+                                UserDefaults.standard.synchronize()
                                 self.performSegue(withIdentifier: "toStaffMenu", sender: self)
                                 
                             }

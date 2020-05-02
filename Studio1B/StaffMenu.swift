@@ -12,14 +12,14 @@ import Firebase
 class StaffMenu: UIViewController {
     
     let db = Firestore.firestore()
-    let userRole = NSUserDefaults.standardUserDefaults().objectForKey("userRole") as? [String]
+    let userRole = UserDefaults.standard.object(forKey: "userRole") as! String
 
     @IBAction func createNewDiscount_BTN(_ sender: Any) {
         performSegue(withIdentifier: "toDiscountsSegue", sender: self)
     }
     
     @IBAction func createNewStaffRecord_BTN(_ sender: Any) {
-        if (userRole == "RestaurantManager"){
+        if (userRole.contains("RestaurantManager")){
             performSegue(withIdentifier: "createNewStaffRecordSegue", sender: self)
         }
         else{
@@ -29,7 +29,7 @@ class StaffMenu: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print(userRole)
         // Do any additional setup after loading the view.
     }
     
