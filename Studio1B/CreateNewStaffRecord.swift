@@ -181,7 +181,7 @@ class CreateNewStaffRecord: StaffMenu {
                     FirstName: self.FirstName_TF.text!, LastName: self.LastName_TF.text!, Role: self.Role_TF.text!, Password: self.Password_TF.text!)
 
         if (errorsChecked) {
-            // Check if the discount already exists
+            // Check if the staff member already exists
             let documentID = FirstName_TF.text!+" "+LastName_TF.text!
             let docRef = db.collection("Staff").document(documentID)
 
@@ -190,7 +190,6 @@ class CreateNewStaffRecord: StaffMenu {
                 if let document = document, document.exists {
                     // Show error message, choose new name or overwrite existing
                     print("Document Exists")
-
                     // Show the alert by presenting it
                     self.present(alert, animated: true)
 
