@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginRegisterView: UIViewController {
  
@@ -14,13 +15,18 @@ class LoginRegisterView: UIViewController {
     @IBOutlet weak var LogoImage: UIImageView!
     @IBOutlet weak var LoginBTNP: UIButton!
     
+    let db = Firestore.firestore()
+    @IBAction func staffLogin_BTN(_ sender: Any) {
+        performSegue(withIdentifier: "toStaffLoginSegue", sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = UIColor(patternImage: UIImage(named: "wood.png")!)
-        self.LoginBTNP.layer.cornerRadius = 10
-        self.CreatAcBtn.layer.cornerRadius = 10
-        self.LogoImage.layer.cornerRadius = 10
+        self.LoginBTNP?.layer.cornerRadius = 10
+        self.CreatAcBtn?.layer.cornerRadius = 10
+        self.LogoImage?.layer.cornerRadius = 10
     }
     
 
