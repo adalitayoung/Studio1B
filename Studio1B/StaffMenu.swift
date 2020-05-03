@@ -12,36 +12,24 @@ import Firebase
 class StaffMenu: UIViewController {
     
     let db = Firestore.firestore()
-    let userRole = UserDefaults.standard.object(forKey: "userRole") as! String
+    var userRole = UserDefaults.standard.object(forKey: "userRole") as! String
 
     @IBAction func createNewDiscount_BTN(_ sender: Any) {
         performSegue(withIdentifier: "toDiscountsSegue", sender: self)
     }
     
-    @IBAction func createNewStaffRecord_BTN(_ sender: Any) {
-        if (userRole.contains("RestaurantManager")){
-            performSegue(withIdentifier: "createNewStaffRecordSegue", sender: self)
+    
+    @IBAction func staffManagement_BTN(_ sender: Any) {
+        if (userRole.contains("RestaurantManager")) {
+            performSegue(withIdentifier: "toStaffRecords", sender: self)
         }
-        else{
-            print("You do not have access")
+        else {
+            print("You Do not have access")
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print(userRole)
-        // Do any additional setup after loading the view.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
