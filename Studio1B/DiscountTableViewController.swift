@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class DicountTable: StaffMenu {
+class DicountTable: StaffMenu, UITableViewDelegate, UITableViewDataSource{
     
     @IBOutlet var tableView: UITableView!
     @IBAction func createNew_BTN(_ sender: Any) {
@@ -51,9 +51,9 @@ class DicountTable: StaffMenu {
         self.getData()
     }
 
-}
+//}
 
-extension DicountTable: UITableViewDelegate {
+//extension DicountTable: UITableViewDelegate {
     
     func deleteRecord(RecordID: String) {
         db.collection("Rewards").document(RecordID).delete() {
@@ -67,13 +67,29 @@ extension DicountTable: UITableViewDelegate {
         }
     }
     
+    var discountName = ""
+    var discountDescription = ""
+    var discountValue = 0.0
+        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Determine what the segue destination is
+        
+        if let vc = segue.destination as? EditDiscount {
+            vc.discountName = discountName
+            vc.discountDescription = discountDescription
+            vc.discountValue = discountValue
+        }
+    }
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("you tapped me!")
         
-        var discountDescription = ""
+//        var discountDescription = ""
         
         if let discount = self.discounts[indexPath.row] as? [String: Any] {
             discountDescription = discount["Description"] as! String
+            discountName = discount["Name"] as! String
+            discountValue = discount["Deduction"] as! Double
         }
         
         let alert = UIAlertController(title: "Discount Discription",
@@ -82,13 +98,16 @@ extension DicountTable: UITableViewDelegate {
         
         // Add action buttons to it and attach handler functions if you want to
         alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Edit Discount", style: .destructive, handler: { action in
+            self.performSegue(withIdentifier: "toEditDiscount", sender: self)
+        }))
         self.present(alert, animated: true)
     }
     
 
-}
+//}
 
-extension DicountTable: UITableViewDataSource {
+//extension DicountTable: UITableViewDataSource {
      
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.discounts.count
