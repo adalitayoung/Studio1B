@@ -74,11 +74,11 @@ class DicountTable: StaffMenu, UITableViewDelegate, UITableViewDataSource{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Determine what the segue destination is
         
-        if let vc = segue.destination as? EditDiscount {
-            vc.discountName = discountName
-            vc.discountDescription = discountDescription
-            vc.discountValue = discountValue
-        }
+//        if let vc = segue.destination as? EditDiscount {
+//            vc.discountName = discountName
+//            vc.discountDescription = discountDescription
+//            vc.discountValue = discountValue
+//        }
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

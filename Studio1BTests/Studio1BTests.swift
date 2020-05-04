@@ -10,11 +10,22 @@ import XCTest
 
 @testable import Studio1B
 class Studio1BTests: XCTestCase {
-
+    var app: XCUIApplication!
+    
     override func setUp() {
+        continueAfterFailure = false
         // Put setup code here. This method is called before the invocation of each test method in the class.
+       
     }
 
+    func testLoggingin(){
+
+
+    }
+    
+    
+    
+    
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
