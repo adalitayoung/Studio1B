@@ -23,9 +23,7 @@ class CreateNewStaffRecord: StaffMenu {
     @IBOutlet weak var BSBNumber_TF: UITextField!
     @IBOutlet weak var Password_TF: UITextField!
     @IBOutlet weak var create_BTN: UIButton!
-    
-    @IBOutlet var dobPicker: [UIDatePicker]!
-    
+        
     
     func createRecord(AccountName: String, AccountNumber: Int, BSBNumber: Int, ContactNumber: String, DateOfBirth: String, Email: String,
 
