@@ -26,7 +26,14 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "NO">
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "unit_tests"
+            value = "true"
+            isEnabled = "NO">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -45,6 +52,16 @@
                BlueprintIdentifier = "F0E6770C245FEA77000BCD87"
                BuildableName = "Studio1BTests.xctest"
                BlueprintName = "Studio1BTests"
+               ReferencedContainer = "container:Studio1B.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "376A262A2462A86B009FFB3A"
+               BuildableName = "Studio1BUITests.xctest"
+               BlueprintName = "Studio1BUITests"
                ReferencedContainer = "container:Studio1B.xcodeproj">
             </BuildableReference>
          </TestableReference>

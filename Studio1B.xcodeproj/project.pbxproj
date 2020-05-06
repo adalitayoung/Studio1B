@@ -11,6 +11,10 @@
 		3751F1AF2456A31F0021B95C /* DiscountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3751F1AD2456A31F0021B95C /* DiscountCell.swift */; };
 		3751F1B02456A31F0021B95C /* DiscountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3751F1AE2456A31F0021B95C /* DiscountTableViewController.swift */; };
 		3751F1B22456A3470021B95C /* CreateNewStaffRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3751F1B12456A3470021B95C /* CreateNewStaffRecord.swift */; };
+		376A262224629EAF009FFB3A /* StaffRecordTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376A262124629EAF009FFB3A /* StaffRecordTable.swift */; };
+		376A262424629F21009FFB3A /* EditStaff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376A262324629F21009FFB3A /* EditStaff.swift */; };
+		376A262624629F28009FFB3A /* StaffCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376A262524629F28009FFB3A /* StaffCell.swift */; };
+		376A262E2462A86B009FFB3A /* Studio1BUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376A262D2462A86B009FFB3A /* Studio1BUITests.swift */; };
 		377DF2592456E8590076696E /* StaffLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377DF2582456E8580076696E /* StaffLogin.swift */; };
 		37B576DD24482D9F001AA546 /* StaffMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B576DC24482D9F001AA546 /* StaffMenu.swift */; };
 		37B576E124482E8D001AA546 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37B576E024482E8D001AA546 /* GoogleService-Info.plist */; };
@@ -29,6 +33,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		376A26302462A86B009FFB3A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F03FFC23241F440200C9F5D3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F03FFC2A241F440200C9F5D3;
+			remoteInfo = Studio1B;
+		};
 		F0E67712245FEA77000BCD87 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F03FFC23241F440200C9F5D3 /* Project object */;
@@ -44,6 +55,12 @@
 		3751F1AD2456A31F0021B95C /* DiscountCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscountCell.swift; sourceTree = "<group>"; };
 		3751F1AE2456A31F0021B95C /* DiscountTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscountTableViewController.swift; sourceTree = "<group>"; };
 		3751F1B12456A3470021B95C /* CreateNewStaffRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNewStaffRecord.swift; sourceTree = "<group>"; };
+		376A262124629EAF009FFB3A /* StaffRecordTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffRecordTable.swift; sourceTree = "<group>"; };
+		376A262324629F21009FFB3A /* EditStaff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditStaff.swift; sourceTree = "<group>"; };
+		376A262524629F28009FFB3A /* StaffCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffCell.swift; sourceTree = "<group>"; };
+		376A262B2462A86B009FFB3A /* Studio1BUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Studio1BUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		376A262D2462A86B009FFB3A /* Studio1BUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Studio1BUITests.swift; sourceTree = "<group>"; };
+		376A262F2462A86B009FFB3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		377DF2582456E8580076696E /* StaffLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffLogin.swift; sourceTree = "<group>"; };
 		37B576DC24482D9F001AA546 /* StaffMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffMenu.swift; sourceTree = "<group>"; };
 		37B576E024482E8D001AA546 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -71,6 +88,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		376A26282462A86B009FFB3A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F03FFC28241F440200C9F5D3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -90,6 +114,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		376A262C2462A86B009FFB3A /* Studio1BUITests */ = {
+			isa = PBXGroup;
+			children = (
+				376A262D2462A86B009FFB3A /* Studio1BUITests.swift */,
+				376A262F2462A86B009FFB3A /* Info.plist */,
+			);
+			path = Studio1BUITests;
+			sourceTree = "<group>";
+		};
 		6C32735BE4A6C3BA50F717AE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +150,7 @@
 			children = (
 				F03FFC2D241F440200C9F5D3 /* Studio1B */,
 				F0E6770E245FEA77000BCD87 /* Studio1BTests */,
+				376A262C2462A86B009FFB3A /* Studio1BUITests */,
 				F03FFC2C241F440200C9F5D3 /* Products */,
 				6C32735BE4A6C3BA50F717AE /* Pods */,
 				8CF16A9258E463AD5156E406 /* Frameworks */,
@@ -128,6 +162,7 @@
 			children = (
 				F03FFC2B241F440200C9F5D3 /* Studio1B.app */,
 				F0E6770D245FEA77000BCD87 /* Studio1BTests.xctest */,
+				376A262B2462A86B009FFB3A /* Studio1BUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -141,12 +176,15 @@
 				3751F1B12456A3470021B95C /* CreateNewStaffRecord.swift */,
 				F05EC61B245023D5005E2714 /* CreatView.swift */,
 				F0BF2139244457ED000A7A27 /* CustomersLogingIn.swift */,
+				376A262324629F21009FFB3A /* EditStaff.swift */,
 				3751F1AD2456A31F0021B95C /* DiscountCell.swift */,
 				3751F1AE2456A31F0021B95C /* DiscountTableViewController.swift */,
 				37B576E024482E8D001AA546 /* GoogleService-Info.plist */,
 				F03FFC3C241F440400C9F5D3 /* Info.plist */,
 				F03FFC39241F440400C9F5D3 /* LaunchScreen.storyboard */,
+				376A262124629EAF009FFB3A /* StaffRecordTable.swift */,
 				F05EC61D24502417005E2714 /* LoginRegisterView.swift */,
+				376A262524629F28009FFB3A /* StaffCell.swift */,
 				F03FFC34241F440200C9F5D3 /* Main.storyboard */,
 				F03FFC30241F440200C9F5D3 /* SceneDelegate.swift */,
 				37B576DC24482D9F001AA546 /* StaffMenu.swift */,
@@ -168,6 +206,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		376A262A2462A86B009FFB3A /* Studio1BUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 376A26322462A86B009FFB3A /* Build configuration list for PBXNativeTarget "Studio1BUITests" */;
+			buildPhases = (
+				376A26272462A86B009FFB3A /* Sources */,
+				376A26282462A86B009FFB3A /* Frameworks */,
+				376A26292462A86B009FFB3A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				376A26312462A86B009FFB3A /* PBXTargetDependency */,
+			);
+			name = Studio1BUITests;
+			productName = Studio1BUITests;
+			productReference = 376A262B2462A86B009FFB3A /* Studio1BUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		F03FFC2A241F440200C9F5D3 /* Studio1B */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F03FFC3F241F440400C9F5D3 /* Build configuration list for PBXNativeTarget "Studio1B" */;
@@ -213,10 +269,14 @@
 		F03FFC23241F440200C9F5D3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1130;
+				LastSwiftUpdateCheck = 1140;
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = davidBolis;
 				TargetAttributes = {
+					376A262A2462A86B009FFB3A = {
+						CreatedOnToolsVersion = 11.4.1;
+						TestTargetID = F03FFC2A241F440200C9F5D3;
+					};
 					F03FFC2A241F440200C9F5D3 = {
 						CreatedOnToolsVersion = 11.3.1;
 					};
@@ -241,11 +301,19 @@
 			targets = (
 				F03FFC2A241F440200C9F5D3 /* Studio1B */,
 				F0E6770C245FEA77000BCD87 /* Studio1BTests */,
+				376A262A2462A86B009FFB3A /* Studio1BUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		376A26292462A86B009FFB3A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F03FFC29241F440200C9F5D3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -348,17 +416,28 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		376A26272462A86B009FFB3A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				376A262E2462A86B009FFB3A /* Studio1BUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F03FFC27241F440200C9F5D3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				F03FFC33241F440200C9F5D3 /* ViewController.swift in Sources */,
 				37B576E324483456001AA546 /* CreateNewDiscount.swift in Sources */,
+				376A262224629EAF009FFB3A /* StaffRecordTable.swift in Sources */,
 				3751F1B22456A3470021B95C /* CreateNewStaffRecord.swift in Sources */,
+				376A262624629F28009FFB3A /* StaffCell.swift in Sources */,
 				377DF2592456E8590076696E /* StaffLogin.swift in Sources */,
 				3751F1AF2456A31F0021B95C /* DiscountCell.swift in Sources */,
 				37B576DD24482D9F001AA546 /* StaffMenu.swift in Sources */,
 				F05EC61E24502417005E2714 /* LoginRegisterView.swift in Sources */,
+				376A262424629F21009FFB3A /* EditStaff.swift in Sources */,
 				F03FFC2F241F440200C9F5D3 /* AppDelegate.swift in Sources */,
 				F0BF213A244457ED000A7A27 /* CustomersLogingIn.swift in Sources */,
 				F03FFC31241F440200C9F5D3 /* SceneDelegate.swift in Sources */,
@@ -378,6 +457,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		376A26312462A86B009FFB3A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F03FFC2A241F440200C9F5D3 /* Studio1B */;
+			targetProxy = 376A26302462A86B009FFB3A /* PBXContainerItemProxy */;
+		};
 		F0E67713245FEA77000BCD87 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F03FFC2A241F440200C9F5D3 /* Studio1B */;
@@ -405,6 +489,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		376A26332462A86B009FFB3A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Studio1BUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = test.Studio1BUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Studio1B;
+			};
+			name = Debug;
+		};
+		376A26342462A86B009FFB3A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Studio1BUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = test.Studio1BUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Studio1B;
+			};
+			name = Release;
+		};
 		F03FFC3D241F440400C9F5D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -602,6 +724,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		376A26322462A86B009FFB3A /* Build configuration list for PBXNativeTarget "Studio1BUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				376A26332462A86B009FFB3A /* Debug */,
+				376A26342462A86B009FFB3A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F03FFC26241F440200C9F5D3 /* Build configuration list for PBXProject "Studio1B" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

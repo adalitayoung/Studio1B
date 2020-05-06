@@ -29,11 +29,11 @@ class CreateNewStaffRecord: StaffMenu {
 
                     FirstName: String, LastName: String, Role: String, Password: String) {
         
-        let documentID = FirstName_TF.text!+" "+LastName_TF.text!
+        let documentID = FirstName+" "+LastName
         let docRef = db.collection("Staff").document(documentID)
 
         // Convert DOB to date
-        
+        print(documentID)
         
         docRef.setData([
             "AccountName": AccountName,
@@ -65,6 +65,7 @@ class CreateNewStaffRecord: StaffMenu {
                 
             }
         }
+
 
 
     }
