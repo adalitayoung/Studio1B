@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class CustomersLogingIn: UIViewController {
+class CustomersLogingIn: LoginRegisterView {
     
     @IBOutlet weak var EmaillTxt: UITextField!
     @IBOutlet weak var PasswordTxt: UITextField!
@@ -30,7 +30,7 @@ class CustomersLogingIn: UIViewController {
         }
         
     func GetUserInfo(){
-        let db = Firestore.firestore()
+        //let db = Firestore.firestore()
         db.collection("Customer").getDocuments{ (snap, err) in
         if err != nil{
             print((err?.localizedDescription)!)
