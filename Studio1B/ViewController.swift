@@ -7,9 +7,21 @@
 //
 
 import UIKit
+import Firebase
 
 class ViewController: UIViewController {
 
+    let db = Firestore.firestore()
+    
+//    @IBAction func viewMenuSegue(_ sender: Any) {
+//        performSegue(withIdentifier: "viewMenuSegue", sender: self)
+//    }
+    
+    @IBAction func newBookingSegue(_ sender: Any) {
+        performSegue(withIdentifier: "newBookingSegue", sender: self)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.

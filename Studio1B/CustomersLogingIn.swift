@@ -22,7 +22,7 @@ class CustomersLogingIn: UIViewController {
     @IBAction func LogInBtn(_ sender: Any) {
         if ((UserNameTxt?.text) != nil) && PasswordTxt?.text != ""{
             if UserNameTxt.text == "FoodApp" && PasswordTxt.text == "123456"{
-                performSegue(withIdentifier: "LogInSuccess", sender: self)
+                performSegue(withIdentifier: "logInSuccess", sender: self)
             } else {
                 IncorrectMessage.isHidden = false
             }
