@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3iS-gd-dTv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3iS-gd-dTv">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -303,10 +303,10 @@
             </objects>
             <point key="canvasLocation" x="-1288" y="138"/>
         </scene>
-        <!--View Controller-->
+        <!--Customer Menu-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Studio1B" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CustomerMenu" customModule="Studio1B" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -361,13 +361,16 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="View The Menu"/>
                                 <connections>
-                                    <segue destination="ac6-18-Dxm" kind="presentation" modalPresentationStyle="overFullScreen" id="LKO-OS-7Lf"/>
+                                    <action selector="Menu_BTN:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dWM-kf-d2N"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <segue destination="ac6-18-Dxm" kind="presentation" identifier="toFoodMenu" modalPresentationStyle="fullScreen" id="SB0-TZ-mQR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -431,18 +434,17 @@
             </objects>
             <point key="canvasLocation" x="1335" y="1011"/>
         </scene>
-        <!--View Controller-->
+        <!--Food Menu-->
         <scene sceneID="woe-aU-Ybg">
             <objects>
-                <viewController id="ac6-18-Dxm" sceneMemberID="viewController">
+                <viewController id="ac6-18-Dxm" customClass="FoodMenu" customModule="Studio1B" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HF9-vj-MnM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ivf-fd-y1b">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ivf-fd-y1b">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="barTintColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="barTintColor" red="0.011010872200000001" green="0.61938399079999995" blue="0.27836245300000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <textAttributes key="titleTextAttributes">
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="textShadowColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -451,14 +453,110 @@
                                     <navigationItem title="Menu" largeTitleDisplayMode="always" id="jaN-g8-9jn"/>
                                 </items>
                             </navigationBar>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="V2D-u2-agB">
+                                <rect key="frame" x="5" y="138" width="404" height="704"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="center" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Z8i-yV-UWq">
+                                        <rect key="frame" x="0.0" y="0.0" width="404" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hM6-QF-MwS">
+                                                <rect key="frame" x="0.0" y="0.0" width="101" height="30"/>
+                                                <state key="normal" title="Lunch"/>
+                                                <connections>
+                                                    <action selector="lunch_btn:" destination="ac6-18-Dxm" eventType="touchUpInside" id="e2K-Wh-4Jc"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EkS-cD-BYN">
+                                                <rect key="frame" x="101" y="0.0" width="101" height="30"/>
+                                                <state key="normal" title="Dinner"/>
+                                                <connections>
+                                                    <action selector="dinner_btn:" destination="ac6-18-Dxm" eventType="touchUpInside" id="8Pc-fr-1ye"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U2q-Ss-HIb">
+                                                <rect key="frame" x="202" y="0.0" width="101" height="30"/>
+                                                <state key="normal" title="Dessert"/>
+                                                <connections>
+                                                    <action selector="dessert_btn:" destination="ac6-18-Dxm" eventType="touchUpInside" id="AB2-Fd-Guk"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gYw-BG-1pE">
+                                                <rect key="frame" x="303" y="0.0" width="101" height="30"/>
+                                                <state key="normal" title="Drinks"/>
+                                                <connections>
+                                                    <action selector="drinks_btn:" destination="ac6-18-Dxm" eventType="touchUpInside" id="RN5-Kb-1Ze"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ea7-xN-kO0">
+                                        <rect key="frame" x="0.0" y="40" width="404" height="30"/>
+                                        <state key="normal" title="Sort"/>
+                                        <connections>
+                                            <action selector="priceSort:" destination="ac6-18-Dxm" eventType="touchUpInside" id="oxC-gT-syd"/>
+                                        </connections>
+                                    </button>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ptf-jm-mmw">
+                                        <rect key="frame" x="0.0" y="80" width="404" height="624"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="Pf1-94-Fb7" customClass="FoodCell" customModule="Studio1B" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="404" height="43.5"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Pf1-94-Fb7" id="iLd-TQ-hpY">
+                                                    <rect key="frame" x="0.0" y="0.0" width="404" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3k4-tE-F0A">
+                                                            <rect key="frame" x="299" y="11" width="77" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fsW-rh-lXk">
+                                                            <rect key="frame" x="31" y="11" width="245" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="foodName" destination="fsW-rh-lXk" id="si4-qt-90e"/>
+                                                    <outlet property="foodPrice" destination="3k4-tE-F0A" id="0pD-yG-xU0"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="V2D-u2-agB" firstAttribute="top" secondItem="ivf-fd-y1b" secondAttribute="bottom" constant="50" id="07B-nK-mL0"/>
+                            <constraint firstItem="Hji-O9-Pxr" firstAttribute="bottom" secondItem="V2D-u2-agB" secondAttribute="bottom" constant="20" id="EKJ-Ze-aYm"/>
+                            <constraint firstItem="ivf-fd-y1b" firstAttribute="leading" secondItem="Hji-O9-Pxr" secondAttribute="leading" id="HRa-Sg-YAb"/>
+                            <constraint firstItem="V2D-u2-agB" firstAttribute="leading" secondItem="Hji-O9-Pxr" secondAttribute="leading" constant="5" id="IAK-pI-FBf"/>
+                            <constraint firstItem="Hji-O9-Pxr" firstAttribute="trailing" secondItem="V2D-u2-agB" secondAttribute="trailing" constant="5" id="Zqd-XF-gho"/>
+                            <constraint firstItem="ivf-fd-y1b" firstAttribute="top" secondItem="Hji-O9-Pxr" secondAttribute="top" id="a0H-kT-Kyz"/>
+                            <constraint firstItem="V2D-u2-agB" firstAttribute="top" secondItem="ivf-fd-y1b" secondAttribute="bottom" constant="50" id="bqI-Sa-WQs"/>
+                            <constraint firstItem="ivf-fd-y1b" firstAttribute="trailing" secondItem="Hji-O9-Pxr" secondAttribute="trailing" id="ee8-cB-wsa"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Hji-O9-Pxr"/>
                     </view>
+                    <connections>
+                        <outlet property="dessert_btn" destination="U2q-Ss-HIb" id="o6z-kV-8Tr"/>
+                        <outlet property="dinner_btn" destination="EkS-cD-BYN" id="4q0-2S-fwO"/>
+                        <outlet property="drinks_btn" destination="gYw-BG-1pE" id="w4m-EC-Sf3"/>
+                        <outlet property="lunch_btn" destination="hM6-QF-MwS" id="YSD-qr-QWj"/>
+                        <outlet property="tableView" destination="Ptf-jm-mmw" id="723-II-GZL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="37w-uP-7zG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1352" y="-457"/>
+            <point key="canvasLocation" x="1350.7246376811595" y="-457.36607142857139"/>
         </scene>
         <!--Staff Menu-->
         <scene sceneID="kgH-m4-gZL">
@@ -1711,15 +1809,15 @@
             <point key="canvasLocation" x="-2368" y="2316"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="94611835_1163279227374552_4261354237696409600_n" width="424" height="200"/>
-        <image name="arrow.left" catalog="system" width="64" height="48"/>
-        <image name="forkknife" width="188" height="194"/>
-        <image name="person.crop.circle" catalog="system" width="64" height="60"/>
-    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="JBM-jL-1ls"/>
         <segue reference="4kw-oa-cYO"/>
-        <segue reference="RMN-a8-Uvv"/>
+        <segue reference="qwm-9N-ra3"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <image name="94611835_1163279227374552_4261354237696409600_n" width="424" height="200"/>
+        <image name="arrow.left" catalog="system" width="128" height="98"/>
+        <image name="forkknife" width="188" height="194"/>
+        <image name="person.crop.circle" catalog="system" width="128" height="121"/>
+    </resources>
 </document>

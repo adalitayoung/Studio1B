@@ -1,0 +1,80 @@
+[debug] [2020-05-05T10:51:48.972Z] ----------------------------------------------------------------------
+[debug] [2020-05-05T10:51:48.975Z] Command:       /usr/local/bin/firebase /Users/gabriellewalker/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase emulators:start
+[debug] [2020-05-05T10:51:48.975Z] CLI Version:   8.2.0
+[debug] [2020-05-05T10:51:48.975Z] Platform:      darwin
+[debug] [2020-05-05T10:51:48.975Z] Node Version:  v12.16.1
+[debug] [2020-05-05T10:51:48.976Z] Time:          Tue May 05 2020 20:51:48 GMT+1000 (Australian Eastern Standard Time)
+[debug] [2020-05-05T10:51:48.976Z] ----------------------------------------------------------------------
+[debug] [2020-05-05T10:51:48.976Z] 
+[debug] [2020-05-05T10:51:48.983Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-05-05T10:51:48.984Z] > authorizing via signed-in user
+[info] i  emulators: Starting emulators: firestore
+[debug] [2020-05-05T10:51:49.003Z] [hub] writing locator at /var/folders/rh/qxyt00vs7zq7ynzpzqpktgbm0000gn/T/hub-saporiunici1b.json
+[info] ✔  hub: emulator hub started at http://localhost:4400
+[warn] ⚠  firestore: Did not find a Cloud Firestore rules file specified in a firebase.json config file.
+[warn] ⚠  firestore: The emulator will default to allowing all reads and writes. Learn more about this option: https://firebase.google.com/docs/emulator-suite/install_and_configure#security_rules_configuration.
+[debug] [2020-05-05T10:51:49.009Z] Ignoring unsupported arg: projectId
+[debug] [2020-05-05T10:51:49.010Z] Ignoring unsupported arg: auto_download
+[debug] [2020-05-05T10:51:49.010Z] Starting firestore emulator with command {"binary":"java","args":["-Duser.language=en","-jar","/Users/gabriellewalker/.cache/firebase/emulators/cloud-firestore-emulator-v1.11.3.jar","--host","localhost","--port",8080],"optionalArgs":["port","webchannel_port","host","rules","functions_emulator","seed_from_export"],"joinArgs":false}
+[info] i  firestore: firestore emulator logging to firestore-debug.log
+[debug] [2020-05-05T10:51:54.177Z] API endpoint: http://
+[debug] [2020-05-05T10:51:54.178Z] localhost
+[debug] [2020-05-05T10:51:54.178Z] :
+[debug] [2020-05-05T10:51:54.179Z] 8080
+[debug] [2020-05-05T10:51:54.180Z] 
+If you are using a library that supports the FIRESTORE_EMULATOR_HOST environment variable, run:
+
+   export FIRESTORE_EMULATOR_HOST=localhost:
+[debug] [2020-05-05T10:51:54.180Z] 8080
+
+Dev App Server is now running.
+
+
+[info] ✔  firestore: firestore emulator started at http://localhost:8080
+[info] i  firestore: For testing set FIRESTORE_EMULATOR_HOST=localhost:8080
+[info] ✔  emulators: All emulators started, it is now safe to connect.
+[debug] [2020-05-05T10:52:06.889Z] May 05, 2020 8:52:06 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-05-05T10:52:07.399Z] May 05, 2020 8:52:07 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /favicon.ico
+
+[debug] [2020-05-05T11:03:52.438Z] May 05, 2020 9:03:52 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-05-05T11:06:05.985Z] May 05, 2020 9:06:05 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /emulator/b1/v
+
+[debug] [2020-05-05T11:06:13.858Z] May 05, 2020 9:06:13 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /emulator/v1/v
+
+[debug] [2020-05-05T11:06:21.373Z] May 05, 2020 9:06:21 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /emulator/v1/v/projects
+
+[debug] [2020-05-05T11:06:25.723Z] May 05, 2020 9:06:25 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /emulator/v1/projects
+
+[debug] [2020-05-05T11:07:10.111Z] May 05, 2020 9:07:10 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /emulator/v1/projects/SaporiUnici1B
+
+[debug] [2020-05-05T11:07:17.804Z] May 05, 2020 9:07:17 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /emulator/v1/projects/saporiunici1B
+
+[debug] [2020-05-05T11:07:41.433Z] May 05, 2020 9:07:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+
+[debug] [2020-05-05T11:07:41.580Z] May 05, 2020 9:07:41 PM com.google.cloud.datastore.emulator.impl.util.WrappedStreamObserver onError
+INFO: operation failed: Not a project id
+
+[debug] [2020-05-05T11:07:41.588Z] May 05, 2020 9:07:41 PM io.gapi.emulators.netty.HttpHandler$1 onError
+INFO: Exception when handling request: UNKNOWN
+
+[debug] [2020-05-05T11:14:57.855Z] May 05, 2020 9:14:57 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[debug] [2020-05-05T11:20:50.761Z] May 05, 2020 9:20:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+
+[debug] [2020-05-05T11:21:04.083Z] May 05, 2020 9:21:04 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
