@@ -110,13 +110,13 @@ class StaffMenuManagement: UIViewController, UITableViewDelegate, UITableViewDat
             var menuItem = [String: Any]()
         
                 
-//            override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//                // Determine what the segue destination is
-//
-//    //           if let vc = segue.destination as? ViewMenuItem {
-//    //               vs.menuItem = menuItem
-//    //           }
-//            }
+            override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+                // Determine what the segue destination is
+
+               if let vc = segue.destination as? EditMenuItem {
+                   vc.menuItem = menuItem
+               }
+            }
         
             func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
                 print("you tapped me!")
