@@ -28,6 +28,10 @@ class StaffMenu: UIViewController {
         }
     }
     
+    @IBAction func menuManagement_BTN(_ sender: Any) {
+        performSegue(withIdentifier: "toStaffMenu", sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print(userRole)

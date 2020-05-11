@@ -9,9 +9,10 @@
 import UIKit
 
 class FoodCell: UITableViewCell {
-    @IBOutlet weak var foodPrice: UILabel!
     @IBOutlet weak var foodName: UILabel!
 
+    @IBOutlet weak var foodPrice: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
