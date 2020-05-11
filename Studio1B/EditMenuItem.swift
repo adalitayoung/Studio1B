@@ -22,6 +22,56 @@ class EditMenuItem: StaffMenu {
     
     var menuItem = [String:Any]()
     
+    func updateMenuItem() {
+        if (menuItem["Name"] as! String != name_tf.text!){
+            db.collection("Menu").document(menuItem["Name"] as! String).delete() { err in
+                if let err = err {
+                    print(err)
+                }
+                else {
+                    print("Document deleted")
+                }
+            }
+        }
+        db.collection("Menu").document(name_tf.text!).setData([
+            "Description":description_tf.text!,
+            "Dinner Price": NSString(string: dinnerPrice_tf.text!).doubleValue,
+            "Lunch Price": NSString(string: lunchPrice_tf.text!).doubleValue,
+            "Type": menuItem["Type"]
+        ]) { err in
+            if let err = err {
+                print(err)
+            }
+            else{
+                print("Document updated")
+                let alert = UIAlertController(title: "Item Updated Updated",
+                                                    message: "Menu Item Successfully Updated",
+                                                    preferredStyle: .alert)
+                // Add action buttons to it and attach handler functions if you want to
+                alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: {action in
+                    self.performSegue(withIdentifier: "menuItemUpdated", sender: self)
+                }))
+                
+                self.present(alert, animated: true)
+            }
+        }
+    }
+    
+    @IBAction func update_btn(_ sender: Any) {
+//        let errorsChecked = self.errorChecking()
+//            if (errorsChecked){
+        updateMenuItem()
+
+//            }
+//            else {
+                //ErrorMessage.textColor = UIColor.red
+           // }
+        
+    }
+
+        
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print(menuItem)
