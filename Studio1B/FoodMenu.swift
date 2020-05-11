@@ -39,21 +39,7 @@ class FoodMenu: CustomerMenu, UITableViewDelegate, UITableViewDataSource {
         currentMenu = "Drinks"
         self.getData(Type: currentMenu)
     }
-//
-//
-//        @IBAction func priceSort(_ sender: Any) {
-//            self.priceAsc = !self.priceAsc
-//            if (self.priceAsc){
-//                //let x = ActiveItems.sort(by: $0.Price < $1.Price)
-//                ActiveItems.sorted { ($0.Price, $1.Price) -> Bool in
-//                    return $0.Price > $1.Price
-//                }
-//            }
-//            else{
-//           //     self.ActiveItems.sortInPlace({ $0.Price > $1.Price})
-//            }
-//    }
-    
+
         var ActiveItems = [Any]()
         var Dinner = [Any]()
         var Dessert = [Any]()
