@@ -18,9 +18,43 @@ class EditMenuItem: StaffMenu {
     
     // put in error message
     
+    @IBOutlet weak var ErrorMessage: UILabel!
     @IBOutlet weak var update_btn: UIButton!
     
     var menuItem = [String:Any]()
+    
+    func errorChecking() -> Bool {
+        var result = true;
+        let errorColour = UIColor.red
+        
+        // Resetting the borders
+        name_tf.layer.borderWidth = 0
+        dinnerPrice_tf.layer.borderWidth = 0
+        lunchPrice_tf.layer.borderWidth = 0
+        description_tf.layer.borderWidth = 0
+        
+        if (name_tf.text!.isEmpty){
+            name_tf.layer.borderWidth = 1.0
+            name_tf.layer.borderColor = errorColour.cgColor
+            result = false
+        }
+        if (dinnerPrice_tf.text!.isEmpty) || ( NSString(string: dinnerPrice_tf.text!).doubleValue <= 0.0)  {
+            dinnerPrice_tf.layer.borderWidth = 1.0
+            dinnerPrice_tf.layer.borderColor = errorColour.cgColor
+            result = false
+        }
+        if (lunchPrice_tf.text!.isEmpty) || (NSString(string: lunchPrice_tf.text!).doubleValue <= 0.0)  {
+            lunchPrice_tf.layer.borderWidth = 1.0
+            lunchPrice_tf.layer.borderColor = errorColour.cgColor
+            result = false
+        }
+        if (description_tf.text!.isEmpty) {
+            description_tf.layer.borderWidth = 1.0
+            description_tf.layer.borderColor = errorColour.cgColor
+            result = false
+        }
+        return result
+    }
     
     func updateMenuItem() {
         if (menuItem["Name"] as! String != name_tf.text!){
@@ -51,21 +85,19 @@ class EditMenuItem: StaffMenu {
                 alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: {action in
                     self.performSegue(withIdentifier: "menuItemUpdated", sender: self)
                 }))
-                
                 self.present(alert, animated: true)
             }
         }
     }
     
     @IBAction func update_btn(_ sender: Any) {
-//        let errorsChecked = self.errorChecking()
-//            if (errorsChecked){
-        updateMenuItem()
-
-//            }
-//            else {
-                //ErrorMessage.textColor = UIColor.red
-           // }
+        let errorsChecked = self.errorChecking()
+            if (errorsChecked){
+                updateMenuItem()
+            }
+            else {
+                ErrorMessage.textColor = UIColor.red
+            }
         
     }
 
@@ -81,7 +113,7 @@ class EditMenuItem: StaffMenu {
         description_tf.text! = menuItem["Description"] as! String
         dinnerPrice_tf.text! = String(menuItem["Dinner Price"] as! Int)
         lunchPrice_tf.text! = String(menuItem["Lunch Price"] as! Int)
-        //ErrorMessage.textColor = UIColor.white
+        ErrorMessage.textColor = UIColor.white
         // Do any additional setup after loading the view.
         
     }

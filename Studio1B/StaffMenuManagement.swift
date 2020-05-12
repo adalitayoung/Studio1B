@@ -40,6 +40,9 @@ class StaffMenuManagement: UIViewController, UITableViewDelegate, UITableViewDat
         self.getData(Type: currentMenu)
     }
     
+    @IBAction func createNewItem_btn(_ sender: Any) {
+        performSegue(withIdentifier: "createNewItem", sender: self)
+    }
     var ActiveItems = [Any]()
             var Dinner = [Any]()
             var Dessert = [Any]()
@@ -140,7 +143,7 @@ class StaffMenuManagement: UIViewController, UITableViewDelegate, UITableViewDat
                     let foodItemToLoad = foodItem["Name"] as! String
                     let foodPriceToLoad = foodItem["Price"] as! Double
                     cell.foodName?.text = foodItemToLoad
-                    cell.foodPrice?.text = String(foodPriceToLoad)
+                    cell.foodPrice?.text = "$" + String(foodPriceToLoad)
                 }
                 return cell
             }
