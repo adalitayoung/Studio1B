@@ -10,4 +10,9 @@ target 'Studio1B' do
 	pod 'Firebase/Auth'
 	pod 'Firebase/Storage'
 	pod 'Firebase/Firestore'
+
+	target 'Studio1BTests' do
+		inherit! :search_paths
+		pod 'Firebase'
+	end
 end
