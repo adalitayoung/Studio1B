@@ -15,55 +15,65 @@ class manageBookingsController: UIViewController, UITableViewDelegate, UITableVi
    
     
 
-    var bookingTable = [Bookings]()
+    var bookings = [Any]()
     let db = Firestore.firestore()
     
-    @IBOutlet weak var Tableview: UITableView!
+    @IBOutlet weak var tableView: UITableView!
+    
+    let bookingEmail = UserDefaults.standard.object(forKey: "Email") as! String
     
     
+    func getData(){
+        db.collection("Booking").getDocuments(){
+            (querySnapshot, err) in if let err = err{
+                print("Firebase Error")
+            }
+            else{
+                for document in querySnapshot!.documents{
+                    var a = document.data()
+                    self.bookings.append(a)
+                }
+                self.tableView.reloadData()
+            }
+        }
+    }
     
-    
+    func deleteBooking(BookingID: String){
+        db.collection("Booking").document(BookingID).delete(){
+            err in if let err = err{
+                print("Could not Delete Booking")
+            }
+            else{
+                print("Booking Deleted")
+            }
+        }
+    }
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-//        ref = Database.database().reference().child("Booking")
-//
-//        ref.observe(DataEventType.value, with: {(snapshot)}); in
-//        if snapshot.childrenCount > 0 {
-//            self.bookingTable.removeAll()
-//
-//            for booking in snapshot.children.allObjects as! [DataSnapshot] {
-//                let Object = booking.value as?[String: AnyObject]
-//                let BookingID = Object?["BookingID"]
-//                let NumberOfGuests = Object?["People"]
-//                let PreferredTime = Object?["Preferred Time"]
-//                let CustomerID = Object?["CustomerID"]
-//
-//                let booking = Bookings(bookingID: BookingID as! String, numberOfGuests: NumberOfGuests as! Int, preferredTime: PreferredTime as! String, customerID: CustomerID as! String)
-//                self.bookingTable.append(booking)
-//                self.Tableview.reloadData()
-//            }
-//
-//        }
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        self.getData()
     }
     
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return bookingTable.count
+        return self.bookings.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = Tableview.dequeueReusableCell(withIdentifier: "cell") as! TableViewCell
-        
-        let booking: Bookings
-        
-        booking = bookingTable[indexPath.row]
-        cell.bookingIDLabel.text = booking.bookingID
-        
-        return cell
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         
     }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueResuableCell(withIdentifier: "cell", for indexPath) as! bookingCell
+//        return cell
+    }
+    
+    
+    
     
     //from video not sure if applicable
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){

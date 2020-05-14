@@ -8,9 +8,13 @@
 
 import UIKit
 
-class TableViewCell: UITableViewCell {
+class bookingCell: UITableViewCell {
 
-    @IBOutlet weak var bookingIDLabel: UILabel!
+    @IBOutlet weak var bookingID: UILabel!
+    @IBOutlet weak var bookingFirst: UILabel!
+    @IBOutlet weak var bookingLast: UILabel!
+    @IBOutlet weak var bookingNumGuests: UILabel!
+    @IBOutlet weak var bookingTime: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
