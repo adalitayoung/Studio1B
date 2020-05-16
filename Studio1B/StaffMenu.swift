@@ -28,6 +28,14 @@ class StaffMenu: UIViewController {
         performSegue(withIdentifier: "toStaffMenu", sender: self)
     }
     
+    @IBAction func logout_BTN(_ sender: Any) {
+        let defaults = UserDefaults.standard
+        let dictionary = defaults.dictionaryRepresentation()
+        dictionary.keys.forEach { key in
+            defaults.removeObject(forKey: key)
+        }
+        performSegue(withIdentifier: "logout", sender: self)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         print(userRole)
