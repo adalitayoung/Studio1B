@@ -20,12 +20,8 @@ class StaffMenu: UIViewController {
     
     
     @IBAction func staffManagement_BTN(_ sender: Any) {
-        if (userRole.contains("RestaurantManager")) {
-            performSegue(withIdentifier: "toStaffRecords", sender: self)
-        }
-        else {
-            print("You Do not have access")
-        }
+        performSegue(withIdentifier: "toStaffRecords", sender: self)
+
     }
     
     @IBAction func menuManagement_BTN(_ sender: Any) {

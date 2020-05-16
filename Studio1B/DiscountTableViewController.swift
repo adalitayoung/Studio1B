@@ -16,11 +16,13 @@ class DicountTable: StaffMenu, UITableViewDelegate, UITableViewDataSource{
         performSegue(withIdentifier: "createNewSegue", sender: self)
     }
     
+    @IBOutlet weak var createNew_BTN: UIButton!
     @IBAction func delete_BTN(_ sender: Any) {
         
     }
     
     var discounts = [Any]()
+    let staffRole = UserDefaults.standard.object(forKey: "userRole") as! String
 
     func getData() {
 
@@ -47,13 +49,13 @@ class DicountTable: StaffMenu, UITableViewDelegate, UITableViewDataSource{
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        if (staffRole != "RestaurantManager") {
+            createNew_BTN.isEnabled = false
+            createNew_BTN.backgroundColor = UIColor.gray
+        }
         // Do any additional setup after loading the view.
         self.getData()
     }
-
-//}
-
-//extension DicountTable: UITableViewDelegate {
     
     func deleteRecord(RecordID: String) {
         db.collection("Rewards").document(RecordID).delete() {
@@ -74,18 +76,16 @@ class DicountTable: StaffMenu, UITableViewDelegate, UITableViewDataSource{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Determine what the segue destination is
         
-//        if let vc = segue.destination as? EditDiscount {
-//            vc.discountName = discountName
-//            vc.discountDescription = discountDescription
-//            vc.discountValue = discountValue
-//        }
+        if let vc = segue.destination as? EditDiscount {
+            vc.discountName = discountName
+            vc.discountDescription = discountDescription
+            vc.discountValue = discountValue
+        }
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("you tapped me!")
-        
-//        var discountDescription = ""
-        
+                
         if let discount = self.discounts[indexPath.row] as? [String: Any] {
             discountDescription = discount["Description"] as! String
             discountName = discount["Name"] as! String
@@ -103,11 +103,6 @@ class DicountTable: StaffMenu, UITableViewDelegate, UITableViewDataSource{
         }))
         self.present(alert, animated: true)
     }
-    
-
-//}
-
-//extension DicountTable: UITableViewDataSource {
      
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.discounts.count
@@ -127,8 +122,8 @@ class DicountTable: StaffMenu, UITableViewDelegate, UITableViewDataSource{
         return cell
     }
     
-     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == UITableViewCell.EditingStyle.delete {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == UITableViewCell.EditingStyle.delete) && (staffRole == "RestaurantManager"){
             
             if let discount = self.discounts[indexPath.row] as? [String: Any] {
                 var discountName = ""

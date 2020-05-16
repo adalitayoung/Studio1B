@@ -11,6 +11,7 @@
 		3751F1AF2456A31F0021B95C /* DiscountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3751F1AD2456A31F0021B95C /* DiscountCell.swift */; };
 		3751F1B02456A31F0021B95C /* DiscountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3751F1AE2456A31F0021B95C /* DiscountTableViewController.swift */; };
 		3751F1B22456A3470021B95C /* CreateNewStaffRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3751F1B12456A3470021B95C /* CreateNewStaffRecord.swift */; };
+		3779CD65246A8E6100D69626 /* CreateNewMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3779CD64246A8E6100D69626 /* CreateNewMenuItem.swift */; };
 		377DF2592456E8590076696E /* StaffLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377DF2582456E8580076696E /* StaffLogin.swift */; };
 		3789C1E4246933DB00E5FB8A /* EditStaff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3789C1E2246933DB00E5FB8A /* EditStaff.swift */; };
 		3789C1E5246933DB00E5FB8A /* EditDiscount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3789C1E3246933DB00E5FB8A /* EditDiscount.swift */; };
@@ -53,6 +54,7 @@
 		3751F1AD2456A31F0021B95C /* DiscountCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscountCell.swift; sourceTree = "<group>"; };
 		3751F1AE2456A31F0021B95C /* DiscountTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscountTableViewController.swift; sourceTree = "<group>"; };
 		3751F1B12456A3470021B95C /* CreateNewStaffRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNewStaffRecord.swift; sourceTree = "<group>"; };
+		3779CD64246A8E6100D69626 /* CreateNewMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewMenuItem.swift; sourceTree = "<group>"; };
 		377DF2582456E8580076696E /* StaffLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffLogin.swift; sourceTree = "<group>"; };
 		3789C1E2246933DB00E5FB8A /* EditStaff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditStaff.swift; sourceTree = "<group>"; };
 		3789C1E3246933DB00E5FB8A /* EditDiscount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDiscount.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				3789C1E6246934D400E5FB8A /* StaffRecordTable.swift */,
 				F03FFC32241F440200C9F5D3 /* ViewController.swift */,
 				3789C1EA2469357500E5FB8A /* EditMenuItem.swift */,
+				3779CD64246A8E6100D69626 /* CreateNewMenuItem.swift */,
 			);
 			path = Studio1B;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				37B576E324483456001AA546 /* CreateNewDiscount.swift in Sources */,
 				3751F1B22456A3470021B95C /* CreateNewStaffRecord.swift in Sources */,
 				377DF2592456E8590076696E /* StaffLogin.swift in Sources */,
+				3779CD65246A8E6100D69626 /* CreateNewMenuItem.swift in Sources */,
 				3751F1AF2456A31F0021B95C /* DiscountCell.swift in Sources */,
 				37B576DD24482D9F001AA546 /* StaffMenu.swift in Sources */,
 				F05EC61E24502417005E2714 /* LoginRegisterView.swift in Sources */,

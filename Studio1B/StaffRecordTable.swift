@@ -11,8 +11,8 @@ import UIKit
 class StaffRecordTable: StaffMenu, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var tableView: UITableView!
-//    @IBOutlet var createNew_BTN: UIButton?
 
+    @IBOutlet weak var CreateNew_BTN: UIButton!
     let staffRole = UserDefaults.standard.object(forKey: "userRole") as! String
     let userId = UserDefaults.standard.object(forKey: "userId") as! String
 
@@ -52,9 +52,10 @@ class StaffRecordTable: StaffMenu, UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-//        if (staffRole != "RestaurantManager"){
-//            createNew_BTN!.isEnabled = false
-//        }
+        if (staffRole != "RestaurantManager") {
+            CreateNew_BTN.isEnabled = false
+            CreateNew_BTN.backgroundColor = UIColor.gray
+        }
         // Do any additional setup after loading the view.
         self.getData()
     }
