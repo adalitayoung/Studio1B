@@ -34,7 +34,15 @@ class StaffMenu: UIViewController {
         dictionary.keys.forEach { key in
             defaults.removeObject(forKey: key)
         }
-        performSegue(withIdentifier: "logout", sender: self)
+        do {
+            defer{
+                performSegue(withIdentifier: "logout", sender: self)
+            }
+            try Auth.auth().signOut()
+        } catch let signOutError as NSError {
+            print("Error Signing out.")
+        }
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
