@@ -16,8 +16,8 @@ class EditMenuItem: StaffMenu {
     @IBOutlet weak var dinnerPrice_tf: UITextField!
     @IBOutlet weak var lunchPrice_tf: UITextField!
     
-    // put in error message
-    
+    let staffRole = UserDefaults.standard.object(forKey: "userRole") as! String
+
     @IBOutlet weak var ErrorMessage: UILabel!
     @IBOutlet weak var update_btn: UIButton!
     
@@ -114,6 +114,11 @@ class EditMenuItem: StaffMenu {
         dinnerPrice_tf.text! = String(menuItem["Dinner Price"] as! Int)
         lunchPrice_tf.text! = String(menuItem["Lunch Price"] as! Int)
         ErrorMessage.textColor = UIColor.white
+        
+        if (staffRole != "RestaurantManager") {
+            update_btn.isEnabled = false
+            update_btn.backgroundColor = UIColor.gray
+        }
         // Do any additional setup after loading the view.
         
     }
