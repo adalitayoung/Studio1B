@@ -1403,6 +1403,7 @@
                         <outlet property="Description_TF" destination="14e-Yp-H9w" id="pqv-Yw-BWy"/>
                         <outlet property="ErrorMessage" destination="biZ-Zn-EI4" id="ff1-mT-J0c"/>
                         <outlet property="Name_TF" destination="syf-5n-2ee" id="UWj-TI-sNd"/>
+                        <outlet property="Update_BTN" destination="elU-F7-goh" id="05p-kL-du9"/>
                         <outlet property="Value_TF" destination="eV2-oD-Ia7" id="McY-Wp-vK3"/>
                         <segue destination="Uk9-xS-mdv" kind="presentation" identifier="discountUpdatedSegue" animates="NO" modalPresentationStyle="fullScreen" id="4kw-oa-cYO"/>
                     </connections>
@@ -2291,7 +2292,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="vVw-Ml-ruJ"/>
         <segue reference="04S-in-n6Z"/>
-        <segue reference="Izj-Sl-cTv"/>
+        <segue reference="4kw-oa-cYO"/>
         <segue reference="PyN-Vw-Jx0"/>
         <segue reference="8Xc-Mr-QuF"/>
     </inferredMetricsTieBreakers>
