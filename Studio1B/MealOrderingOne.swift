@@ -92,8 +92,6 @@ class MealOrderingOne: UIViewController, UITableViewDelegate, UITableViewDataSou
          
             if Numbers > 0 {
                 var i = mealcount.firstIndex(of: Numbers)
-                 print(Numbers)
-                 print(i!)
                 vc.QTN.append(Numbers)
                 vc.MealsOrdered.append(Mainsmenu[i!])
             }
