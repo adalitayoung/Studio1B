@@ -62,7 +62,21 @@ class MealOrderingtwo: UIViewController,  UITableViewDelegate, UITableViewDataSo
     }
     
     @IBAction func ConfirmOrderBTN(_ sender: Any) {
-        
+        let date = Date()
+        let calender = Calendar.current
+        let hour = calender.component(.hour, from: date)
+        let Minute = calender.component(.minute, from: date)
+        let Day = calender.component(.day, from: date)
+        let month = calender.component(.month, from: date)
+        let year = calender.component(.year, from: date)
+        let UserID = Auth.auth().currentUser?.uid
+        let db = Firestore.firestore()
+        db.collection("Order").document().setData(["CustomerID": UserID as Any, "CustomerMeals": MealsOrdered, "MealQTN": QTN, "TimeCreated": "\(month):\(Day), \(year) at \(hour):\(Minute)"]){ (err) in
+            if err != nil{
+                print((err?.localizedDescription)!)
+                return
+            }
+        }
         
         
         
@@ -73,20 +87,20 @@ class MealOrderingtwo: UIViewController,  UITableViewDelegate, UITableViewDataSo
     }
     
     @IBAction func CancelOrder(_ sender: Any) {
-         CreatAlert(title: "Order Canceled", MSG: "Your Order Has Been Canceled!")
+        CreatAlert(title: "Order Canceled", MSG: "Your Order Has Been Canceled!")
         
     }
     
     func CreatAlert(title:String, MSG: String){
-           let alert = UIAlertController(title: title, message: MSG, preferredStyle: UIAlertController.Style.alert)
-           alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (Action) in
-               alert.dismiss(animated: true, completion: nil)
-               let vc = self.storyboard?.instantiateViewController(identifier: "OurMenuGrid") as! ViewController
-               vc.modalPresentationStyle = .fullScreen
-               self.present(vc, animated: false)
-           }))
-           self.present(alert, animated: true, completion: nil)
-       }
-       
+        let alert = UIAlertController(title: title, message: MSG, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (Action) in
+            alert.dismiss(animated: true, completion: nil)
+            let vc = self.storyboard?.instantiateViewController(identifier: "OurMenuGrid") as! ViewController
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: false)
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     
 }
