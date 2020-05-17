@@ -69,7 +69,7 @@
                         <outlet property="CreatAcBtn" destination="Sz0-sL-kzG" id="ted-Bu-tUL"/>
                         <outlet property="LoginBTNP" destination="4Th-ju-EFy" id="pcA-jT-VNh"/>
                         <outlet property="LogoImage" destination="L4Z-rP-0aQ" id="EyO-zg-LTO"/>
-                        <segue destination="kCh-O1-iZ1" kind="presentation" identifier="toStaffLoginSegue" modalPresentationStyle="fullScreen" id="0yM-AV-n1f"/>
+                        <segue destination="kCh-O1-iZ1" kind="presentation" identifier="toStaffLoginSegue" modalPresentationStyle="automatic" id="0yM-AV-n1f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G9S-4k-k93" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -591,10 +591,13 @@
                                     <navigationItem title="TheFoodApp" largeTitleDisplayMode="always" id="eBi-2f-QMu">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="JBT-vI-qWa">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="CMO-PE-cXD">
-                                                <rect key="frame" x="20" y="11" width="60" height="22"/>
+                                                <rect key="frame" x="20" y="11" width="85" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="Back" image="arrow.left" catalog="system"/>
+                                                <state key="normal" title="Log Out" image="arrow.left" catalog="system"/>
+                                                <connections>
+                                                    <action selector="logout_BTN:" destination="cRL-ki-jNf" eventType="touchUpInside" id="ehl-2c-l5S"/>
+                                                </connections>
                                             </button>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Item" id="pWn-zZ-t69">
@@ -672,6 +675,7 @@
                         <segue destination="Uk9-xS-mdv" kind="presentation" identifier="toDiscountsSegue" modalPresentationStyle="fullScreen" id="Izj-Sl-cTv"/>
                         <segue destination="6nH-4y-70N" kind="presentation" identifier="toStaffRecords" modalPresentationStyle="fullScreen" id="04S-in-n6Z"/>
                         <segue destination="jhT-2a-kWG" kind="presentation" identifier="toStaffMenu" modalPresentationStyle="fullScreen" id="vVw-Ml-ruJ"/>
+                        <segue destination="3iS-gd-dTv" kind="presentation" identifier="logout" modalPresentationStyle="fullScreen" id="8Qv-IV-64R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4kn-RN-Tn4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1208,11 +1212,11 @@
             <objects>
                 <viewController id="kCh-O1-iZ1" customClass="StaffLogin" customModule="Studio1B" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d21-ZP-xux">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="wV1-T4-sdg">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="950"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v36-Vz-l3H">
@@ -1399,6 +1403,7 @@
                         <outlet property="Description_TF" destination="14e-Yp-H9w" id="pqv-Yw-BWy"/>
                         <outlet property="ErrorMessage" destination="biZ-Zn-EI4" id="ff1-mT-J0c"/>
                         <outlet property="Name_TF" destination="syf-5n-2ee" id="UWj-TI-sNd"/>
+                        <outlet property="Update_BTN" destination="elU-F7-goh" id="05p-kL-du9"/>
                         <outlet property="Value_TF" destination="eV2-oD-Ia7" id="McY-Wp-vK3"/>
                         <segue destination="Uk9-xS-mdv" kind="presentation" identifier="discountUpdatedSegue" animates="NO" modalPresentationStyle="fullScreen" id="4kw-oa-cYO"/>
                     </connections>
@@ -2285,11 +2290,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="EKe-U6-NPW"/>
-        <segue reference="VMT-qF-H1C"/>
-        <segue reference="zI4-Ji-ka7"/>
+        <segue reference="vVw-Ml-ruJ"/>
+        <segue reference="04S-in-n6Z"/>
         <segue reference="4kw-oa-cYO"/>
-        <segue reference="RMN-a8-Uvv"/>
+        <segue reference="PyN-Vw-Jx0"/>
         <segue reference="8Xc-Mr-QuF"/>
     </inferredMetricsTieBreakers>
     <resources>

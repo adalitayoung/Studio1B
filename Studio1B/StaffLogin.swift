@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 
 class StaffLogin: LoginRegisterView {
     
@@ -61,7 +62,14 @@ class StaffLogin: LoginRegisterView {
                                 UserDefaults.standard.set(Email, forKey:"userId");
                                 UserDefaults.standard.set(role, forKey:"userRole");
                                 UserDefaults.standard.synchronize()
-                                self.performSegue(withIdentifier: "toStaffMenu", sender: self)
+                                Auth.auth().signIn(withEmail: Email, password: Password) { authResult, error in
+                                    if let error = error {
+                                        print(error)
+                                    }
+                                    else{
+                                        self.performSegue(withIdentifier: "toStaffMenu", sender: self)
+                                    }
+                                }
                                 
                             }
                         }
