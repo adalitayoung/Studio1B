@@ -7,14 +7,21 @@
 //
 
 import UIKit
+import Firebase
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-
+    
+    @IBAction func OrderAMealBtn(_ sender: Any) {
+        let vc = self.storyboard?.instantiateViewController(identifier: "MealOrderingOne") as! MealOrderingOne
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
+        
+    }
+    
 }
 

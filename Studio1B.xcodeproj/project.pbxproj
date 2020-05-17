@@ -16,6 +16,8 @@
 		37B576E124482E8D001AA546 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37B576E024482E8D001AA546 /* GoogleService-Info.plist */; };
 		37B576E324483456001AA546 /* CreateNewDiscount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B576E224483456001AA546 /* CreateNewDiscount.swift */; };
 		DA6A8349305F5938B94385D4 /* Pods_Studio1B.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6D1894B5CFE421FDD1895D /* Pods_Studio1B.framework */; };
+		F03C782024700E8600EA8DE8 /* MealOrderingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03C781F24700E8600EA8DE8 /* MealOrderingTableViewCell.swift */; };
+		F03C782224701C5800EA8DE8 /* OrderConfirmation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03C782124701C5800EA8DE8 /* OrderConfirmation.swift */; };
 		F03FFC2F241F440200C9F5D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03FFC2E241F440200C9F5D3 /* AppDelegate.swift */; };
 		F03FFC31241F440200C9F5D3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03FFC30241F440200C9F5D3 /* SceneDelegate.swift */; };
 		F03FFC33241F440200C9F5D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03FFC32241F440200C9F5D3 /* ViewController.swift */; };
@@ -24,6 +26,9 @@
 		F03FFC3B241F440400C9F5D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F03FFC39241F440400C9F5D3 /* LaunchScreen.storyboard */; };
 		F05EC61C245023D5005E2714 /* CreatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05EC61B245023D5005E2714 /* CreatView.swift */; };
 		F05EC61E24502417005E2714 /* LoginRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05EC61D24502417005E2714 /* LoginRegisterView.swift */; };
+		F07B5ACB246E4532003A9AB0 /* MealOrderingOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07B5ACA246E4532003A9AB0 /* MealOrderingOne.swift */; };
+		F07B5ACD246E548B003A9AB0 /* MealOrderingtwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07B5ACC246E548B003A9AB0 /* MealOrderingtwo.swift */; };
+		F098949124640B06006E332F /* ForgotPasswordPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F098949024640B06006E332F /* ForgotPasswordPage.swift */; };
 		F0BF213A244457ED000A7A27 /* CustomersLogingIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BF2139244457ED000A7A27 /* CustomersLogingIn.swift */; };
 		F0E67710245FEA77000BCD87 /* Studio1BTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E6770F245FEA77000BCD87 /* Studio1BTests.swift */; };
 /* End PBXBuildFile section */
@@ -53,6 +58,8 @@
 		9EA5B610D6EEEED4BBAA08CF /* Pods-Studio1BTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Studio1BTests.debug.xcconfig"; path = "Target Support Files/Pods-Studio1BTests/Pods-Studio1BTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AC07DCA226B960137A27B675 /* Pods_Studio1BTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Studio1BTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9109E08F764B22BEE869D4C /* Pods-Studio1B-Studio1BTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Studio1B-Studio1BTests.debug.xcconfig"; path = "Target Support Files/Pods-Studio1B-Studio1BTests/Pods-Studio1B-Studio1BTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F03C781F24700E8600EA8DE8 /* MealOrderingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealOrderingTableViewCell.swift; sourceTree = "<group>"; };
+		F03C782124701C5800EA8DE8 /* OrderConfirmation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConfirmation.swift; sourceTree = "<group>"; };
 		F03FFC2B241F440200C9F5D3 /* Studio1B.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Studio1B.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F03FFC2E241F440200C9F5D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F03FFC30241F440200C9F5D3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +70,9 @@
 		F03FFC3C241F440400C9F5D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F05EC61B245023D5005E2714 /* CreatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatView.swift; sourceTree = "<group>"; };
 		F05EC61D24502417005E2714 /* LoginRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRegisterView.swift; sourceTree = "<group>"; };
+		F07B5ACA246E4532003A9AB0 /* MealOrderingOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealOrderingOne.swift; sourceTree = "<group>"; };
+		F07B5ACC246E548B003A9AB0 /* MealOrderingtwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealOrderingtwo.swift; sourceTree = "<group>"; };
+		F098949024640B06006E332F /* ForgotPasswordPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordPage.swift; sourceTree = "<group>"; };
 		F0BF2139244457ED000A7A27 /* CustomersLogingIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomersLogingIn.swift; sourceTree = "<group>"; };
 		F0E6770D245FEA77000BCD87 /* Studio1BTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Studio1BTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0E6770F245FEA77000BCD87 /* Studio1BTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Studio1BTests.swift; sourceTree = "<group>"; };
@@ -143,10 +153,15 @@
 				F0BF2139244457ED000A7A27 /* CustomersLogingIn.swift */,
 				3751F1AD2456A31F0021B95C /* DiscountCell.swift */,
 				3751F1AE2456A31F0021B95C /* DiscountTableViewController.swift */,
+				F07B5ACC246E548B003A9AB0 /* MealOrderingtwo.swift */,
+				F03C782124701C5800EA8DE8 /* OrderConfirmation.swift */,
+				F07B5ACA246E4532003A9AB0 /* MealOrderingOne.swift */,
+				F03C781F24700E8600EA8DE8 /* MealOrderingTableViewCell.swift */,
 				37B576E024482E8D001AA546 /* GoogleService-Info.plist */,
 				F03FFC3C241F440400C9F5D3 /* Info.plist */,
 				F03FFC39241F440400C9F5D3 /* LaunchScreen.storyboard */,
 				F05EC61D24502417005E2714 /* LoginRegisterView.swift */,
+				F098949024640B06006E332F /* ForgotPasswordPage.swift */,
 				F03FFC34241F440200C9F5D3 /* Main.storyboard */,
 				F03FFC30241F440200C9F5D3 /* SceneDelegate.swift */,
 				37B576DC24482D9F001AA546 /* StaffMenu.swift */,
@@ -352,18 +367,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F03C782224701C5800EA8DE8 /* OrderConfirmation.swift in Sources */,
 				F03FFC33241F440200C9F5D3 /* ViewController.swift in Sources */,
 				37B576E324483456001AA546 /* CreateNewDiscount.swift in Sources */,
 				3751F1B22456A3470021B95C /* CreateNewStaffRecord.swift in Sources */,
 				377DF2592456E8590076696E /* StaffLogin.swift in Sources */,
 				3751F1AF2456A31F0021B95C /* DiscountCell.swift in Sources */,
 				37B576DD24482D9F001AA546 /* StaffMenu.swift in Sources */,
+				F03C782024700E8600EA8DE8 /* MealOrderingTableViewCell.swift in Sources */,
 				F05EC61E24502417005E2714 /* LoginRegisterView.swift in Sources */,
+				F098949124640B06006E332F /* ForgotPasswordPage.swift in Sources */,
 				F03FFC2F241F440200C9F5D3 /* AppDelegate.swift in Sources */,
 				F0BF213A244457ED000A7A27 /* CustomersLogingIn.swift in Sources */,
 				F03FFC31241F440200C9F5D3 /* SceneDelegate.swift in Sources */,
 				F05EC61C245023D5005E2714 /* CreatView.swift in Sources */,
 				3751F1B02456A31F0021B95C /* DiscountTableViewController.swift in Sources */,
+				F07B5ACB246E4532003A9AB0 /* MealOrderingOne.swift in Sources */,
+				F07B5ACD246E548B003A9AB0 /* MealOrderingtwo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
