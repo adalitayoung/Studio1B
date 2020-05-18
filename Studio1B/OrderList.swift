@@ -2,7 +2,6 @@
 //  OrderList.swift
 //  Studio1B
 //
-//  Created by Adalita Young on 18/5/20.
 //  Copyright © 2020 davidBolis. All rights reserved.
 //
 
@@ -15,7 +14,7 @@ class OrderList: StaffMenu, UITableViewDelegate, UITableViewDataSource {
     var orders = [Any]()
 
     func getData() {
-        db.collection("Order").order(by:"TimeToServe",descending: true).getDocuments(){
+        db.collection("Order").order(by:"TimeToServe",descending: false).getDocuments(){
             (querySnapshot, err) in if let err = err {
                 print("Firebase Error")
             }

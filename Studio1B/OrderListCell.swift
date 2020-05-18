@@ -2,7 +2,6 @@
 //  OrderListCell.swift
 //  Studio1B
 //
-//  Created by Adalita Young on 18/5/20.
 //  Copyright © 2020 davidBolis. All rights reserved.
 //
 
@@ -10,6 +9,11 @@ import UIKit
 
 class OrderListCell: UITableViewCell {
 
+    @IBOutlet weak var orderNumber: UILabel!
+    @IBOutlet weak var foodQty: UILabel!
+    @IBOutlet weak var drinksQty: UILabel!
+    @IBOutlet weak var timeToServe: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
