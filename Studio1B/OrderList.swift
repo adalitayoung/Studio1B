@@ -2,29 +2,87 @@
 //  OrderList.swift
 //  Studio1B
 //
-//  Created by Gabrielle Walker on 18/5/20.
 //  Copyright © 2020 davidBolis. All rights reserved.
 //
 
 import UIKit
 
-class OrderList: UIViewController {
+class OrderList: StaffMenu, UITableViewDelegate, UITableViewDataSource {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    @IBOutlet var tableView: UITableView!
 
-        // Do any additional setup after loading the view.
+    var orders = [Any]()
+
+    func getData() {
+        db.collection("Order").order(by:"TimeToServe",descending: false).getDocuments(){
+            (querySnapshot, err) in if let err = err {
+                print("Firebase Error")
+            }
+            else{
+                for document in querySnapshot!.documents{
+                    var a = document.data()
+                    self.orders.append(a)
+                }
+                print(self.orders)
+                self.tableView.reloadData()
+            }
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
+        // Do any additional setup after loading the view.
+        self.getData()
     }
-    */
 
+
+    var orderRecord = [String: Any]()
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? ViewOrder {
+            vc.order = orderRecord
+       }
+        
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let orderRec = self.orders[indexPath.row] as? [String: Any]{
+            orderRecord = orderRec
+        }
+        self.performSegue(withIdentifier: "toViewOrder", sender: self)
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.orders.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! OrderListCell
+        
+        print(indexPath)
+        if let orderItem = self.orders[indexPath.row] as? [String: Any] {
+            let orderNumber = String(indexPath.row+1)
+            
+            cell.orderNumber?.text = orderNumber
+            print(indexPath.row+1)
+            let itemQty = 0;
+            let itemArray:[String?] = orderItem["MealQTN"] as! [String?]
+            for i in itemArray {
+                print(i);
+            }
+            //cell.foodQty?.text =
+//            let staffFirst = orderItem["FirstName"] as! String
+//            let staffLast = orderItem["LastName"] as! String
+//            let staffRole = orderItem["Role"] as! String
+//
+//            cell.staffFirst?.text = staffFirst
+//            cell.staffLast?.text = staffLast
+//            cell.staffRole?.text = staffRole
+        }
+
+        return cell
+    }
+    
 }

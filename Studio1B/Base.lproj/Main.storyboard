@@ -2592,14 +2592,8 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food Qty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H8l-AX-JOs">
-                                                <rect key="frame" x="88" y="0.0" width="70.5" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drinks Qty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iSy-Zq-Af3">
-                                                <rect key="frame" x="171.5" y="0.0" width="80.5" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Qty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H8l-AX-JOs">
+                                                <rect key="frame" x="137.5" y="0.0" width="65.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -2622,43 +2616,7 @@
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4S6-IF-Bvh" id="9Sh-NY-vtz">
                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Order No." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gdg-Xo-dTQ">
-                                                            <rect key="frame" x="9" y="11" width="75" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time to Serve" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HzE-qG-W1K">
-                                                            <rect key="frame" x="265" y="11" width="106" height="20.5"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Food Qty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EnG-kE-mJ1">
-                                                            <rect key="frame" x="95" y="11" width="70.5" height="20.5"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Drinks Qty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ovL-hE-ckP">
-                                                            <rect key="frame" x="176" y="11" width="80.5" height="20.5"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
                                                 </tableViewCellContentView>
-                                                <connections>
-                                                    <outlet property="drinksQty" destination="ovL-hE-ckP" id="lwg-SO-Pxl"/>
-                                                    <outlet property="foodQty" destination="EnG-kE-mJ1" id="Alg-t9-3yp"/>
-                                                    <outlet property="orderNumber" destination="Gdg-Xo-dTQ" id="F5C-iM-XvY"/>
-                                                    <outlet property="timeToServe" destination="HzE-qG-W1K" id="KQj-dx-e1v"/>
-                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
@@ -2678,6 +2636,7 @@
                         <viewLayoutGuide key="safeArea" id="AMy-MC-hnm"/>
                     </view>
                     <connections>
+                        <outlet property="tableView" destination="FTJ-qe-ADx" id="PDK-5m-p8t"/>
                         <segue destination="cgK-c8-Fr3" kind="presentation" identifier="toOrderDetails" modalPresentationStyle="fullScreen" id="d5i-ps-mJc"/>
                     </connections>
                 </viewController>
@@ -2728,12 +2687,13 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="d5i-ps-mJc"/>
         <segue reference="6Y1-01-XCn"/>
-        <segue reference="vVw-Ml-ruJ"/>
-        <segue reference="zI4-Ji-ka7"/>
-        <segue reference="4kw-oa-cYO"/>
-        <segue reference="RMN-a8-Uvv"/>
-        <segue reference="8Xc-Mr-QuF"/>
+        <segue reference="VMT-qF-H1C"/>
+        <segue reference="04S-in-n6Z"/>
+        <segue reference="F5v-mk-2Fv"/>
+        <segue reference="99U-5I-n3O"/>
+        <segue reference="IVa-hC-bQQ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="94611835_1163279227374552_4261354237696409600_n" width="424" height="200"/>
