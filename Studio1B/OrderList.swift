@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class OrderList: StaffMenu, UITableViewDelegate, UITableViewDataSource {
 
@@ -21,9 +22,12 @@ class OrderList: StaffMenu, UITableViewDelegate, UITableViewDataSource {
             else{
                 for document in querySnapshot!.documents{
                     var a = document.data()
-                    self.orders.append(a)
+                    let date = NSDate(timeIntervalSince1970:TimeInterval((a["TimeToServe"] as! Timestamp).seconds))
+                    let isToday = Calendar.current.isDateInToday(date as Date)
+                    if (isToday){
+                        self.orders.append(a)
+                    }
                 }
-                print(self.orders)
                 self.tableView.reloadData()
             }
         }
