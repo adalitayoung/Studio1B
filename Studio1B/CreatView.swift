@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 class CreatView: UIViewController {
     var currentValue = 0
-    @IBOutlet weak var YearsLbl: UILabel!
+    
     @IBOutlet weak var RegisterBtn: UIButton!
     @IBOutlet weak var FirstName: UITextField!
     @IBOutlet weak var LastName: UITextField!
@@ -18,42 +18,49 @@ class CreatView: UIViewController {
     @IBOutlet weak var MobileNumber: UITextField!
     @IBOutlet weak var Password: UITextField!
     @IBOutlet weak var PasswordConfirmation: UITextField!
-    @IBAction func AgeSlider(_ sender: UISlider) {
-       currentValue = Int(sender.value)
-        YearsLbl.text = "\(currentValue) Years"
-    }
+    @IBOutlet weak var DOB: UIDatePicker!
+    
+    @IBOutlet weak var ErrorLbl: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        ErrorLbl.isHidden = true
         self.RegisterBtn.layer.cornerRadius = 10
     }
     
     
     @IBAction func RegisterBtnA(_ sender: Any) {
-    
-        if FirstName.text != "" && LastName.text != "" && UserEmail.text != "" && MobileNumber.text != "" && Password.text != "" && PasswordConfirmation.text != "" {
-
-            CreateUser(FirstName: FirstName.text!, LastName: LastName.text!, Age: "\(currentValue)", Email: UserEmail.text!, Mobile: MobileNumber.text!, Password: Password.text!)
+        
+        if FirstName.text != "" && LastName.text != "" && UserEmail.text != "" && MobileNumber.text != "" && Password.text != "" && PasswordConfirmation.text != ""  {
+            
+            CreateUser(FirstName: FirstName.text!, LastName: LastName.text!, Age: "\(DOB )", Email: UserEmail.text!, Mobile: MobileNumber.text!, Password: Password.text!)
+            
+        }else{
+            ErrorLbl.isHidden = false
+            ErrorLbl.text = "Form Incomplete"
+            ErrorLbl.textColor = .red
         }
-        
-        
-        
         
         
     }
     
     func CreateUser(FirstName: String, LastName: String, Age: String , Email: String, Mobile: String, Password: String){
-        let db = Firestore.firestore()
-       
-        
-        db.collection("Customer").document("\(Email)").setData(["FirstName": FirstName, "LastName": LastName, "Age": Age, "Email": Email, "Mobile": Mobile, "Password": Password]){ (err) in
+        Auth.auth().createUser(withEmail: Email, password: Password) { (res, err) in
             if err != nil{
-                print((err?.localizedDescription)!)
+                print((err!.localizedDescription))
                 return
+                
             }
+            let db = Firestore.firestore()
+            let UserID = Auth.auth().currentUser?.uid
+            db.collection("Customer").document("\(Email)").setData(["FirstName": FirstName, "LastName": LastName, "Age": Age, "Email": Email, "Mobile": Mobile, "Password": Password, "CustomerUID": UserID]){ (err) in
+                if err != nil{
+                    print((err?.localizedDescription)!)
+                    return
+                }
+            }
+            
         }
         
     }
-
 }
