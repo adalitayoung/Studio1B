@@ -25,6 +25,9 @@
 		37BEDD8C2464157F0020B38B /* CustomerMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BEDD8B2464157F0020B38B /* CustomerMenu.swift */; };
 		37BEDD8E2464182B0020B38B /* FoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BEDD8D2464182B0020B38B /* FoodCell.swift */; };
 		37D8147E2469271300141F6C /* StaffMenuManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D8147D2469271300141F6C /* StaffMenuManagement.swift */; };
+		38B4005C24728BD500F612AE /* OrderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B4005B24728BD500F612AE /* OrderList.swift */; };
+		38B4005E24728C8700F612AE /* ViewOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B4005D24728C8700F612AE /* ViewOrder.swift */; };
+		38B4006024728D8E00F612AE /* OrderListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B4005F24728D8E00F612AE /* OrderListCell.swift */; };
 		DA6A8349305F5938B94385D4 /* Pods_Studio1B.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6D1894B5CFE421FDD1895D /* Pods_Studio1B.framework */; };
 		F03C782024700E8600EA8DE8 /* MealOrderingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03C781F24700E8600EA8DE8 /* MealOrderingTableViewCell.swift */; };
 		F03C782224701C5800EA8DE8 /* OrderConfirmation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03C782124701C5800EA8DE8 /* OrderConfirmation.swift */; };
@@ -73,6 +76,9 @@
 		37BEDD8B2464157F0020B38B /* CustomerMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerMenu.swift; sourceTree = "<group>"; };
 		37BEDD8D2464182B0020B38B /* FoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCell.swift; sourceTree = "<group>"; };
 		37D8147D2469271300141F6C /* StaffMenuManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffMenuManagement.swift; sourceTree = "<group>"; };
+		38B4005B24728BD500F612AE /* OrderList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderList.swift; sourceTree = "<group>"; };
+		38B4005D24728C8700F612AE /* ViewOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewOrder.swift; sourceTree = "<group>"; };
+		38B4005F24728D8E00F612AE /* OrderListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListCell.swift; sourceTree = "<group>"; };
 		397CF55C7D56C0CF136F7449 /* Pods-Studio1B.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Studio1B.release.xcconfig"; path = "Target Support Files/Pods-Studio1B/Pods-Studio1B.release.xcconfig"; sourceTree = "<group>"; };
 		72CC2A3D7199B5CC73D1E19D /* Pods-Studio1B-Studio1BTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Studio1B-Studio1BTests.release.xcconfig"; path = "Target Support Files/Pods-Studio1B-Studio1BTests/Pods-Studio1B-Studio1BTests.release.xcconfig"; sourceTree = "<group>"; };
 		9EA5B610D6EEEED4BBAA08CF /* Pods-Studio1BTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Studio1BTests.debug.xcconfig"; path = "Target Support Files/Pods-Studio1BTests/Pods-Studio1BTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -195,6 +201,9 @@
 				37D8147D2469271300141F6C /* StaffMenuManagement.swift */,
 				3789C1E6246934D400E5FB8A /* StaffRecordTable.swift */,
 				F03FFC32241F440200C9F5D3 /* ViewController.swift */,
+				38B4005B24728BD500F612AE /* OrderList.swift */,
+				38B4005D24728C8700F612AE /* ViewOrder.swift */,
+				38B4005F24728D8E00F612AE /* OrderListCell.swift */,
 			);
 			path = Studio1B;
 			sourceTree = "<group>";
@@ -394,6 +403,7 @@
 				377DF2592456E8590076696E /* StaffLogin.swift in Sources */,
 				3779CD65246A8E6100D69626 /* CreateNewMenuItem.swift in Sources */,
 				3751F1AF2456A31F0021B95C /* DiscountCell.swift in Sources */,
+				38B4006024728D8E00F612AE /* OrderListCell.swift in Sources */,
 				37A703E5247282CF003D3358 /* EditMenuItem.swift in Sources */,
 				37B576DD24482D9F001AA546 /* StaffMenu.swift in Sources */,
 				F03C782024700E8600EA8DE8 /* MealOrderingTableViewCell.swift in Sources */,
@@ -408,6 +418,8 @@
 				3789C1E9246934E000E5FB8A /* StaffCell.swift in Sources */,
 				F05EC61C245023D5005E2714 /* CreatView.swift in Sources */,
 				3789C1E5246933DB00E5FB8A /* EditDiscount.swift in Sources */,
+				38B4005C24728BD500F612AE /* OrderList.swift in Sources */,
+				38B4005E24728C8700F612AE /* ViewOrder.swift in Sources */,
 				3751F1B02456A31F0021B95C /* DiscountTableViewController.swift in Sources */,
 				37BEDD8C2464157F0020B38B /* CustomerMenu.swift in Sources */,
 				37BEDD8A246414900020B38B /* FoodMenu.swift in Sources */,
