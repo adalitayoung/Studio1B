@@ -67,6 +67,16 @@ class OrderList: StaffMenu, UITableViewDelegate, UITableViewDataSource {
         
         print(indexPath)
         if let orderItem = self.orders[indexPath.row] as? [String: Any] {
+            let orderNumber = String(indexPath.row+1)
+            
+            cell.orderNumber?.text = orderNumber
+            print(indexPath.row+1)
+            let itemQty = 0;
+            let itemArray:[String?] = orderItem["MealQTN"] as! [String?]
+            for i in itemArray {
+                print(i);
+            }
+            //cell.foodQty?.text =
 //            let staffFirst = orderItem["FirstName"] as! String
 //            let staffLast = orderItem["LastName"] as! String
 //            let staffRole = orderItem["Role"] as! String
