@@ -12,6 +12,23 @@ class ViewOrder: UIViewController {
 
     var order = [String:Any]()
     
+    @IBOutlet weak var orderNumber: UILabel!
+    @IBOutlet weak var tableNumber: UILabel!
+    
+    @IBOutlet weak var orderStatus: UISwitch!
+    
+    @IBAction func completeOrder(_ sender: Any) {
+        if orderStatus.isOn {
+            orderNumber.textColor = UIColor.red
+            orderStatus.setOn(false, animated: true)
+        }
+        else{
+           // tableNumber.text = "blah"
+            orderStatus.setOn(true, animated: true)
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

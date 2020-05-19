@@ -25,6 +25,7 @@ class OrderList: StaffMenu, UITableViewDelegate, UITableViewDataSource {
                     let date = NSDate(timeIntervalSince1970:TimeInterval((a["TimeToServe"] as! Timestamp).seconds))
                     let isToday = Calendar.current.isDateInToday(date as Date)
                     if (isToday){
+                        a["DocumentID"] = document.documentID
                         self.orders.append(a)
                     }
                 }
@@ -71,19 +72,20 @@ class OrderList: StaffMenu, UITableViewDelegate, UITableViewDataSource {
             
             cell.orderNumber?.text = orderNumber
             print(indexPath.row+1)
-            let itemQty = 0;
-            let itemArray:[String?] = orderItem["MealQTN"] as! [String?]
+            var itemQty = 0;
+            let itemArray = orderItem["MealQTN"] as! [Any]
             for i in itemArray {
-                print(i);
+                print(i)
+                itemQty+=i as! Int
             }
-            //cell.foodQty?.text =
-//            let staffFirst = orderItem["FirstName"] as! String
-//            let staffLast = orderItem["LastName"] as! String
-//            let staffRole = orderItem["Role"] as! String
-//
-//            cell.staffFirst?.text = staffFirst
-//            cell.staffLast?.text = staffLast
-//            cell.staffRole?.text = staffRole
+            print(itemQty)
+            cell.itemQty?.text = String(itemQty)
+            let formatter = DateFormatter()
+            formatter.dateFormat = "HH:mm:ss"
+            let date = NSDate(timeIntervalSince1970:TimeInterval((orderItem["TimeToServe"] as! Timestamp).seconds))
+            let dateString = formatter.string(from: date as Date)
+            cell.TimeToServe?.text = dateString
+            
         }
 
         return cell

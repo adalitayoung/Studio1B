@@ -1,18 +1,17 @@
 //
-//  OrderListCell.swift
+//  OrderDetailCell.swift
 //  Studio1B
 //
+//  Created by Gabrielle Walker on 19/5/20.
 //  Copyright © 2020 davidBolis. All rights reserved.
 //
 
 import UIKit
 
-class OrderListCell: UITableViewCell {
-    
-    @IBOutlet weak var orderNumber: UILabel!
+class OrderDetailCell: UITableViewCell {
+
+    @IBOutlet weak var itemName: UILabel!
     @IBOutlet weak var itemQty: UILabel!
-    @IBOutlet weak var TimeToServe: UILabel!
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
