@@ -82,8 +82,8 @@ class ViewOrder: StaffMenu, UITableViewDelegate, UITableViewDataSource {
         
         print(indexPath)
         if let orderItem = self.items[indexPath.row] as? [String: Any] {
-            cell.itemName?.text = items["Meal"]
-            cell.itemQty?.text = items["Quantity"]
+//            cell.itemName?.text = items["Meal"]
+//            cell.itemQty?.text = items["Quantity"]
         }
 
         return cell
