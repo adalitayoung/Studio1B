@@ -2751,7 +2751,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hAj-Dv-UG3">
-                                                            <rect key="frame" x="16" y="11" width="34" height="21"/>
+                                                            <rect key="frame" x="16" y="11" width="188" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -2810,6 +2810,7 @@
                         <outlet property="orderNumber" destination="Vtk-az-4z5" id="LFb-gX-XyU"/>
                         <outlet property="orderStatus" destination="X1W-QC-IKO" id="NXt-7I-c3w"/>
                         <outlet property="tableNumber" destination="kmR-pC-gQO" id="ty4-UZ-HEw"/>
+                        <outlet property="tableView" destination="U5K-E5-9ia" id="1xf-mf-uFy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nU8-BN-jsS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

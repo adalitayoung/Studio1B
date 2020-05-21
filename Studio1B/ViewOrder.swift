@@ -12,6 +12,8 @@ class ViewOrder: StaffMenu, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet var tableView: UITableView!
 
+    var orderNo = "";
+    
     var items = [Any]()
     var order = [String:Any]()
     var booking = [String:Any]()
@@ -22,7 +24,10 @@ class ViewOrder: StaffMenu, UITableViewDelegate, UITableViewDataSource {
             } else{
                 for document in querySnapshot!.documents {
                     self.booking = document.data()
+                    print(document.data())
                 }
+             //   print(self.booking["Table Number"])
+                self.tableNumber.text! = String(self.booking["Table Number"] as! Int) //as! String
             }
         }
     }
@@ -51,15 +56,17 @@ class ViewOrder: StaffMenu, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var orderStatus: UISwitch!
     
-    @IBAction func completeOrder(_ sender: Any) {
-        if orderStatus.isOn {
-            orderNumber.textColor = UIColor.red
-            orderStatus.setOn(false, animated: true)
-        }
-        else{
-           // tableNumber.text = "blah"
-            orderStatus.setOn(true, animated: true)
-        }
+    @IBAction func completeOrder(_ sender: UISwitch) {
+        let switchStatus:Bool = sender.isOn
+        updateOrder(switchStatus: switchStatus)
+//
+//        if(switchStatus) {
+//            print("Order Completed")
+//            updateOrder()
+//           // orderStatus.setOn(false, animated: true)
+//        }else {
+//            print("!!!")
+//        }
     }
     
     
@@ -70,6 +77,8 @@ class ViewOrder: StaffMenu, UITableViewDelegate, UITableViewDataSource {
         self.generateTableData()
         self.getData()
         // Do any additional setup after loading the view.
+        orderNumber.text! = orderNo
+        print(orderNo)
     }
     
 
@@ -78,12 +87,17 @@ class ViewOrder: StaffMenu, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! OrderListCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! OrderDetailCell
         
         print(indexPath)
         if let orderItem = self.items[indexPath.row] as? [String: Any] {
-            cell.itemName?.text = items["Meal"]
-            cell.itemQty?.text = items["Quantity"]
+            cell.itemName?.text = orderItem["Meal"] as! String
+
+            let quantity = orderItem["Quantity"] as! Int
+            
+            cell.itemQty?.text = String(quantity)
+         //   BSBNumber_TF.text! = String(staff["BSBNumber"] as! Int)
+
         }
 
         return cell

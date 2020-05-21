@@ -44,10 +44,12 @@ class OrderList: StaffMenu, UITableViewDelegate, UITableViewDataSource {
 
 
     var orderRecord = [String: Any]()
+    var orderNumber = 0;
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? ViewOrder {
             vc.order = orderRecord
+            vc.orderNo = String(orderNumber)
        }
         
     }
@@ -55,6 +57,9 @@ class OrderList: StaffMenu, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let orderRec = self.orders[indexPath.row] as? [String: Any]{
             orderRecord = orderRec
+        }
+        if let orderNo = (indexPath.row+1) as? Int{
+            orderNumber = orderNo
         }
         self.performSegue(withIdentifier: "toViewOrder", sender: self)
     }
