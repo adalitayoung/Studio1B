@@ -15,6 +15,7 @@ class InvoicingTable: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var orders = [Any]()
     let db = Firestore.firestore()
+    var userID = ""
     
     
     func getData() {
@@ -23,58 +24,55 @@ class InvoicingTable: UIViewController, UITableViewDelegate, UITableViewDataSour
                 print("Firebase Error")
             }
             else{
-//                Move this to outside
-                let user = Auth.auth().currentUser;
-                if let user = user {
-                    let email = user.email as! String
-                    var userID = ""
-                    self.db.collection("Customer").whereField("Email", isEqualTo: email).getDocuments(){
-                        (querySnapshot, error) in
-                        if let error = error {
-                            print(error)
-                        }
-                        else{
-                            for document in querySnapshot!.documents{
-                                userID = document.data()["CustomerUID"] as! String
-                                print(userID)
-                            }
-                        }
+                for document in querySnapshot!.documents{
+                    var a = document.data()
+                    if (a["CustomerID"] as! String == self.userID){
+                        a["DocumentID"] = document.documentID
+                        self.orders.append(a)
                     }
-                    for document in querySnapshot!.documents{
-                        var a = document.data()
-                        if (a["CustomerID"] as! String == userID){
-                            a["DocumentID"] = document.documentID
-                            self.orders.append(a)
-                        }
-                        else{
-                            print(a)
-                        }
+                    else{
+                        print(a)
                     }
-                    self.tableView.reloadData()
                 }
-                else{
-                    print("User Not logged in")
-                }
-                
+                self.tableView.reloadData()
             }
+                
         }
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        let user = Auth.auth().currentUser;
+
+        if let user = user {
+            let email = user.email!
+            self.db.collection("Customer").whereField("Email", isEqualTo: email).getDocuments(){
+                (querySnapshot, error) in
+                if let error = error {
+                    print(error)
+                }
+                else{
+                    for document in querySnapshot!.documents{
+                        self.userID = document.data()["CustomerUID"] as! String
+                        print(self.userID)
+                        self.getData()
+                    }
+                }
+            }
+        }
         // Do any additional setup after loading the view.
-        self.getData()
     }
 
 
     var orderRecord = [String: Any]()
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let vc = segue.destination as? ViewOrder {
-//            vc.order = orderRecord
-//       }
+        if let vc = segue.destination as? ViewInvoice {
+            vc.order = orderRecord
+       }
         
     }
 
@@ -82,7 +80,7 @@ class InvoicingTable: UIViewController, UITableViewDelegate, UITableViewDataSour
         if let orderRec = self.orders[indexPath.row] as? [String: Any]{
             orderRecord = orderRec
         }
-//        self.performSegue(withIdentifier: "toViewOrder", sender: self)
+        self.performSegue(withIdentifier: "toViewInvoice", sender: self)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -94,26 +92,14 @@ class InvoicingTable: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         print(indexPath)
         if let orderItem = self.orders[indexPath.row] as? [String: Any] {
-//            let orderNumber = String(indexPath.row+1)
-//
-//            cell.orderNumber?.text = orderNumber
-//            print(indexPath.row+1)
-//            var itemQty = 0;
-//            let itemArray = orderItem["MealQTN"] as! [Any]
-//            for i in itemArray {
-//                print(i)
-//                itemQty+=i as! Int
-//            }
-//            print(itemQty)
-//            cell.itemQty?.text = String(itemQty)
             let formatter = DateFormatter()
-            formatter.dateFormat = "HH:mm:ss"
+            formatter.dateFormat = "HH:mm:ss d MMM yyyy"
             let date = NSDate(timeIntervalSince1970:TimeInterval((orderItem["TimeCreated"] as! Timestamp).seconds))
             let dateString = formatter.string(from: date as Date)
             cell.TimeCreated?.text = dateString
             let isPaid = orderItem["Paid"] as? Bool
             var isPaidString = ""
-            if (isPaid != nil){
+            if (isPaid == nil){
                 isPaidString = "Not Paid"
             }
             else{
