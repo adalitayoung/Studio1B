@@ -15,7 +15,7 @@ class ViewInvoice: UIViewController, UITableViewDelegate, UITableViewDataSource 
     var menu = [Any]()
     var items = [Any]()
     let db = Firestore.firestore()
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var newTableView: UITableView!
     
     func getMenu() {
         db.collection("Menu").getDocuments(){(querySnapshot, error) in
@@ -32,8 +32,8 @@ class ViewInvoice: UIViewController, UITableViewDelegate, UITableViewDataSource 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
+        newTableView.delegate = self
+        newTableView.dataSource = self
         print(self.order)
         self.getMenu()
         // Do any additional setup after loading the view.
