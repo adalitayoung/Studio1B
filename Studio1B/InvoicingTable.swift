@@ -71,6 +71,7 @@ class InvoicingTable: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? ViewInvoice {
+            print(orderRecord)
             vc.order = orderRecord
        }
         
