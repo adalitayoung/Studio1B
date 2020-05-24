@@ -26,6 +26,10 @@
 		37BEDD8C2464157F0020B38B /* CustomerMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BEDD8B2464157F0020B38B /* CustomerMenu.swift */; };
 		37BEDD8E2464182B0020B38B /* FoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BEDD8D2464182B0020B38B /* FoodCell.swift */; };
 		37D8147E2469271300141F6C /* StaffMenuManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D8147D2469271300141F6C /* StaffMenuManagement.swift */; };
+		384520AB2477D3C1001A494C /* ViewInvoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384520AA2477D3C1001A494C /* ViewInvoice.swift */; };
+		384520AD2477D7BB001A494C /* SpecificInvoiceTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384520AC2477D7BB001A494C /* SpecificInvoiceTableCell.swift */; };
+		387F7AEF24768A12006AC063 /* InvoicingTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F7AEE24768A12006AC063 /* InvoicingTable.swift */; };
+		387F7AF1247695EC006AC063 /* InvoiceTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F7AF0247695EC006AC063 /* InvoiceTableCell.swift */; };
 		38B4005C24728BD500F612AE /* OrderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B4005B24728BD500F612AE /* OrderList.swift */; };
 		38B4005E24728C8700F612AE /* ViewOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B4005D24728C8700F612AE /* ViewOrder.swift */; };
 		38B4006024728D8E00F612AE /* OrderListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B4005F24728D8E00F612AE /* OrderListCell.swift */; };
@@ -78,6 +82,10 @@
 		37BEDD8B2464157F0020B38B /* CustomerMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerMenu.swift; sourceTree = "<group>"; };
 		37BEDD8D2464182B0020B38B /* FoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCell.swift; sourceTree = "<group>"; };
 		37D8147D2469271300141F6C /* StaffMenuManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffMenuManagement.swift; sourceTree = "<group>"; };
+		384520AA2477D3C1001A494C /* ViewInvoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewInvoice.swift; sourceTree = "<group>"; };
+		384520AC2477D7BB001A494C /* SpecificInvoiceTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificInvoiceTableCell.swift; sourceTree = "<group>"; };
+		387F7AEE24768A12006AC063 /* InvoicingTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoicingTable.swift; sourceTree = "<group>"; };
+		387F7AF0247695EC006AC063 /* InvoiceTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceTableCell.swift; sourceTree = "<group>"; };
 		38B4005B24728BD500F612AE /* OrderList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderList.swift; sourceTree = "<group>"; };
 		38B4005D24728C8700F612AE /* ViewOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewOrder.swift; sourceTree = "<group>"; };
 		38B4005F24728D8E00F612AE /* OrderListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListCell.swift; sourceTree = "<group>"; };
@@ -189,9 +197,11 @@
 				F098949024640B06006E332F /* ForgotPasswordPage.swift */,
 				37B576E024482E8D001AA546 /* GoogleService-Info.plist */,
 				F03FFC3C241F440400C9F5D3 /* Info.plist */,
+				384520AC2477D7BB001A494C /* SpecificInvoiceTableCell.swift */,
 				F03FFC39241F440400C9F5D3 /* LaunchScreen.storyboard */,
 				F05EC61D24502417005E2714 /* LoginRegisterView.swift */,
 				F03FFC34241F440200C9F5D3 /* Main.storyboard */,
+				384520AA2477D3C1001A494C /* ViewInvoice.swift */,
 				F07B5ACA246E4532003A9AB0 /* MealOrderingOne.swift */,
 				F03C781F24700E8600EA8DE8 /* MealOrderingTableViewCell.swift */,
 				F07B5ACC246E548B003A9AB0 /* MealOrderingtwo.swift */,
@@ -207,6 +217,8 @@
 				F03FFC32241F440200C9F5D3 /* ViewController.swift */,
 				38B4005D24728C8700F612AE /* ViewOrder.swift */,
 				37755A1F2473CA8000D40A1F /* OrderDetailCell.swift */,
+				387F7AEE24768A12006AC063 /* InvoicingTable.swift */,
+				387F7AF0247695EC006AC063 /* InvoiceTableCell.swift */,
 			);
 			path = Studio1B;
 			sourceTree = "<group>";
@@ -407,6 +419,8 @@
 				3779CD65246A8E6100D69626 /* CreateNewMenuItem.swift in Sources */,
 				3751F1AF2456A31F0021B95C /* DiscountCell.swift in Sources */,
 				38B4006024728D8E00F612AE /* OrderListCell.swift in Sources */,
+				387F7AF1247695EC006AC063 /* InvoiceTableCell.swift in Sources */,
+				384520AB2477D3C1001A494C /* ViewInvoice.swift in Sources */,
 				37A703E5247282CF003D3358 /* EditMenuItem.swift in Sources */,
 				37B576DD24482D9F001AA546 /* StaffMenu.swift in Sources */,
 				F03C782024700E8600EA8DE8 /* MealOrderingTableViewCell.swift in Sources */,
@@ -427,7 +441,9 @@
 				3751F1B02456A31F0021B95C /* DiscountTableViewController.swift in Sources */,
 				37BEDD8C2464157F0020B38B /* CustomerMenu.swift in Sources */,
 				37BEDD8A246414900020B38B /* FoodMenu.swift in Sources */,
+				387F7AEF24768A12006AC063 /* InvoicingTable.swift in Sources */,
 				F07B5ACB246E4532003A9AB0 /* MealOrderingOne.swift in Sources */,
+				384520AD2477D7BB001A494C /* SpecificInvoiceTableCell.swift in Sources */,
 				F07B5ACD246E548B003A9AB0 /* MealOrderingtwo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

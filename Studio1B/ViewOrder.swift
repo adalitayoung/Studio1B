@@ -103,8 +103,6 @@ class ViewOrder: StaffMenu, UITableViewDelegate, UITableViewDataSource {
             let quantity = orderItem["Quantity"] as! Int
             
             cell.itemQty?.text = String(quantity)
-         //   BSBNumber_TF.text! = String(staff["BSBNumber"] as! Int)
-
         }
 
         return cell
