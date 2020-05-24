@@ -13,10 +13,12 @@ class ViewOrder: StaffMenu, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var tableView: UITableView!
 
     var orderNo = "";
-    
+    var orderCompleted = false;
+
     var items = [Any]()
     var order = [String:Any]()
     var booking = [String:Any]()
+    
     func getData(){
         db.collection("Booking").whereField("BookingID", isEqualTo: order["BookingID"]).getDocuments() {(querySnapshot, err) in
             if let err = err {
@@ -26,7 +28,11 @@ class ViewOrder: StaffMenu, UITableViewDelegate, UITableViewDataSource {
                     self.booking = document.data()
                     print(document.data())
                 }
-             //   print(self.booking["Table Number"])
+                if (self.order["OrderCompleted"] as! Bool) {
+                    self.orderCompleted = true
+                    print(self.orderCompleted)
+                    self.orderStatus.setOn(true, animated: true)
+                }
                 self.tableNumber.text! = String(self.booking["Table Number"] as! Int) //as! String
             }
         }
@@ -47,6 +53,8 @@ class ViewOrder: StaffMenu, UITableViewDelegate, UITableViewDataSource {
             }
             else{
                 print("Status updated")
+                print(switchStatus)
+                self.performSegue(withIdentifier: "orderComplete", sender: self)
             }
         }
     }
@@ -57,16 +65,15 @@ class ViewOrder: StaffMenu, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var orderStatus: UISwitch!
     
     @IBAction func completeOrder(_ sender: UISwitch) {
-        let switchStatus:Bool = sender.isOn
-        updateOrder(switchStatus: switchStatus)
-//
-//        if(switchStatus) {
-//            print("Order Completed")
-//            updateOrder()
-//           // orderStatus.setOn(false, animated: true)
-//        }else {
-//            print("!!!")
-//        }
+        var switchStatus:Bool = false
+        if (!orderCompleted) {
+            switchStatus = sender.isOn
+            updateOrder(switchStatus: switchStatus)
+        }
+        else {
+            updateOrder(switchStatus: switchStatus)
+        }
+        
     }
     
     
