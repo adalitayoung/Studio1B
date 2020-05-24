@@ -28,7 +28,7 @@ class ViewOrder: StaffMenu, UITableViewDelegate, UITableViewDataSource {
                     self.booking = document.data()
                     print(document.data())
                 }
-                if (self.order["OrderCompleted"] as! Bool) {
+                if (self.order["OrderCompleted"] != nil && self.order["OrderCompleted"] as! Bool) {
                     self.orderCompleted = true
                     print(self.orderCompleted)
                     self.orderStatus.setOn(true, animated: true)

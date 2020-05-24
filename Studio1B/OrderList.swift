@@ -91,7 +91,7 @@ class OrderList: StaffMenu, UITableViewDelegate, UITableViewDataSource {
             let dateString = formatter.string(from: date as Date)
             cell.TimeToServe?.text = dateString
             let orderStatus = orderItem["OrderCompleted"]
-            if (orderStatus as! Bool) {
+            if (orderStatus != nil && orderStatus as! Bool) {
                 cell.orderStatus.image = UIImage(named: "green_tick")
             }
             

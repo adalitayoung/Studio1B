@@ -25,9 +25,8 @@ class CustomersLogingIn: LoginRegisterView {
     }
     
     @IBAction func LogInBtn(_ sender: Any) {
-        GetUserInfo()
-        
-        
+
+        GetUserInfo()  
         }
         
     @IBAction func ForgotPasswordBTNA(_ sender: Any) {
