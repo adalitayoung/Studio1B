@@ -31,7 +31,7 @@ class CreatView: UIViewController {
     
     @IBAction func RegisterBtnA(_ sender: Any) {
         
-        if FirstName.text != "" && LastName.text != "" && UserEmail.text != "" && MobileNumber.text != "" && Password.text != "" && PasswordConfirmation.text != ""  {
+        if FirstName.text != "" && LastName.text != "" && UserEmail.text != "" && MobileNumber.text?.count == 10 && Password.text != "" && PasswordConfirmation.text != ""  {
             
             CreateUser(FirstName: FirstName.text!, LastName: LastName.text!, Age: "\(DOB )", Email: UserEmail.text!, Mobile: MobileNumber.text!, Password: Password.text!)
             
@@ -48,19 +48,40 @@ class CreatView: UIViewController {
         Auth.auth().createUser(withEmail: Email, password: Password) { (res, err) in
             if err != nil{
                 print((err!.localizedDescription))
+                self.ErrorLbl.text = "\(err!.localizedDescription)"
+                self.ErrorLbl.isHidden = false
                 return
                 
             }
+            
             let db = Firestore.firestore()
+            let user = Auth.auth().currentUser
             let UserID = Auth.auth().currentUser?.uid
+            
+            switch user?.isEmailVerified {
+            case true:
+                print("Email Verified")
+            case false:
+                user?.sendEmailVerification { (err) in
+                    if err != nil{
+                        print((err?.localizedDescription)!)
+                        return
+                    }
+                    
+                    
+                }
+            default: break
+            }
+            
             db.collection("Customer").document("\(Email)").setData(["FirstName": FirstName, "LastName": LastName, "Age": Age, "Email": Email, "Mobile": Mobile, "Password": Password, "CustomerUID": UserID]){ (err) in
                 if err != nil{
                     print((err?.localizedDescription)!)
                     return
                 }
             }
-            
+            self.dismiss(animated: true)
         }
+        
         
     }
 }

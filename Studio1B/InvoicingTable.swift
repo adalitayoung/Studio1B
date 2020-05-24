@@ -49,6 +49,7 @@ class InvoicingTable: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         if let user = user {
             let email = user.email!
+            print(email)
             self.db.collection("Customer").whereField("Email", isEqualTo: email).getDocuments(){
                 (querySnapshot, error) in
                 if let error = error {
