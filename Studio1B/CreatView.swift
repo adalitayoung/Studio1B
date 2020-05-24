@@ -31,7 +31,7 @@ class CreatView: UIViewController {
     
     @IBAction func RegisterBtnA(_ sender: Any) {
         
-        if FirstName.text != "" && LastName.text != "" && UserEmail.text != "" && MobileNumber.text != "" && Password.text != "" && PasswordConfirmation.text != ""  {
+        if FirstName.text != "" && LastName.text != "" && UserEmail.text != "" && MobileNumber.text?.count == 10 && Password.text != "" && PasswordConfirmation.text != ""  {
             
             CreateUser(FirstName: FirstName.text!, LastName: LastName.text!, Age: "\(DOB )", Email: UserEmail.text!, Mobile: MobileNumber.text!, Password: Password.text!)
             
