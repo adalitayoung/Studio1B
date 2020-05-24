@@ -28,6 +28,11 @@ class StaffMenu: UIViewController {
         performSegue(withIdentifier: "toStaffMenu", sender: self)
     }
     
+    @IBAction func orderList_BTN(_ sender: Any) {
+        performSegue(withIdentifier: "toOrderList", sender: self)
+    }
+    
+    
     @IBAction func logout_BTN(_ sender: Any) {
         let defaults = UserDefaults.standard
         let dictionary = defaults.dictionaryRepresentation()
