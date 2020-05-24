@@ -37,7 +37,9 @@ class CustomersLogingIn: UIViewController {
          if EmaillTxt.text != "" && PasswordTxt.text != ""{
                 Auth.auth().signIn(withEmail: self.EmaillTxt.text!, password: self.PasswordTxt.text!) {(res, err) in
                     if err != nil{
-                        self.IncorrectMessage.text = err!.localizedDescription
+                        self.IncorrectMessage.isHidden = false
+                        self.IncorrectMessage.text = "\(err!.localizedDescription)"
+                        print(err!.localizedDescription)
                     } else{
                         self.performSegue(withIdentifier: "ToMainPage", sender: self)
                     }
