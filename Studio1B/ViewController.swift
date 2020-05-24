@@ -23,5 +23,15 @@ class ViewController: UIViewController {
         
     }
     
+    @IBAction func LogOutBtn(_ sender: Any) {
+        LogCustomerOut()
+    }
+    
+    func LogCustomerOut(){
+        try! Auth.auth().signOut()
+        
+       
+    }
+    
 }
 

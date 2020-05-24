@@ -440,6 +440,15 @@
                                     <action selector="OrderAMealBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xru-L3-cnP"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QWv-UD-gCd">
+                                <rect key="frame" x="167" y="747" width="80" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Log Out"/>
+                                <connections>
+                                    <action selector="LogOutBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yNk-L0-Lzx"/>
+                                    <segue destination="3iS-gd-dTv" kind="presentation" modalPresentationStyle="fullScreen" id="Weu-KR-Rsk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -525,6 +534,9 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Back" image="arrow.left" catalog="system"/>
+                                                <connections>
+                                                    <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" id="VOn-ED-JzB"/>
+                                                </connections>
                                             </button>
                                         </barButtonItem>
                                     </navigationItem>
@@ -888,7 +900,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar opaque="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A2U-Ze-dzx">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="44" width="417" height="44"/>
                                 <color key="barTintColor" red="0.16240900750000001" green="0.71704763169999997" blue="0.38312828539999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textAttributes key="titleTextAttributes">
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -909,7 +921,7 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Item" id="TmZ-je-hoF">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="v28-06-Z4Y">
-                                                <rect key="frame" x="302" y="7" width="92" height="30"/>
+                                                <rect key="frame" x="305" y="7" width="92" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="MyAccount">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2046,6 +2058,7 @@
         <segue reference="JBM-jL-1ls"/>
         <segue reference="F5v-mk-2Fv"/>
         <segue reference="PyN-Vw-Jx0"/>
+        <segue reference="VOn-ED-JzB"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="94611835_1163279227374552_4261354237696409600_n" width="424" height="200"/>
