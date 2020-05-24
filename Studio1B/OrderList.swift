@@ -44,10 +44,12 @@ class OrderList: StaffMenu, UITableViewDelegate, UITableViewDataSource {
 
 
     var orderRecord = [String: Any]()
+    var orderNumber = 0;
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? ViewOrder {
             vc.order = orderRecord
+            vc.orderNo = String(orderNumber)
        }
         
     }
@@ -55,6 +57,9 @@ class OrderList: StaffMenu, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let orderRec = self.orders[indexPath.row] as? [String: Any]{
             orderRecord = orderRec
+        }
+        if let orderNo = (indexPath.row+1) as? Int{
+            orderNumber = orderNo
         }
         self.performSegue(withIdentifier: "toViewOrder", sender: self)
     }
@@ -85,6 +90,10 @@ class OrderList: StaffMenu, UITableViewDelegate, UITableViewDataSource {
             let date = NSDate(timeIntervalSince1970:TimeInterval((orderItem["TimeToServe"] as! Timestamp).seconds))
             let dateString = formatter.string(from: date as Date)
             cell.TimeToServe?.text = dateString
+            let orderStatus = orderItem["OrderCompleted"]
+            if (orderStatus as! Bool) {
+                cell.orderStatus.image = UIImage(named: "green_tick")
+            }
             
         }
 

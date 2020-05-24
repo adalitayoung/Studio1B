@@ -12,6 +12,7 @@ class OrderListCell: UITableViewCell {
     @IBOutlet weak var orderNumber: UILabel!
     @IBOutlet weak var itemQty: UILabel!
     @IBOutlet weak var TimeToServe: UILabel!
+    @IBOutlet weak var orderStatus: UIImageView!
     
     
     override func awakeFromNib() {
