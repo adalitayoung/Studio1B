@@ -1,5 +1,6 @@
 //Create New Booking
 import UIKit
+import Firebase
 
 class CreateNewBooking: BookingController {
     
@@ -10,7 +11,7 @@ class CreateNewBooking: BookingController {
     @IBOutlet weak var SuitableDate_TF: UITextField!
     @IBOutlet weak var SuitableTime_TF: UITextField!
     @IBOutlet weak var NumberOfGuests_TF: UITextField!
-    @IBOutlet weak var SpecialConsideratios_TF: UITextField!
+    @IBOutlet weak var SpecialConsideration_TF: UITextField!
     @IBOutlet weak var MissingDetailsMessage: UILabel!
     @IBOutlet weak var create_BTN: UIButton!
     
@@ -19,10 +20,23 @@ class CreateNewBooking: BookingController {
     
     func createRecord(SuitableTime: String, ContactNumber: String, SuitableDate: String, Email: String,
 
-                    FirstName: String, LastName: String, NumberOfGuests: String) {
+                      FirstName: String, LastName: String, NumberOfGuests: String, specialConsideration: String) {
+        
+        let date = Date()
+        let calender = Calendar.current
+        let hour = calender.component(.hour, from: date)
+        let minute = calender.component(.minute, from: date)
+        let second = calender.component(.second, from: date)
+        let Day = calender.component(.day, from: date)
+        let month = calender.component(.month, from: date)
+        let year = calender.component(.year, from: date)
+        
         
         let documentID = Email_TF.text!
-        db.collection("Booking").document(documentID).setData(["SuitableTime": SuitableTime, "ContactNumber": ContactNumber, "SuitableDate": SuitableDate, "Email" : Email, "FirstName": FirstName, "LastName": LastName, "NumberOfGuests" : NumberOfGuests ])
+        //##:## dd - MM - yyyy
+        // new collection config, document in there that is a count document, an int field that is a count of the bookings, each time you want to createa  new boking, fetch count, increment, convert back to string with B infront
+        let timeStamp = Timestamp(date: date)
+        db.collection("Booking").document("\(hour)\(minute)\(second)\(Day)\(month)").setData(["Preferred Time": timeStamp, "ContactNumber": ContactNumber, "CustomerID" : Email, "Email Address" : Email, "FirstName": FirstName, "LastName": LastName, "People" : NumberOfGuests, "BookingID" : "\(hour)\(minute)\(second)\(Day)\(month)", "Special Considerations" : specialConsideration])
 
         // Convert DOB to date
         
@@ -103,7 +117,7 @@ class CreateNewBooking: BookingController {
 //        let regexDOB = try! NSRegularExpression(pattern: #"^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$"#)
 //        let results = regexDOB.matches(in:DateOfBirth,range: NSRange(DateOfBirth.startIndex..., in: DateOfBirth))
 //        print(results)
-        
+//
 //        if (SuitableDate.isEmpty) || (results.count == 0){
 //            DateOfBirth_TF.layer.borderWidth = 1.0
 //            DateOfBirth_TF.layer.borderColor = errorColour.cgColor
@@ -130,8 +144,7 @@ class CreateNewBooking: BookingController {
     
 
     @IBAction func submitNewBooking_BTN(_ sender: Any) {
-        createRecord(SuitableTime: self.SuitableTime_TF!.text!, ContactNumber: self.ContactNumber_TF.text!, SuitableDate: self.SuitableDate_TF.text!, Email: self.Email_TF.text!, FirstName: self.FirstName_TF.text!, LastName: self.LastName_TF.text!, NumberOfGuests: self.NumberOfGuests_TF!.text!)
-        
+        createRecord(SuitableTime: self.SuitableTime_TF!.text!, ContactNumber: self.ContactNumber_TF.text!, SuitableDate: self.SuitableDate_TF.text!, Email: self.Email_TF.text!, FirstName: self.FirstName_TF.text!, LastName: self.LastName_TF.text!, NumberOfGuests: self.NumberOfGuests_TF!.text!, specialConsideration: self.SpecialConsideration_TF!.text!)
     }
     
     

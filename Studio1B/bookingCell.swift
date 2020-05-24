@@ -10,14 +10,16 @@ import UIKit
 
 class bookingCell: UITableViewCell {
 
-    @IBOutlet weak var bookingID: UILabel!
-    @IBOutlet weak var bookingFirst: UILabel!
-    @IBOutlet weak var bookingLast: UILabel!
-    @IBOutlet weak var bookingNumGuests: UILabel!
-    @IBOutlet weak var bookingTime: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var guestsLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var cellButton: UIButton!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        print("Test")
         // Initialization code
     }
 

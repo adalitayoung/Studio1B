@@ -33,6 +33,8 @@
 		E63ECCF62463A354008F1AD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E63ECCF42463A354008F1AD1 /* Main.storyboard */; };
 		E63ECCF82463A4AE008F1AD1 /* Bookings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63ECCF72463A4AE008F1AD1 /* Bookings.swift */; };
 		E6B6301E246CEBF100E62D1B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6B6301C246CEBF100E62D1B /* Main.storyboard */; };
+		E6B63022247663DE00E62D1B /* specificBookingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B63021247663DE00E62D1B /* specificBookingCell.swift */; };
+		E6B63024247766C100E62D1B /* specificBookingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B63023247766C100E62D1B /* specificBookingController.swift */; };
 		F03FFC2F241F440200C9F5D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03FFC2E241F440200C9F5D3 /* AppDelegate.swift */; };
 		F03FFC31241F440200C9F5D3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03FFC30241F440200C9F5D3 /* SceneDelegate.swift */; };
 		F03FFC33241F440200C9F5D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03FFC32241F440200C9F5D3 /* ViewController.swift */; };
@@ -85,6 +87,8 @@
 		E63ECCF22463A249008F1AD1 /* bookingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookingCell.swift; sourceTree = "<group>"; };
 		E63ECCF72463A4AE008F1AD1 /* Bookings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookings.swift; sourceTree = "<group>"; };
 		E6B6301D246CEBF100E62D1B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E6B63021247663DE00E62D1B /* specificBookingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = specificBookingCell.swift; sourceTree = "<group>"; };
+		E6B63023247766C100E62D1B /* specificBookingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = specificBookingController.swift; sourceTree = "<group>"; };
 		F03FFC2B241F440200C9F5D3 /* Studio1B.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Studio1B.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F03FFC2E241F440200C9F5D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F03FFC30241F440200C9F5D3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -179,6 +183,8 @@
 				E63ECCEE2463A100008F1AD1 /* manageBookingsController.swift */,
 				E63ECCF22463A249008F1AD1 /* bookingCell.swift */,
 				E63ECCF72463A4AE008F1AD1 /* Bookings.swift */,
+				E6B63021247663DE00E62D1B /* specificBookingCell.swift */,
+				E6B63023247766C100E62D1B /* specificBookingController.swift */,
 				E63ECCDA24569279008F1AD1 /* CreateNewBooking.swift */,
 				E63ECCDE2457C67F008F1AD1 /* BookingController.swift */,
 				E63ECCE82460FBE9008F1AD1 /* viewTableController.swift */,
@@ -419,11 +425,13 @@
 				3751F1B22456A3470021B95C /* CreateNewStaffRecord.swift in Sources */,
 				377DF2592456E8590076696E /* StaffLogin.swift in Sources */,
 				3751F1AF2456A31F0021B95C /* DiscountCell.swift in Sources */,
+				E6B63022247663DE00E62D1B /* specificBookingCell.swift in Sources */,
 				37B576DD24482D9F001AA546 /* StaffMenu.swift in Sources */,
 				F05EC61E24502417005E2714 /* LoginRegisterView.swift in Sources */,
 				3789C1EB2469357500E5FB8A /* EditMenuItem.swift in Sources */,
 				37BEDD8E2464182B0020B38B /* FoodCell.swift in Sources */,
 				F03FFC2F241F440200C9F5D3 /* AppDelegate.swift in Sources */,
+				E6B63024247766C100E62D1B /* specificBookingController.swift in Sources */,
 				3789C1E4246933DB00E5FB8A /* EditStaff.swift in Sources */,
 				F0BF213A244457ED000A7A27 /* CustomersLogingIn.swift in Sources */,
 				3789C1E7246934D400E5FB8A /* StaffRecordTable.swift in Sources */,

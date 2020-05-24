@@ -12,15 +12,17 @@ import Firebase
 import AVKit
 
 class manageBookingsController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-   
     
 
     var bookings = [Any]()
     let db = Firestore.firestore()
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var removeBtn: UIButton!
+    @IBOutlet weak var editBtn: UIButton!
+    @IBOutlet weak var viewBtn: UIButton!
     
-    let bookingEmail = UserDefaults.standard.object(forKey: "Email") as! String
+    //let bookingEmail = UserDefaults.standard.object(forKey: "Email") as! String
     
     
     func getData(){
@@ -67,9 +69,27 @@ class manageBookingsController: UIViewController, UITableViewDelegate, UITableVi
         
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueResuableCell(withIdentifier: "cell", for indexPath) as! bookingCell
-//        return cell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+       let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! bookingCell
+        
+        //set cell text as discount ids
+            if let madeBooking = self.bookings[indexPath.row] as? [String: Any] {
+                let bookingFirstName = madeBooking["FirstName"] as! String
+                let bookingLastName = madeBooking["LastName"] as! String
+                let bookingFullName = bookingFirstName + " " + bookingLastName
+                let bookingEmail = madeBooking["Email Address"] as! String
+                let bookingGuests = madeBooking["People"] as! String
+//                let bookingTime = madeBooking["Preferred Time"] as! String
+                let date = NSDate(timeIntervalSince1970: TimeInterval((madeBooking["Preferred Time"] as! Timestamp).seconds))
+                let formatter = DateFormatter()
+                formatter.dateFormat = "d MMM y,HH:mm"
+                var timeString = formatter.string(from: date as Date)
+                cell.nameLabel?.text = bookingFullName
+                cell.emailLabel?.text = bookingEmail
+                cell.guestsLabel?.text = bookingGuests
+                cell.timeLabel?.text = timeString
+        }
+        return cell
     }
     
     
@@ -86,6 +106,7 @@ class manageBookingsController: UIViewController, UITableViewDelegate, UITableVi
         super.didReceiveMemoryWarning()
     }
     
+
     /*
     // MARK: - Navigation
 
