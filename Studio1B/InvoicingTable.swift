@@ -26,6 +26,8 @@ class InvoicingTable: UIViewController, UITableViewDelegate, UITableViewDataSour
             else{
                 for document in querySnapshot!.documents{
                     var a = document.data()
+                    print(a["CustomerID"])
+                    print(self.userID)
                     if (a["CustomerID"] as! String == self.userID){
                         a["DocumentID"] = document.documentID
                         self.orders.append(a)
@@ -57,7 +59,7 @@ class InvoicingTable: UIViewController, UITableViewDelegate, UITableViewDataSour
                 }
                 else{
                     for document in querySnapshot!.documents{
-                        self.userID = document.data()["CustomerUID"] as! String
+                        self.userID = document.data()["Email"] as! String
                         print(self.userID)
                         self.getData()
                     }
