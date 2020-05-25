@@ -404,19 +404,7 @@
                                     <color key="textShadowColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="TheFoodApp" largeTitleDisplayMode="always" id="7bI-c1-N0e">
-                                        <barButtonItem key="rightBarButtonItem" title="Item" id="aZE-We-N0O">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="wJY-yj-P2e">
-                                                <rect key="frame" x="283" y="11" width="111" height="22"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="MyAccount" image="person.crop.circle" catalog="system">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                            </button>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <navigationItem title="TheFoodApp" largeTitleDisplayMode="always" id="7bI-c1-N0e"/>
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4sx-sT-iDP">
@@ -683,7 +671,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0qL-St-xEV">
-                                <rect key="frame" x="20" y="189" width="374" height="518"/>
+                                <rect key="frame" x="20" y="189" width="374" height="348"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="separatorColor" red="0.0" green="0.54567092660000005" blue="0.27129173280000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -765,8 +753,16 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qmE-8L-y87">
+                                <rect key="frame" x="20" y="558" width="374" height="182"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="OJ7-0n-OKy" id="h8K-Df-Z7I"/>
+                                    <outlet property="delegate" destination="OJ7-0n-OKy" id="9v7-Jv-XCO"/>
+                                </connections>
+                            </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uoi-YJ-dUz">
-                                <rect key="frame" x="148" y="752" width="114" height="36"/>
+                                <rect key="frame" x="150" y="812" width="114" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.54567092660000005" blue="0.27129173280000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Complete Order">
@@ -781,6 +777,8 @@
                         <viewLayoutGuide key="safeArea" id="tjA-Db-fGa"/>
                     </view>
                     <connections>
+                        <outlet property="BookingPicker" destination="qmE-8L-y87" id="ohU-Lb-3Vo"/>
+                        <outlet property="CompletOutlet" destination="Uoi-YJ-dUz" id="Ij6-oE-HuY"/>
                         <outlet property="TableViewMenu" destination="0qL-St-xEV" id="SVO-iy-Rsi"/>
                     </connections>
                 </viewController>

@@ -11,6 +11,9 @@ import Firebase
 class MealOrderingtwo: UIViewController,  UITableViewDelegate, UITableViewDataSource  {
     let CurrentUserId = Auth.auth().currentUser?.uid
     var MealsOrdered: [String] = []
+    var BookingID = ""
+    public var Timeordered = Date()
+    public var TimeToServe = ""
     var QTN: [Int] = []
     @IBOutlet weak var TableView: UITableView!
     @IBOutlet weak var CustomerEmail: UILabel!
@@ -49,6 +52,22 @@ class MealOrderingtwo: UIViewController,  UITableViewDelegate, UITableViewDataSo
                 }
             }
         }
+        db.collection("Booking").whereField("BookingID", isEqualTo: "\(BookingID)").addSnapshotListener { (snap, err) in
+             if err != nil{
+                 print((err?.localizedDescription)!)
+                 return
+             }
+                 for i in snap!.documentChanges{
+                 let TimePreferred = i.document.get("Preferred Time") as! Timestamp
+                    self.Timeordered =  TimePreferred.dateValue()
+                    self.Timeordered = self.Timeordered + 10
+                    self.TimeToServe = "\(self.Timeordered)"
+                  
+                   
+                    
+                 }
+             }
+        
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return(MealsOrdered.count)
@@ -70,7 +89,7 @@ class MealOrderingtwo: UIViewController,  UITableViewDelegate, UITableViewDataSo
         let month = calender.component(.month, from: date)
         let year = calender.component(.year, from: date)
         let second = calender.component(.second, from: date)
-        let UserID = Auth.auth().currentUser?.uid
+        let UserID = Auth.auth().currentUser!.email
         let db = Firestore.firestore()
         let timestamp = Timestamp(date: date)
         db.collection("Order").document().setData(["CustomerID": UserID as Any, "CustomerMeals": MealsOrdered, "MealQTN": QTN, "TimeCreated": timestamp, "BookingID": "\(month)\(Day)\(year)\(hour)\(Minute)\(second)", "DiscountID": "Loyal Customer Discount"]){ (err) in
@@ -80,10 +99,10 @@ class MealOrderingtwo: UIViewController,  UITableViewDelegate, UITableViewDataSo
             }
         }
         
+       
         
         
-        
-        CreatAlert(title: "Order Confirmed", MSG: "Your Order Will Be Ready For Pick Up In 20-30 Minutes!")
+        CreatAlert(title: "Order Confirmed", MSG: "Your Order Will Be Ready For You When You Arrive")
         
         
     }
