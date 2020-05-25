@@ -398,23 +398,31 @@
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IXg-6F-dGQ">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="barTintColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="barTintColor" red="0.16240900750000001" green="0.71704763169999997" blue="0.38312828539999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textAttributes key="titleTextAttributes">
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="textShadowColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="TheFoodApp" largeTitleDisplayMode="always" id="7bI-c1-N0e"/>
+                                    <navigationItem title="Customer Menu" largeTitleDisplayMode="always" id="7bI-c1-N0e">
+                                        <barButtonItem key="leftBarButtonItem" style="plain" id="W36-ES-r0L">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fR4-4I-2V0">
+                                                <rect key="frame" x="20" y="11" width="85" height="22"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Log Out" image="arrow.left" catalog="system"/>
+                                                <connections>
+                                                    <action selector="logOut_btn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dmj-xa-Nw9"/>
+                                                    <action selector="logout_BTN:" destination="cRL-ki-jNf" eventType="touchUpInside" id="7QC-4J-EdD"/>
+                                                </connections>
+                                            </button>
+                                            <connections>
+                                                <action selector="logOut_BTN:" destination="BYZ-38-t0r" id="XAz-OS-Jpr"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4sx-sT-iDP">
-                                <rect key="frame" x="154" y="244" width="106" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Manage Bookings"/>
-                                <connections>
-                                    <segue destination="QhR-ZT-YE0" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="5jG-Ey-6uY"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jcv-Bh-5Pd">
                                 <rect key="frame" x="148" y="470" width="119" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -431,14 +439,25 @@
                                     <segue destination="kEq-7e-zaJ" kind="presentation" modalPresentationStyle="fullScreen" id="6w8-mm-6sD"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4sx-sT-iDP">
+                                <rect key="frame" x="143" y="242" width="129" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Manage Bookings"/>
+                                <connections>
+                                    <segue destination="QhR-ZT-YE0" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="5jG-Ey-6uY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="qX9-ER-Tb9"/>
                     </view>
+                    <connections>
+                        <segue destination="3iS-gd-dTv" kind="presentation" identifier="customerLogOut" modalPresentationStyle="fullScreen" id="vhW-Ln-akK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tZm-Uh-2CB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="46.376811594202906" y="164.73214285714286"/>
+            <point key="canvasLocation" x="-549.27536231884062" y="351.5625"/>
         </scene>
         <!--Manage Bookings Controller-->
         <scene sceneID="Lex-GQ-xqL">
@@ -1150,10 +1169,10 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Back" image="arrow.left" catalog="system"/>
+                                                <connections>
+                                                    <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" id="Hpb-7Y-oUO"/>
+                                                </connections>
                                             </button>
-                                            <connections>
-                                                <segue destination="BYZ-38-t0r" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="zVk-UW-9jo"/>
-                                            </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Item" id="liN-pj-laf">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Dh6-4c-Azo">
@@ -1191,7 +1210,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6GP-aS-dK3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1061" y="-108"/>
+            <point key="canvasLocation" x="649" y="-289"/>
         </scene>
         <!--View Table Controller-->
         <scene sceneID="2dl-Fn-zNc">
@@ -3668,23 +3687,20 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="VOj-AT-SeK"/>
-        <segue reference="6w8-mm-6sD"/>
         <segue reference="pfT-BH-Uom"/>
-        <segue reference="VMT-qF-H1C"/>
-        <segue reference="zI4-Ji-ka7"/>
-        <segue reference="F5v-mk-2Fv"/>
+        <segue reference="vVw-Ml-ruJ"/>
+        <segue reference="04S-in-n6Z"/>
+        <segue reference="Izj-Sl-cTv"/>
         <segue reference="PyN-Vw-Jx0"/>
         <segue reference="xlF-sd-5L2"/>
-        <segue reference="2VB-GU-1Qb"/>
-        <segue reference="Weu-KR-Rsk"/>
+        <segue reference="Hpb-7Y-oUO"/>
+        <segue reference="vhW-Ln-akK"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="94611835_1163279227374552_4261354237696409600_n" width="424" height="200"/>
         <image name="Table image" width="438" height="446"/>
         <image name="arrow.left" catalog="system" width="128" height="98"/>
         <image name="forkknife" width="188" height="194"/>
-        <image name="person.crop.circle" catalog="system" width="128" height="121"/>
         <image name="red_cross" width="220" height="218"/>
     </resources>
 </document>

@@ -83,16 +83,18 @@ class MealOrderingtwo: UIViewController,  UITableViewDelegate, UITableViewDataSo
     @IBAction func ConfirmOrderBTN(_ sender: Any) {
         let date = Date()
         let calender = Calendar.current
-        let hour = calender.component(.hour, from: date)
-        let Minute = calender.component(.minute, from: date)
-        let Day = calender.component(.day, from: date)
-        let month = calender.component(.month, from: date)
-        let year = calender.component(.year, from: date)
-        let second = calender.component(.second, from: date)
+//        let hour = calender.component(.hour, from: date)
+//        let Minute = calender.component(.minute, from: date)
+//        let Day = calender.component(.day, from: date)
+//        let month = calender.component(.month, from: date)
+//        let year = calender.component(.year, from: date)
+//        let second = calender.component(.second, from: date)
         let UserID = Auth.auth().currentUser!.email
         let db = Firestore.firestore()
         let timestamp = Timestamp(date: date)
-        db.collection("Order").document().setData(["CustomerID": UserID as Any, "CustomerMeals": MealsOrdered, "MealQTN": QTN, "TimeCreated": timestamp, "BookingID": "\(month)\(Day)\(year)\(hour)\(Minute)\(second)", "DiscountID": "Loyal Customer Discount"]){ (err) in
+        let TimeToServe = Timestamp(date: calender.date(byAdding: .minute, value: 30, to: date)!)
+
+        db.collection("Order").document().setData(["CustomerID": UserID as Any, "CustomerMeals": MealsOrdered, "MealQTN": QTN, "TimeCreated": timestamp, "BookingID": "B1", "DiscountID": "Loyal Customers", "TimeToServe" : TimeToServe ]){ (err) in
             if err != nil{
                 print((err?.localizedDescription)!)
                 return
