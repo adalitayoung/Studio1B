@@ -14,7 +14,8 @@ class EditDiscount: StaffMenu {
     @IBOutlet weak var Value_TF: UITextField!
     @IBOutlet weak var Description_TF: UITextField!
     @IBOutlet weak var ErrorMessage: UILabel!
-    
+    @IBOutlet weak var Update_BTN: UIButton!
+
     var discountName:String! = ""
     var discountDescription:String! = ""
     var discountValue:Double! = 0.0
@@ -110,6 +111,11 @@ class EditDiscount: StaffMenu {
         print(discountName)
         print(discountDescription)
         print(discountValue)
+        
+        if (userRole != "RestaurantManager"){
+            Update_BTN.isEnabled = false
+            Update_BTN.backgroundColor = UIColor.gray
+        }
         // Do any additional setup after loading the view.
     }
     

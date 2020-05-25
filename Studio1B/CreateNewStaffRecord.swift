@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class CreateNewStaffRecord: StaffMenu {
     
@@ -52,16 +53,23 @@ class CreateNewStaffRecord: StaffMenu {
                 print("Error adding document: \(err)")
             } else {
                 print("Document added.")
-                
-                let alert = UIAlertController(title: "Staff Record Created",
-                                                    message: "Staff Record Successfully Created",
-                                                    preferredStyle: .alert)
+                Auth.auth().createUser(withEmail: Email, password: Password) {authResult, error in
+                    if let error = error {
+                        print(error)
+                    }
+                    else{
+                        let alert = UIAlertController(title: "Staff Record Created",
+                                                            message: "Staff Record Successfully Created",
+                                                            preferredStyle: .alert)
 
-                alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: {action in
-                    self.performSegue(withIdentifier: "staffRecordCreated", sender: self)
-                }))
+                        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: {action in
+                            self.performSegue(withIdentifier: "staffRecordCreated", sender: self)
+                        }))
+                        
+                        self.present(alert, animated: true)
+                    }
+                }
                 
-                self.present(alert, animated: true)
                 
             }
         }

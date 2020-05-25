@@ -91,7 +91,8 @@ class MealOrderingtwo: UIViewController,  UITableViewDelegate, UITableViewDataSo
         let second = calender.component(.second, from: date)
         let UserID = Auth.auth().currentUser!.email
         let db = Firestore.firestore()
-        db.collection("Order").document().setData(["CustomerID": UserID as Any, "CustomerMeals": MealsOrdered, "MealQTN": QTN, "TimeCreated": "\(month):\(Day), \(year) at \(hour):\(Minute)", "BookingID": "\(BookingID)", "DiscountID": "Loyal Customer", "TimeToServe" : "\(TimeToServe)"]){ (err) in
+        let timestamp = Timestamp(date: date)
+        db.collection("Order").document().setData(["CustomerID": UserID as Any, "CustomerMeals": MealsOrdered, "MealQTN": QTN, "TimeCreated": timestamp, "BookingID": "\(month)\(Day)\(year)\(hour)\(Minute)\(second)", "DiscountID": "Loyal Customer Discount"]){ (err) in
             if err != nil{
                 print((err?.localizedDescription)!)
                 return

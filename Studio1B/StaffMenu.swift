@@ -20,14 +20,35 @@ class StaffMenu: UIViewController {
     
     
     @IBAction func staffManagement_BTN(_ sender: Any) {
-        if (userRole.contains("RestaurantManager")) {
-            performSegue(withIdentifier: "toStaffRecords", sender: self)
-        }
-        else {
-            print("You Do not have access")
-        }
+        performSegue(withIdentifier: "toStaffRecords", sender: self)
+
     }
     
+    @IBAction func menuManagement_BTN(_ sender: Any) {
+        performSegue(withIdentifier: "toStaffMenu", sender: self)
+    }
+    
+    @IBAction func orderList_BTN(_ sender: Any) {
+        performSegue(withIdentifier: "toOrderList", sender: self)
+    }
+    
+    
+    @IBAction func logout_BTN(_ sender: Any) {
+        let defaults = UserDefaults.standard
+        let dictionary = defaults.dictionaryRepresentation()
+        dictionary.keys.forEach { key in
+            defaults.removeObject(forKey: key)
+        }
+        do {
+            defer{
+                performSegue(withIdentifier: "logout", sender: self)
+            }
+            try Auth.auth().signOut()
+        } catch let signOutError as NSError {
+            print("Error Signing out.")
+        }
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         print(userRole)

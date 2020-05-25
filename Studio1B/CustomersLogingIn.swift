@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class CustomersLogingIn: UIViewController {
+class CustomersLogingIn: LoginRegisterView {
     
     @IBOutlet weak var EmaillTxt: UITextField!
     @IBOutlet weak var PasswordTxt: UITextField!
@@ -25,9 +25,8 @@ class CustomersLogingIn: UIViewController {
     }
     
     @IBAction func LogInBtn(_ sender: Any) {
-        GetUserInfo()
-        
-        
+
+        GetUserInfo()  
         }
         
     @IBAction func ForgotPasswordBTNA(_ sender: Any) {
