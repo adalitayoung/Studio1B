@@ -9,13 +9,11 @@
 import UIKit
 
 class bookingCell: UITableViewCell {
-
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var guestsLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var cellButton: UIButton!
     
+    @IBOutlet weak var bookingID: UILabel!
+    @IBOutlet weak var date: UILabel!
+    @IBOutlet weak var time: UILabel!
+    @IBOutlet weak var noOfGuests: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

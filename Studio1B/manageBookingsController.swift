@@ -16,17 +16,16 @@ class manageBookingsController: UIViewController, UITableViewDelegate, UITableVi
 
     var bookings = [Any]()
     let db = Firestore.firestore()
+    var userEmail = ""
+
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var removeBtn: UIButton!
     @IBOutlet weak var editBtn: UIButton!
-    @IBOutlet weak var viewBtn: UIButton!
-    
-    //let bookingEmail = UserDefaults.standard.object(forKey: "Email") as! String
-    
+        
     
     func getData(){
-        db.collection("Booking").getDocuments(){
+        db.collection("Booking").whereField("CustomerID", isEqualTo: userEmail).getDocuments(){
             (querySnapshot, err) in if let err = err{
                 print("Firebase Error")
             }
@@ -52,6 +51,12 @@ class manageBookingsController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     override func viewDidLoad() {
+        let user = Auth.auth().currentUser
+        if let user = user {
+            userEmail = user.email as! String
+            //self.Email_TF?.text = userEmail
+        }
+    
         
         super.viewDidLoad()
         tableView.delegate = self
@@ -74,33 +79,17 @@ class manageBookingsController: UIViewController, UITableViewDelegate, UITableVi
         
         //set cell text as discount ids
             if let madeBooking = self.bookings[indexPath.row] as? [String: Any] {
-                let bookingFirstName = madeBooking["FirstName"] as! String
-                let bookingLastName = madeBooking["LastName"] as! String
-                let bookingFullName = bookingFirstName + " " + bookingLastName
-                let bookingEmail = madeBooking["Email Address"] as! String
                 let bookingGuests = madeBooking["People"] as! String
-//                let bookingTime = madeBooking["Preferred Time"] as! String
                 let date = NSDate(timeIntervalSince1970: TimeInterval((madeBooking["Preferred Time"] as! Timestamp).seconds))
                 let formatter = DateFormatter()
-                formatter.dateFormat = "d MMM y,HH:mm"
+                formatter.dateFormat = "d/MM/y; HH:mm"
                 var timeString = formatter.string(from: date as Date)
-                cell.nameLabel?.text = bookingFullName
-                cell.emailLabel?.text = bookingEmail
-                cell.guestsLabel?.text = bookingGuests
-                cell.timeLabel?.text = timeString
+                cell.noOfGuests?.text = bookingGuests
+                cell.time?.text = timeString
         }
         return cell
     }
     
-    
-    
-    
-    //from video not sure if applicable
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-//        guard let videoURL = URL(string: table[indexPath.row].link) else {
-//            return
-//        }
-//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

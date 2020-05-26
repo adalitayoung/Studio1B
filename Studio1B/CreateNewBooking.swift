@@ -18,9 +18,7 @@ class CreateNewBooking: BookingController {
     //@IBOutlet var datePicker: [UIDatePicker]!
     
     
-    func createRecord(SuitableTime: String, ContactNumber: String, SuitableDate: String, Email: String,
-
-                      FirstName: String, LastName: String, NumberOfGuests: String, specialConsideration: String) {
+    func createRecord(SuitableTime: String, ContactNumber: String, SuitableDate: String, Email: String, FirstName: String, LastName: String, NumberOfGuests: String, specialConsideration: String) {
         
         let date = Date()
         let calender = Calendar.current
@@ -40,23 +38,18 @@ class CreateNewBooking: BookingController {
 
         // Convert DOB to date
         
-
-
         { err in
             if let err = err {
                 print("Error adding document: \(err)")
             } else {
                 print("Document added.")
                 
-//                let alert = UIAlertController(title: "Booking Record Created",
-//                                                    message: "Booking has been Successfully Created",
-//                                                    preferredStyle: .alert)
-
-//                alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: {action in
-//                    self.performSegue(withIdentifier: "newBookingCreated", sender: self)
-//                }))
+                let alert = UIAlertController(title: "Booking Record Created", message: "Booking has been successfully created", preferredStyle: .alert)
                 
-                //self.present(alert, animated: true)
+                alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: {action in
+                    self.performSegue(withIdentifier: "newBookingCreated", sender: self)
+                }))
+                self.present(alert, animated: true)
                 
             }
         }
@@ -64,8 +57,7 @@ class CreateNewBooking: BookingController {
 
     }
     
-    func errorChecking(SuitableTime: Int, ContactNumber: String, SuitableDate: String, Email: String,
-                          FirstName: String, LastName: String, NumberOfGuests: Int) -> Bool {
+    func errorChecking(SuitableTime: String, ContactNumber: String, SuitableDate: String, Email: String, FirstName: String, LastName: String, NumberOfGuests: String, specialConsideration: String) -> Bool {
         var result = true;
         let errorColour = UIColor.red
 
@@ -86,7 +78,6 @@ class CreateNewBooking: BookingController {
         }
 
       // Last name
-
         if (LastName.isEmpty){
             LastName_TF.layer.borderWidth = 1.0
             LastName_TF.layer.borderColor = errorColour.cgColor
@@ -114,29 +105,27 @@ class CreateNewBooking: BookingController {
        
        //This DOB part can be changed to SuitableDate but dont know HOW??
 
-//        let regexDOB = try! NSRegularExpression(pattern: #"^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$"#)
-//        let results = regexDOB.matches(in:DateOfBirth,range: NSRange(DateOfBirth.startIndex..., in: DateOfBirth))
-//        print(results)
-//
-//        if (SuitableDate.isEmpty) || (results.count == 0){
-//            DateOfBirth_TF.layer.borderWidth = 1.0
-//            DateOfBirth_TF.layer.borderColor = errorColour.cgColor
-//            result = false
-//        }
-//
-//       // This part is Suitable Time but have to set a limit of 24 hrs on it idk how to do it???
-//        if (SuitableTime.isEmpty){
-//            AccountNumber_TF.layer.borderWidth = 1.0
-//            AccountNumber_TF.layer.borderColor = errorColour.cgColor
-//            result = false
-//        }
+        let regexDate = try! NSRegularExpression(pattern: #"^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$"#)
+        let results = regexDate.matches(in:SuitableDate,range: NSRange(SuitableDate.startIndex..., in: SuitableDate))
+        print(results)
+
+        if (SuitableDate.isEmpty) || (results.count == 0){
+            SuitableDate_TF.layer.borderWidth = 1.0
+            SuitableDate_TF.layer.borderColor = errorColour.cgColor
+            result = false
+        }
+
+       // This part is Suitable Time but have to set a limit of 24 hrs on it idk how to do it???
+        if (SuitableTime.isEmpty){
+            SuitableTime_TF.layer.borderWidth = 1.0
+            SuitableTime_TF.layer.borderColor = errorColour.cgColor
+            result = false
+        }
         
-        
-        
-        if (NumberOfGuests == 0){
-            //Role_TF.layer.borderWidth = 1.0
-            //Role_TF.layer.borderColor = errorColour.cgColor
-            //result = false
+        if (NumberOfGuests.isEmpty || NumberOfGuests == "0" ){
+            NumberOfGuests_TF.layer.borderWidth = 1.0
+            NumberOfGuests_TF.layer.borderColor = errorColour.cgColor
+            result = false
         }
 
         return result
@@ -144,10 +133,14 @@ class CreateNewBooking: BookingController {
     
 
     @IBAction func submitNewBooking_BTN(_ sender: Any) {
+        if (errorChecking(SuitableTime: self.SuitableTime_TF!.text!, ContactNumber: self.ContactNumber_TF.text!, SuitableDate: self.SuitableDate_TF.text!, Email: self.Email_TF.text!, FirstName: self.FirstName_TF.text!, LastName: self.LastName_TF.text!, NumberOfGuests: self.NumberOfGuests_TF!.text!, specialConsideration: self.SpecialConsideration_TF!.text!)) {
+            
         createRecord(SuitableTime: self.SuitableTime_TF!.text!, ContactNumber: self.ContactNumber_TF.text!, SuitableDate: self.SuitableDate_TF.text!, Email: self.Email_TF.text!, FirstName: self.FirstName_TF.text!, LastName: self.LastName_TF.text!, NumberOfGuests: self.NumberOfGuests_TF!.text!, specialConsideration: self.SpecialConsideration_TF!.text!)
+        }
+        else {
+            MissingDetailsMessage.textColor = UIColor.red
+        }
     }
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
