@@ -15,52 +15,103 @@ class CreateNewBooking: BookingController {
     @IBOutlet weak var MissingDetailsMessage: UILabel!
     @IBOutlet weak var create_BTN: UIButton!
     
-    //@IBOutlet var datePicker: [UIDatePicker]!
+    var userEmail = ""
     
     
-    func createRecord(SuitableTime: String, ContactNumber: String, SuitableDate: String, Email: String,
-
-                      FirstName: String, LastName: String, NumberOfGuests: String, specialConsideration: String) {
-        
-        let date = Date()
-        let calender = Calendar.current
-        let hour = calender.component(.hour, from: date)
-        let minute = calender.component(.minute, from: date)
-        let second = calender.component(.second, from: date)
-        let Day = calender.component(.day, from: date)
-        let month = calender.component(.month, from: date)
-        let year = calender.component(.year, from: date)
-        
-        
-        let documentID = Email_TF.text!
-        //##:## dd - MM - yyyy
-        // new collection config, document in there that is a count document, an int field that is a count of the bookings, each time you want to createa  new boking, fetch count, increment, convert back to string with B infront
-        let timeStamp = Timestamp(date: date)
-        db.collection("Booking").document("\(hour)\(minute)\(second)\(Day)\(month)").setData(["Preferred Time": timeStamp, "ContactNumber": ContactNumber, "CustomerID" : Email, "Email Address" : Email, "FirstName": FirstName, "LastName": LastName, "People" : NumberOfGuests, "BookingID" : "\(hour)\(minute)\(second)\(Day)\(month)", "Special Considerations" : specialConsideration, "Table Number" : 3])
-
-        // Convert DOB to date
-        
-
-
-        { err in
-            if let err = err {
-                print("Error adding document: \(err)")
-            } else {
-                print("Document added.")
-                
-//                let alert = UIAlertController(title: "Booking Record Created",
-//                                                    message: "Booking has been Successfully Created",
-//                                                    preferredStyle: .alert)
-
-//                alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: {action in
-//                    self.performSegue(withIdentifier: "newBookingCreated", sender: self)
-//                }))
-                
-                //self.present(alert, animated: true)
-                
+    func checkOtherBookings(timeStamp: Timestamp) {
+        let calendar = NSCalendar.current
+        let components = calendar.dateComponents([.year, .month, .day, .hour], from: timeStamp.dateValue() as Date)
+        db.collection("Bookings").whereField("CustomerID", isEqualTo: userEmail).getDocuments() {(querySnapshot, error) in
+            if let error = error {
+                print(error)
+            }
+            else{
+                for document in querySnapshot!.documents {
+                    let time = (document.data()["Preferred Time"] as! Timestamp).dateValue()
+                    let documentComponents = calendar.dateComponents([.year, .month, .day, .hour], from: time as Date)
+                    if (documentComponents.year! == components.year!) && (documentComponents.month! == components.month!) && (documentComponents.day! == components.day!){
+                        if ((components.hour! > 12 && components.hour! < 16) && (documentComponents.hour! > 12 && documentComponents.hour! < 16)) || ((components.hour! > 17 && components.hour! < 21) && (documentComponents.hour! > 17 && documentComponents.hour! < 21)){
+                            print("Already made a booking for this time slot")
+                        }
+                    }
+                    else{
+                        
+                    }
+                    
+                }
             }
         }
+    }
+    
+    func createRecord(SuitableTime: String, ContactNumber: String, SuitableDate: String, Email: String, FirstName: String, LastName: String, NumberOfGuests: String, specialConsideration: String)
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
+        
+        let preferredDatetime = dateFormatter.date(from: SuitableDate+" "+SuitableTime)!
+        let timeStamp = Timestamp(date: preferredDatetime)
+        
+        let calendar = NSCalendar.current
+        let components = calendar.dateComponents([.year, .month, .day, .hour], from: timeStamp.dateValue() as Date)
+        db.collection("Bookings").whereField("CustomerID", isEqualTo: userEmail).getDocuments() {(querySnapshot, error) in
+            if let error = error {
+                print(error)
+            }
+            else{
+                for document in querySnapshot!.documents {
+                    let time = (document.data()["Preferred Time"] as! Timestamp).dateValue()
+                    let documentComponents = calendar.dateComponents([.year, .month, .day, .hour], from: time as Date)
+                    if (documentComponents.year! == components.year!) && (documentComponents.month! == components.month!) && (documentComponents.day! == components.day!) && (((components.hour! >= 12 && components.hour! < 16) && (documentComponents.hour! >= 12 && documentComponents.hour! < 16)) || ((components.hour! >= 17 && components.hour! < 21) && (documentComponents.hour! >= 17 && documentComponents.hour! < 21))){
+                            print("Already made a booking for this time slot")
+                            self.MissingDetailsMessage?.text = "Booking already exists"
+                            self.MissingDetailsMessage.textColor = UIColor.red
+                    }
+                    else{
+                        var bookingID = ""
+                        let docRef = self.db.collection("Config").document("Count")
+                        docRef.getDocument{(document, error) in
+                            if let document = document, document.exists {
+                                let dataDescription = document.data()!
+                                bookingID = "B" + String((dataDescription["BookingCount"] as! Int) + 1) + "-" + self.userEmail
+                                
+                                self.db.collection("Booking").document(bookingID).setData(["Preferred Time": timeStamp, "ContactNumber": ContactNumber, "CustomerID" : Email, "Email Address" : Email, "FirstName": FirstName, "LastName": LastName, "People" : NumberOfGuests, "BookingID" : bookingID, "Special Considerations" : specialConsideration, "Table Number" : 3])
+                                { err in
+                                    if let err = err {
+                                        print("Error adding document: \(err)")
+                                    } else {
+                                        print("Document added.")
+                                        docRef.updateData(["bookingCount": (dataDescription["BookingCount"] as! Int) + 1]) { err in
+                                            if let err = err {
+                                                print("Error updated booking count")
+                                            }
+                                            else{
+                                                print("Booking count updated")
+                                                let alert = UIAlertController(title: "Booking Record Created",
+                                                                                    message: "Booking has been Successfully Created",
+                                                                                    preferredStyle: .alert)
 
+                                                alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: {action in
+                                                    self.performSegue(withIdentifier: "newBookingCreated", sender: self)
+                                                }))
+
+                                                self.present(alert, animated: true)
+                                            }
+                                        }
+                                        
+                                            
+                                    }
+                                }
+                                
+                            }
+                            
+                        }
+                    }
+                    
+                }
+            }
+        }
+        
+        
 
     }
     
@@ -151,7 +202,11 @@ class CreateNewBooking: BookingController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        let user = Auth.auth().currentUser
+        if let user = user {
+            userEmail = user.email as! String
+            self.Email_TF?.text = userEmail
+        }
         // Do any additional setup after loading the view.
         MissingDetailsMessage.textColor = UIColor.white
     }

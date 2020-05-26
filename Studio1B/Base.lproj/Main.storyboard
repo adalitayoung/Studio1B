@@ -1206,11 +1206,12 @@
                         <outlet property="SuitableDate_TF" destination="tAj-BK-uLp" id="5iz-k4-tMZ"/>
                         <outlet property="SuitableTime_TF" destination="Quf-ci-tHF" id="XAg-Jr-mQL"/>
                         <outlet property="create_BTN" destination="eYc-N3-AxH" id="Zp8-JW-3zp"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="newBookingCreated" modalPresentationStyle="fullScreen" id="NMv-eg-gxy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6GP-aS-dK3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="649" y="-289"/>
+            <point key="canvasLocation" x="335" y="-346"/>
         </scene>
         <!--View Table Controller-->
         <scene sceneID="2dl-Fn-zNc">
@@ -3693,7 +3694,7 @@
         <segue reference="Izj-Sl-cTv"/>
         <segue reference="PyN-Vw-Jx0"/>
         <segue reference="xlF-sd-5L2"/>
-        <segue reference="Hpb-7Y-oUO"/>
+        <segue reference="NMv-eg-gxy"/>
         <segue reference="vhW-Ln-akK"/>
     </inferredMetricsTieBreakers>
     <resources>
