@@ -70,8 +70,45 @@ class manageBookingsController: UIViewController, UITableViewDelegate, UITableVi
         return self.bookings.count
     }
 
+    var bookingRecord = [String: Any]()
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? EditBooking {
+            vc.booking = bookingRecord
+        }
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        
+        if let bookingRec = self.bookings[indexPath.row] as? [String: Any]{
+            bookingRecord = bookingRec
+        }
+        self.performSegue(withIdentifier: "toEditBooking", sender: self)
+    }
+    
+    func deleteRecord(RecordID: String){
+        db.collection("Booking").document(RecordID).delete() {
+            err in if let err = err {
+                print(err)
+            }
+            else{
+                print("Document deleted")
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == UITableViewCell.EditingStyle.delete) {
+            
+            if let booking = self.bookings[indexPath.row] as? [String: Any] {
+                let bookingID = booking["BookingID"] as! String
+                self.deleteRecord(RecordID: bookingID)
+            }
+            
+            bookings.remove(at: indexPath.row)
+
+            tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+            
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
@@ -94,16 +131,4 @@ class manageBookingsController: UIViewController, UITableViewDelegate, UITableVi
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
