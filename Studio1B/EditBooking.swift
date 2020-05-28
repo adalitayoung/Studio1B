@@ -27,11 +27,13 @@ class EditBooking: UIViewController {
     var userEmail = ""
     
     func updateBooking(SuitableTime: String, ContactNumber: String, SuitableDate: String, Email: String, FirstName: String, LastName: String, NumberOfGuests: String, specialConsideration: String) {
-//        Update Booking and check if there are any orders, and update TimeToServe
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
         
         let preferredDatetime = dateFormatter.date(from: SuitableDate+" "+SuitableTime)!
+        print(preferredDatetime)
+        print(SuitableDate)
+        print(SuitableTime)
         let timeStamp = Timestamp(date: preferredDatetime)
         var match = false
 
@@ -47,20 +49,22 @@ class EditBooking: UIViewController {
                 for document in querySnapshot!.documents {
                     if(!match){
                         let time = (document.data()["Preferred Time"] as! Timestamp).dateValue()
-                        let documentComponents = calendar.dateComponents([.year, .month, .day, .hour], from: time as Date)
-                        if (documentComponents.year! == components.year!) && (documentComponents.month! == components.month!) && (documentComponents.day! == components.day!) && (((components.hour! >= 12 && components.hour! < 16) && (documentComponents.hour! >= 12 && documentComponents.hour! < 16)) || ((components.hour! >= 17 && components.hour! < 21) && (documentComponents.hour! >= 17 && documentComponents.hour! < 21))){
-                                print("Already made a booking for this time slot")
-                                self.MissingDetailsMessage?.text = "Booking already exists"
+                        if (self.booking["BookingID"] as! String != document.data()["BookingID"] as! String) {
+                            let documentComponents = calendar.dateComponents([.year, .month, .day, .hour], from: time as Date)
+                            if (documentComponents.year! == components.year!) && (documentComponents.month! == components.month!) && (documentComponents.day! == components.day!) && (((components.hour! >= 12 && components.hour! <= 16) && (documentComponents.hour! >= 12 && documentComponents.hour! <= 16)) || ((components.hour! >= 17 && components.hour! < 24) && (documentComponents.hour! >= 17 && documentComponents.hour! < 24))){
+                                    print("Already made a booking for this time slot")
+                                    self.MissingDetailsMessage?.text = "Booking already exists"
+                                    self.MissingDetailsMessage.textColor = UIColor.red
+                                    match = true
+                            }
+                            if (Date() > timeStamp.dateValue()){
+                                print("Can't make a booking in the past")
+                                self.MissingDetailsMessage?.text = "Cannot make a booking in the past"
                                 self.MissingDetailsMessage.textColor = UIColor.red
                                 match = true
+                            }
+                            print("line 72")
                         }
-                        if (Date() > timeStamp.dateValue()){
-                            print("Can't make a booking in the past")
-                            self.MissingDetailsMessage?.text = "Cannot make a booking in the past"
-                            self.MissingDetailsMessage.textColor = UIColor.red
-                            match = true
-                        }
-                        print("line 72")
                     }
 
                     
@@ -68,9 +72,9 @@ class EditBooking: UIViewController {
                 print("Outside for loop")
                 if (!match){
                     self.MissingDetailsMessage.textColor = UIColor.white
-                    self.Update_BTN.isEnabled = false
+                    //self.Update_BTN.isEnabled = false
                     self.Update_BTN.backgroundColor = UIColor.gray
-                    print("line80")
+                    print(timeStamp)
 
                     self.db.collection("Booking").document(self.booking["BookingID"] as! String).updateData(["Preferred Time": timeStamp, "ContactNumber": ContactNumber, "CustomerID" : Email, "Email Address" : Email, "FirstName": FirstName, "LastName": LastName, "People" : NumberOfGuests, "Special Considerations" : specialConsideration])
                     { err in
@@ -179,7 +183,7 @@ class EditBooking: UIViewController {
     @IBAction func Update_BTN(_ sender: Any) {
         let errorsChecked = self.errorChecking(SuitableTime: self.PreferredTime_TF!.text!, ContactNumber: self.ContactNumber_TF.text!, SuitableDate: self.PreferredDate_TF.text!, Email: self.Email_TF.text!, FirstName: self.FirstName_TF.text!, LastName: self.LastName_TF.text!, NumberOfGuests: self.NumberOfGuests_TF!.text!, specialConsideration: self.AdditionalMessage_TF!.text!)
         if (errorsChecked){
-            Update_BTN.isEnabled = false
+           // Update_BTN.isEnabled = false
             Update_BTN.backgroundColor = UIColor.gray
             updateBooking(SuitableTime: self.PreferredTime_TF!.text!, ContactNumber: self.ContactNumber_TF.text!, SuitableDate: self.PreferredDate_TF.text!, Email: self.Email_TF.text!, FirstName: self.FirstName_TF.text!, LastName: self.LastName_TF.text!, NumberOfGuests: self.NumberOfGuests_TF!.text!, specialConsideration: self.AdditionalMessage_TF!.text!)
         }
@@ -199,17 +203,22 @@ class EditBooking: UIViewController {
         
         FirstName_TF.text! = booking["FirstName"] as! String
         LastName_TF.text! = booking["LastName"] as! String
+        ContactNumber_TF.text! = booking["ContactNumber"] as! String
         Email_TF.text! = booking["Email Address"] as! String
         NumberOfGuests_TF.text! = booking["People"] as! String
         AdditionalMessage_TF.text! = booking["Special Considerations"] as! String
         let date = NSDate(timeIntervalSince1970: TimeInterval((booking["Preferred Time"] as! Timestamp).seconds))
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd-mm-yyyy"
-        PreferredDate_TF.text! = formatter.string(from: date as Date)
+        formatter.dateFormat = "dd-MM-yyyy HH:mm"
+        let dateArray = formatter.string(from: date as Date).components(separatedBy: " ")
+        PreferredDate_TF.text! = dateArray[0]
         
-        formatter.timeStyle = .short
-        formatter.dateStyle = .none
-        PreferredTime_TF.text! = formatter.string(from: date as Date)
+//        formatter.timeStyle = .short
+  //      formatter.dateStyle = .none
+        PreferredTime_TF.text! = dateArray[1]
+        
+        MissingDetailsMessage.textColor = UIColor.white
+
         // Do any additional setup after loading the view.
     }
     

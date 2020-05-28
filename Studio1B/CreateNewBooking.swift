@@ -39,7 +39,7 @@ class CreateNewBooking: BookingController {
                     if(!match){
                         let time = (document.data()["Preferred Time"] as! Timestamp).dateValue()
                         let documentComponents = calendar.dateComponents([.year, .month, .day, .hour], from: time as Date)
-                        if (documentComponents.year! == components.year!) && (documentComponents.month! == components.month!) && (documentComponents.day! == components.day!) && (((components.hour! >= 12 && components.hour! < 16) && (documentComponents.hour! >= 12 && documentComponents.hour! < 16)) || ((components.hour! >= 17 && components.hour! < 21) && (documentComponents.hour! >= 17 && documentComponents.hour! < 21))){
+                        if (documentComponents.year! == components.year!) && (documentComponents.month! == components.month!) && (documentComponents.day! == components.day!) && (((components.hour! >= 12 && components.hour! < 16) && (documentComponents.hour! >= 12 && documentComponents.hour! < 16)) || ((components.hour! >= 17 && components.hour! < 24) && (documentComponents.hour! >= 17 && documentComponents.hour! < 24))){
                                 print("Already made a booking for this time slot")
                                 self.MissingDetailsMessage?.text = "Booking already exists"
                                 self.MissingDetailsMessage.textColor = UIColor.red
