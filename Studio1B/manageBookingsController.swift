@@ -16,17 +16,16 @@ class manageBookingsController: UIViewController, UITableViewDelegate, UITableVi
 
     var bookings = [Any]()
     let db = Firestore.firestore()
+    var userEmail = ""
+
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var removeBtn: UIButton!
     @IBOutlet weak var editBtn: UIButton!
-    @IBOutlet weak var viewBtn: UIButton!
-    
-    //let bookingEmail = UserDefaults.standard.object(forKey: "Email") as! String
-    
+        
     
     func getData(){
-        db.collection("Booking").getDocuments(){
+        db.collection("Booking").whereField("CustomerID", isEqualTo: userEmail).getDocuments(){
             (querySnapshot, err) in if let err = err{
                 print("Firebase Error")
             }
@@ -52,6 +51,12 @@ class manageBookingsController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     override func viewDidLoad() {
+        let user = Auth.auth().currentUser
+        if let user = user {
+            userEmail = user.email as! String
+            //self.Email_TF?.text = userEmail
+        }
+    
         
         super.viewDidLoad()
         tableView.delegate = self
@@ -65,8 +70,45 @@ class manageBookingsController: UIViewController, UITableViewDelegate, UITableVi
         return self.bookings.count
     }
 
+    var bookingRecord = [String: Any]()
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? EditBooking {
+            vc.booking = bookingRecord
+        }
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        
+        if let bookingRec = self.bookings[indexPath.row] as? [String: Any]{
+            bookingRecord = bookingRec
+        }
+        self.performSegue(withIdentifier: "toEditBooking", sender: self)
+    }
+    
+    func deleteRecord(RecordID: String){
+        db.collection("Booking").document(RecordID).delete() {
+            err in if let err = err {
+                print(err)
+            }
+            else{
+                print("Document deleted")
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == UITableViewCell.EditingStyle.delete) {
+            
+            if let booking = self.bookings[indexPath.row] as? [String: Any] {
+                let bookingID = booking["BookingID"] as! String
+                self.deleteRecord(RecordID: bookingID)
+            }
+            
+            bookings.remove(at: indexPath.row)
+
+            tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+            
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
@@ -74,47 +116,19 @@ class manageBookingsController: UIViewController, UITableViewDelegate, UITableVi
         
         //set cell text as discount ids
             if let madeBooking = self.bookings[indexPath.row] as? [String: Any] {
-                let bookingFirstName = madeBooking["FirstName"] as! String
-                let bookingLastName = madeBooking["LastName"] as! String
-                let bookingFullName = bookingFirstName + " " + bookingLastName
-                let bookingEmail = madeBooking["Email Address"] as! String
                 let bookingGuests = madeBooking["People"] as! String
-//                let bookingTime = madeBooking["Preferred Time"] as! String
                 let date = NSDate(timeIntervalSince1970: TimeInterval((madeBooking["Preferred Time"] as! Timestamp).seconds))
                 let formatter = DateFormatter()
-                formatter.dateFormat = "d MMM y,HH:mm"
+                formatter.dateFormat = "d/MM/y; HH:mm"
                 var timeString = formatter.string(from: date as Date)
-                cell.nameLabel?.text = bookingFullName
-                cell.emailLabel?.text = bookingEmail
-                cell.guestsLabel?.text = bookingGuests
-                cell.timeLabel?.text = timeString
+                cell.noOfGuests?.text = bookingGuests
+                cell.time?.text = timeString
         }
         return cell
     }
     
     
-    
-    
-    //from video not sure if applicable
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-//        guard let videoURL = URL(string: table[indexPath.row].link) else {
-//            return
-//        }
-//    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
