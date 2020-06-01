@@ -2886,6 +2886,7 @@
                         <outlet property="dropDown" destination="eC5-yD-fvs" id="8bb-Y5-qv4"/>
                         <outlet property="lunchPrice_tf" destination="vfE-YM-sAe" id="lBO-1v-l3A"/>
                         <outlet property="name_tf" destination="WV1-pd-N47" id="Rbp-hO-rg2"/>
+                        <segue destination="jhT-2a-kWG" kind="presentation" identifier="menuItemAdded" modalPresentationStyle="fullScreen" id="cAk-lc-EZL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XTA-ka-CPW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3695,7 +3696,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="pfT-BH-Uom"/>
-        <segue reference="vVw-Ml-ruJ"/>
+        <segue reference="cAk-lc-EZL"/>
         <segue reference="zI4-Ji-ka7"/>
         <segue reference="F5v-mk-2Fv"/>
         <segue reference="RMN-a8-Uvv"/>
