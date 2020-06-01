@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import Firebase
 
 class ForgotPasswordPage: UIViewController {
     @IBOutlet weak var SendBtn: UIButton!
     
+    @IBOutlet weak var emailtextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         SendBtn.layer.cornerRadius = 10
@@ -18,14 +20,18 @@ class ForgotPasswordPage: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func ResetPassword(_ sender: Any) {
+        resetPassword()
     }
-    */
+    func resetPassword(){
+        Auth.auth().sendPasswordReset(withEmail: emailtextField.text!) { (error) in
+            if error == nil{
+                print("Success")
+                self.dismiss(animated: true)
+            } else {
+                print("Not Success")
+            }
+        }
+    }
 
 }

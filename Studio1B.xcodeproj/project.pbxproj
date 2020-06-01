@@ -57,6 +57,7 @@
 		F07B5ACD246E548B003A9AB0 /* MealOrderingtwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07B5ACC246E548B003A9AB0 /* MealOrderingtwo.swift */; };
 		F098949124640B06006E332F /* ForgotPasswordPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F098949024640B06006E332F /* ForgotPasswordPage.swift */; };
 		F0BF213A244457ED000A7A27 /* CustomersLogingIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BF2139244457ED000A7A27 /* CustomersLogingIn.swift */; };
+		F0E1F80F248390B1000C75C1 /* EditAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E1F80E248390B1000C75C1 /* EditAccount.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +128,7 @@
 		F07B5ACC246E548B003A9AB0 /* MealOrderingtwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealOrderingtwo.swift; sourceTree = "<group>"; };
 		F098949024640B06006E332F /* ForgotPasswordPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordPage.swift; sourceTree = "<group>"; };
 		F0BF2139244457ED000A7A27 /* CustomersLogingIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomersLogingIn.swift; sourceTree = "<group>"; };
+		F0E1F80E248390B1000C75C1 /* EditAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccount.swift; sourceTree = "<group>"; };
 		F0E6770D245FEA77000BCD87 /* Studio1BTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Studio1BTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA6D1894B5CFE421FDD1895D /* Pods_Studio1B.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Studio1B.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -234,6 +236,7 @@
 				F03FFC3C241F440400C9F5D3 /* Info.plist */,
 				384520AC2477D7BB001A494C /* SpecificInvoiceTableCell.swift */,
 				3759D901247A42910033DA31 /* Main.storyboard */,
+				F0E1F80E248390B1000C75C1 /* EditAccount.swift */,
 				F03FFC39241F440400C9F5D3 /* LaunchScreen.storyboard */,
 				F05EC61D24502417005E2714 /* LoginRegisterView.swift */,
 				384520AA2477D3C1001A494C /* ViewInvoice.swift */,
@@ -469,6 +472,7 @@
 				F03C782024700E8600EA8DE8 /* MealOrderingTableViewCell.swift in Sources */,
 				F05EC61E24502417005E2714 /* LoginRegisterView.swift in Sources */,
 				37BEDD8E2464182B0020B38B /* FoodCell.swift in Sources */,
+				F0E1F80F248390B1000C75C1 /* EditAccount.swift in Sources */,
 				F098949124640B06006E332F /* ForgotPasswordPage.swift in Sources */,
 				F03FFC2F241F440200C9F5D3 /* AppDelegate.swift in Sources */,
 				E6B63024247766C100E62D1B /* specificBookingController.swift in Sources */,
